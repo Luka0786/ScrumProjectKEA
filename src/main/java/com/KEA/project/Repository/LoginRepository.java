@@ -1,4 +1,4 @@
-package com.KEA.project.Repository;
+package main.java.com.KEA.project.Repository;
 
-public class LoginRepository {
+public interface LoginRepository {
 }
