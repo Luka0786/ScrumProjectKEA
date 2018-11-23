@@ -19,6 +19,6 @@ public class AdministratorModel
     private String lastName;
 
     @Email
-    @Column(name = "Email")
+    @Column(name = "email")
     private String email;
 }
