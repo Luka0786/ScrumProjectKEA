@@ -1,4 +1,8 @@
-package main.java.com.KEA.project.Repository;
+package com.KEA.project.Repository;
 
-public interface TeacherRepository {
+import com.KEA.project.Model.TeacherModel;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface TeacherRepository extends JpaRepository<TeacherModel, Long>
+{
 }
