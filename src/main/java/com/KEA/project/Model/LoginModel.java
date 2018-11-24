@@ -3,7 +3,7 @@ package com.KEA.project.Model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Logins")
+@Table(name = "Login_table")
 public class LoginModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,6 +12,7 @@ public class LoginModel {
 
     @Column(name = "login_username")
     private String username;
+
 
     @Column(name = "login_password")
     private String password;

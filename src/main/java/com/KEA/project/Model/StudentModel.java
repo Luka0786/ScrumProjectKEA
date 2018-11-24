@@ -28,11 +28,77 @@ public class StudentModel
     @Column(name = "student_enabled")
     private int enabled;
 
+/*
+    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+    @JoinColumn(name = "administrator_id",nullable = true,insertable = false,updatable = false)
+    private AdministratorModel administrator;*/
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "administrator_id",nullable = false)
+    private AdministratorModel administrator;
+
     public StudentModel(String name, @Email String email, String username, String password, int enabled) {
         this.name = name;
         this.email = email;
         this.username = username;
         this.password = password;
         this.enabled = enabled;
+
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(int enabled) {
+        this.enabled = enabled;
+    }
+
+    public AdministratorModel getAdministrator() {
+        return administrator;
+    }
+
+    public void setAdministrator(AdministratorModel administrator) {
+        this.administrator = administrator;
     }
 }

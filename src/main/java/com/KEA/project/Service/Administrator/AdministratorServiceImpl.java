@@ -1,4 +1,5 @@
-package com.KEA.project.Service;
+package com.KEA.project.Service.Administrator;
 
 public class AdministratorServiceImpl {
+
 }
