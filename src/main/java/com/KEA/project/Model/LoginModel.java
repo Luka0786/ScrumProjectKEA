@@ -16,5 +16,8 @@ public class LoginModel {
     @Column(name = "login_password")
     private String password;
 
-
+    public LoginModel(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 }

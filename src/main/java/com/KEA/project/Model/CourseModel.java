@@ -2,6 +2,7 @@ package com.KEA.project.Model;
 
 
 import javax.persistence.*;
+import java.util.HashMap;
 
 @Entity
 @Table(name = "Course_table")
@@ -57,7 +58,26 @@ public class CourseModel
     @Column(name = "exam_form")
     private String examForm;
 
-    @Column(name = "teacher_model")
-    private TeacherModel[] teachers;
+    @Column(name = "teachers")
+    private HashMap<Long,TeacherModel> teachers;
+
+    public CourseModel(String nameDanish, int semester, String classCode, String studyProgramme, boolean type, int ects, String language, int minimumOfStudents, int expectedOfStudents, int maximumOfStudents, String prerequisites, String learingOutcome, String content, String learningActivities, String examForm, HashMap<Long, TeacherModel> teachers) {
+        this.nameDanish = nameDanish;
+        this.semester = semester;
+        this.classCode = classCode;
+        this.studyProgramme = studyProgramme;
+        this.type = type;
+        this.ects = ects;
+        this.language = language;
+        this.minimumOfStudents = minimumOfStudents;
+        this.expectedOfStudents = expectedOfStudents;
+        this.maximumOfStudents = maximumOfStudents;
+        this.prerequisites = prerequisites;
+        this.learingOutcome = learingOutcome;
+        this.content = content;
+        this.learningActivities = learningActivities;
+        this.examForm = examForm;
+        this.teachers = teachers;
+    }
 }
 

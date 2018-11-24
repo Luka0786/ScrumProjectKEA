@@ -28,4 +28,11 @@ public class StudentModel
     @Column(name = "student_enabled")
     private int enabled;
 
+    public StudentModel(String name, @Email String email, String username, String password, int enabled) {
+        this.name = name;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
+    }
 }

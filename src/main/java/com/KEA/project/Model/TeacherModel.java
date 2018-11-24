@@ -18,4 +18,9 @@ public class TeacherModel
     @Email
     @Column(name = "teacher_email")
     private String email;
+
+    public TeacherModel(String name, @Email String email) {
+        this.name = name;
+        this.email = email;
+    }
 }
