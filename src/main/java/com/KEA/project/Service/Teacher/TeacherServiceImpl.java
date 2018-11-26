@@ -1,4 +1,4 @@
-package com.KEA.project.Service;
+package com.KEA.project.Service.Teacher;
 
 public class TeacherServiceImpl {
 }

@@ -1,4 +1,4 @@
-package com.KEA.project.Service;
+package com.KEA.project.Service.Student;
 
 public class StudentServiceImpl {
 }

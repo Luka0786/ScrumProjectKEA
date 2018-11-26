@@ -31,13 +31,14 @@ public class StudentModel
 /*
     @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     @JoinColumn(name = "administrator_id",nullable = true,insertable = false,updatable = false)
-    private AdministratorModel administrator;*/
+    private CounselorModel administrator;*/
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "administrator_id",nullable = false)
-    private AdministratorModel administrator;
+    @JoinColumn(name = "counselor_id",nullable = false)
+    private CounselorModel counselor;
 
-    public StudentModel(String name, @Email String email, String username, String password, int enabled) {
+    public StudentModel(String name, @Email String email, String username, String password, int enabled)
+    {
         this.name = name;
         this.email = email;
         this.username = username;
@@ -94,11 +95,11 @@ public class StudentModel
         this.enabled = enabled;
     }
 
-    public AdministratorModel getAdministrator() {
-        return administrator;
+    public CounselorModel getCounselor() {
+        return counselor;
     }
 
-    public void setAdministrator(AdministratorModel administrator) {
-        this.administrator = administrator;
+    public void setCounselor(CounselorModel counselor) {
+        this.counselor = counselor;
     }
 }

@@ -71,7 +71,8 @@ public class CourseModel
 
     @Column(name = "teachers_map")
     @OneToMany(mappedBy = "teacher_id",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    public HashMap<Long, TeacherModel> getTeachers() {
+    public HashMap<Long, TeacherModel> getTeachers()
+    {
         return teachers;
     }
 
