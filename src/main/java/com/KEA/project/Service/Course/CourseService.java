@@ -1,5 +1,11 @@
 package com.KEA.project.Service.Course;
 
-public interface CourseService
+import com.KEA.project.Repository.CourseRepository;
+
+public interface CourseService extends CourseRepository
 {
+    void create();
+    void delete(long id);
+    void read();
+    void update();
 }

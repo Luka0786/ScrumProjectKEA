@@ -33,9 +33,10 @@ public class StudentModel
     @JoinColumn(name = "administrator_id",nullable = true,insertable = false,updatable = false)
     private CounselorModel administrator;*/
 
+/*
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "counselor_id",nullable = false)
-    private CounselorModel counselor;
+    private CounselorModel counselor;*/
 
     public StudentModel(String name, @Email String email, String username, String password, int enabled)
     {
@@ -44,7 +45,6 @@ public class StudentModel
         this.username = username;
         this.password = password;
         this.enabled = enabled;
-
     }
 
     public long getId() {
@@ -95,11 +95,11 @@ public class StudentModel
         this.enabled = enabled;
     }
 
-    public CounselorModel getCounselor() {
+    /*public CounselorModel getCounselor() {
         return counselor;
     }
 
     public void setCounselor(CounselorModel counselor) {
         this.counselor = counselor;
-    }
+    }*/
 }

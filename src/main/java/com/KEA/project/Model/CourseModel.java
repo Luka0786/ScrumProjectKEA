@@ -16,6 +16,9 @@ public class CourseModel
     @Column(name = "name_danish")
     private String nameDanish;
 
+    @Column(name = "name_english")
+    private String nameEnglish;
+
     @Column(name = "semester")
     private int semester;
 
@@ -46,8 +49,8 @@ public class CourseModel
     @Column(name = "prerequisites")
     private String prerequisites;
 
-    @Column(name = "leaning_outcome")
-    private String learingOutcome;
+    @Column(name = "learning_outcome")
+    private String learningOutcome;
 
     @Column(name = "content")
     private String content;
@@ -76,8 +79,9 @@ public class CourseModel
         return teachers;
     }
 
-    public CourseModel(String nameDanish, int semester, String classCode, String studyProgramme, boolean type, int ects, String language, int minimumOfStudents, int expectedOfStudents, int maximumOfStudents, String prerequisites, String learingOutcome, String content, String learningActivities, String examForm, HashMap<Long, TeacherModel> teachers) {
+    public CourseModel(String nameDanish, String nameEnglish, int semester, String classCode, String studyProgramme, boolean type, int ects, String language, int minimumOfStudents, int expectedOfStudents, int maximumOfStudents, String prerequisites, String learningOutcome, String content, String learningActivities, String examForm, HashMap<Long, StudentModel> students, HashMap<Long, TeacherModel> teachers) {
         this.nameDanish = nameDanish;
+        this.nameEnglish = nameEnglish;
         this.semester = semester;
         this.classCode = classCode;
         this.studyProgramme = studyProgramme;
@@ -88,10 +92,11 @@ public class CourseModel
         this.expectedOfStudents = expectedOfStudents;
         this.maximumOfStudents = maximumOfStudents;
         this.prerequisites = prerequisites;
-        this.learingOutcome = learingOutcome;
+        this.learningOutcome = learningOutcome;
         this.content = content;
         this.learningActivities = learningActivities;
         this.examForm = examForm;
+        this.students = students;
         this.teachers = teachers;
     }
 
@@ -109,6 +114,14 @@ public class CourseModel
 
     public void setNameDanish(String nameDanish) {
         this.nameDanish = nameDanish;
+    }
+
+    public String getNameEnglish() {
+        return nameEnglish;
+    }
+
+    public void setNameEnglish(String nameEnglish) {
+        this.nameEnglish = nameEnglish;
     }
 
     public int getSemester() {
@@ -191,12 +204,12 @@ public class CourseModel
         this.prerequisites = prerequisites;
     }
 
-    public String getLearingOutcome() {
-        return learingOutcome;
+    public String getLearningOutcome() {
+        return learningOutcome;
     }
 
-    public void setLearingOutcome(String learingOutcome) {
-        this.learingOutcome = learingOutcome;
+    public void setLearningOutcome(String learningOutcome) {
+        this.learningOutcome = learningOutcome;
     }
 
     public String getContent() {
@@ -223,7 +236,9 @@ public class CourseModel
         this.examForm = examForm;
     }
 
-
+    public void setStudents(HashMap<Long, StudentModel> students) {
+        this.students = students;
+    }
 
     public void setTeachers(HashMap<Long, TeacherModel> teachers) {
         this.teachers = teachers;
