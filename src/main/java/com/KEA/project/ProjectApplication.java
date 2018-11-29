@@ -1,4 +1,4 @@
-package com.kea.project;
+package com.KEA.project;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -100,6 +100,9 @@ public class CourseModel
         this.teachers = teachers;
     }
 
+    public CourseModel()
+    {}
+
     public long getId() {
         return id;
     }

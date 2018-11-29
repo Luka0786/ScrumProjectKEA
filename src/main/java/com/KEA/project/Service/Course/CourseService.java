@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 
 public interface CourseService
 {
-    void create(Model Model);
+    void create(CourseModel courseModel);
     void delete(long id);
     void read();
     void update();

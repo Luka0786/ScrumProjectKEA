@@ -1,0 +1,56 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xlmns:th="http://www.thymeleaf.org"
+      xmlns:xlmns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+
+<div class="container">
+    <form class="form-group-lg" method="POST" th:action="@{/course/create}">
+
+        <div>
+        <input type="hidden"   th:field="${Course.id}"/></br>
+        <p>Indtast dansk navn</p>
+        <input required type="text" th:field="${Course.nameDanish}"></br>
+        <p>Indtast engelsk navn</p>
+        <input required type="text" th:field="${Course.nameEnglish}"></br>
+        <p>Indtast semester</p>
+        <input required type="number" th:field="${Course.semester}"></br>
+        <p>Indtast klasse koden</p>
+        <input required type="text" th:field="${Course.classCode}"></br>
+        <p>Indtast studie programmet</p>
+        <input required type="text" th:field="${Course.studyProgramme}"></br>
+        <p>Indtast fagets type</p>
+        <input required type="text" th:field="${Course.type}"></br>
+        <p>Indtast ects</p>
+        <input required type="number" th:field="${Course.ects}"></br>
+        <p>Indtast fagets sprog</p>
+        <input required type="text" th:field="${Course.language}"></br>
+        <p>Indtast minimum antal af studerende</p>
+        <input required type="number" th:field="${Course.minimumOfStudents}"></br>
+        <p>Indtast forventet antal af studerende</p>
+        <input required type="number" th:field="${Course.expectedOfStudents}"></br>
+        <p>Indtast maksimum antal af studerende</p>
+        <input required type="number" th:field="${Course.maximumOfStudents}"></br>
+        <p>Indtast forudsætninger for faget</p>
+        <input required type="text" th:field="${Course.prerequisites}"></br>
+        <p>Indtast læringsmål</p>
+        <input required type="text" th:field="${Course.learningOutcome}"></br>
+        <p>Indtast fagets indhold</p>
+        <input required type="text" th:field="${Course.content}"></br>
+        <p>Indtast lærings aktiviteter</p>
+        <input required type="text" th:field="${Course.learningActivities}"></br>
+        <p>Indtast eksamens form</p>
+        <input required type="text" th:field="${Course.examForm}"></br>
+
+        <input class="button btn-success" type="submit" value="Send" />
+
+        </div>
+    </form>
+</div>
+<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+</body>
+</html>
