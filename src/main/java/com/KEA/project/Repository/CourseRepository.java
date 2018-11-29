@@ -12,5 +12,4 @@ import org.springframework.ui.Model;
 public interface CourseRepository extends JpaRepository<CourseModel, Long>
 {
 
-
 }

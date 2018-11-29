@@ -5,6 +5,8 @@ import com.KEA.project.Repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 
 @Service
 public class CourseServiceImpl implements CourseService
@@ -13,24 +15,32 @@ public class CourseServiceImpl implements CourseService
     CourseRepository courseRepository;
 
     @Override
-    public void create(CourseModel courseModel) {
+    public void create(CourseModel courseModel)
+    {
         courseRepository.save(courseModel);
+    }
+
+    @Override
+    public void delete(long id)
+    {
 
     }
 
     @Override
-    public void delete(long id) {
+    public void read()
+    {
 
     }
 
     @Override
-    public void read() {
-
+    public void update(CourseModel courseModel)
+    {
+        courseRepository.save(courseModel);
     }
 
     @Override
-    public void update() {
-
+    public Optional<CourseModel> findById(long id)
+    {
+        return courseRepository.findById(id);
     }
-
 }
