@@ -1,12 +1,12 @@
 package com.KEA.project.Model;
 
-
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashMap;
 
 @Entity
 @Table(name = "Course_table")
-public class CourseModel
+public class CourseModel implements Serializable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -77,6 +77,11 @@ public class CourseModel
     public HashMap<Long, TeacherModel> getTeachers()
     {
         return teachers;
+    }
+
+    public CourseModel()
+    {
+
     }
 
     public CourseModel(String nameDanish, String nameEnglish, int semester, String classCode, String studyProgramme, boolean type, int ects, String language, int minimumOfStudents, int expectedOfStudents, int maximumOfStudents, String prerequisites, String learningOutcome, String content, String learningActivities, String examForm, HashMap<Long, StudentModel> students, HashMap<Long, TeacherModel> teachers) {

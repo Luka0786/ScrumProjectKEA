@@ -1,13 +1,18 @@
 package com.KEA.project.Service.Course;
 
-import com.KEA.project.Model.CourseModel;
-import com.KEA.project.Repository.CourseRepository;
-import org.springframework.ui.Model;
 
+import com.KEA.project.Model.CourseModel;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+
+@Service
 public interface CourseService
 {
-    void create(Model Model);
-    void delete(long id);
-    void read();
-    void update();
+    void deleteCourse(CourseModel courseModel);
+
+    Optional<CourseModel> findById(long id);
+
+
+
 }
