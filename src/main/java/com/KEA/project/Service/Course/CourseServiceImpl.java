@@ -5,14 +5,21 @@ import com.KEA.project.Repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+
 
 @Service
 public class CourseServiceImpl implements CourseService
 {
-
     @Autowired
-    private CourseRepository courseRepository;
+    CourseRepository courseRepository;
+
+    @Override
+    public void create(CourseModel courseModel)
+    {
+        courseRepository.save(courseModel);
+    }
 
     @Override
     public void deleteCourse(CourseModel courseModel)
@@ -21,8 +28,26 @@ public class CourseServiceImpl implements CourseService
     }
 
     @Override
+    public void read()
+    {
+
+    }
+
+    @Override
+    public void update(CourseModel courseModel)
+    {
+        courseRepository.save(courseModel);
+    }
+
+    @Override
     public Optional<CourseModel> findById(long id)
     {
         return courseRepository.findById(id);
     }
+
+    @Override
+    public List<CourseModel> getAll() {
+        return courseRepository.findAll();
+    }
 }
+
