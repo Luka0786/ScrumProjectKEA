@@ -16,6 +16,14 @@ public class CourseController
     @Autowired
     CourseServiceImpl courseServiceImpl;
 
+    @GetMapping()
+    public String courses(Model model)
+    {
+        model.addAttribute("Courses", courseServiceImpl.getAll());
+
+        return "Course";
+    }
+
     @GetMapping("/create")
     public String create(Model model)
     {
@@ -29,7 +37,7 @@ public class CourseController
     {
         courseServiceImpl.create(courseModel);
 
-        return "redirect:/create";
+        return "redirect:/course";
     }
 
     @GetMapping("/update")
@@ -45,10 +53,6 @@ public class CourseController
     {
         courseServiceImpl.update(courseModel);
 
-        return "redirect:/update";
+        return "redirect:/course";
     }
-
-
-
-
 }

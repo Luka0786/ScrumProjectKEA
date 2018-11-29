@@ -5,6 +5,7 @@ import com.KEA.project.Repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -42,5 +43,10 @@ public class CourseServiceImpl implements CourseService
     public Optional<CourseModel> findById(long id)
     {
         return courseRepository.findById(id);
+    }
+
+    @Override
+    public List<CourseModel> getAll() {
+        return courseRepository.findAll();
     }
 }
