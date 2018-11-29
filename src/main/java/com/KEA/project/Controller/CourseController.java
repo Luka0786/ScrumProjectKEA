@@ -1,7 +1,6 @@
 package com.KEA.project.Controller;
 
 import com.KEA.project.Model.CourseModel;
-import com.KEA.project.Repository.CourseRepositoryImp;
 import com.KEA.project.Service.Course.CourseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

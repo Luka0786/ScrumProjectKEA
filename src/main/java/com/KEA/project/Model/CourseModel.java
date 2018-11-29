@@ -105,9 +105,6 @@ public class CourseModel implements Serializable
         this.teachers = teachers;
     }
 
-    public CourseModel()
-    {}
-
     public long getId() {
         return id;
     }
