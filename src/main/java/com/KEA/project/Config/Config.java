@@ -1,5 +1,7 @@
 package com.KEA.project.Config;
 
 
-public class Config {
+public class Config
+{
+
 }
