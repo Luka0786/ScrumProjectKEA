@@ -1,0 +1,22 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xlmns:th="http://www.thymeleaf.org/"
+      xmlns:xlmns="http://www.w3.org/1999/xhtml">
+
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.1.0/css/bootstrap.css" />
+    <title>CourseDelete</title>
+</head>
+<body>
+
+
+<div class="container">
+    <h2>Er du sikker på at du vil slette dette Course</h2>
+    <form action="#" th:action="@{/course/delete}" method="post" >
+        <input type="hidden"  th:field="${Course.id}"  />
+        <button class="btn btn-success" type="submit">Ja</button>
+        <a href="/course"><button type="button" class="btn btn-danger" >Nej</button></a>
+    </form>
+</div>
+</body>
+</html>
