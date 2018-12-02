@@ -55,12 +55,14 @@ public class CourseController
         return "redirect:/course";
     }
 
-    @GetMapping("/{id}")
-    public String SpecificCourseById(@PathVariable("id") long id, Model model)
+    @GetMapping("/details")
+    public String details(@RequestParam("id") long id, Model model)
     {
-        model.addAttribute("Course", courseServiceImpl.findById(id));
-        return "Course";
+        model.addAttribute("Course", courseServiceImpl.findSpecificModel(id));
+
+        return "CourseDetails";
     }
+
 
     @GetMapping("/delete")
     public String deleteCourseById(@RequestParam("id") long id, Model model)
@@ -77,4 +79,5 @@ public class CourseController
         courseServiceImpl.deleteCourse(courseModel);
         return "redirect:/course";
     }
+
 }

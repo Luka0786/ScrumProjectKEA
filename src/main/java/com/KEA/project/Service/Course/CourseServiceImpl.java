@@ -27,11 +27,6 @@ public class CourseServiceImpl implements CourseService
         courseRepository.delete(courseModel);
     }
 
-    @Override
-    public void read()
-    {
-
-    }
 
     @Override
     public void update(CourseModel courseModel)
@@ -43,6 +38,12 @@ public class CourseServiceImpl implements CourseService
     public Optional<CourseModel> findById(long id)
     {
         return courseRepository.findById(id);
+    }
+
+    @Override
+    public CourseModel findSpecificModel(long id)
+    {
+        return courseRepository.getOne(id);
     }
 
     @Override

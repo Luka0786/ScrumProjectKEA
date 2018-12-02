@@ -1,4 +1,4 @@
-package com.KEA.project.Config;
+/*package com.KEA.project.Config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -128,9 +128,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
 }
-     */
+
 
 
 
 
 }
+*/
