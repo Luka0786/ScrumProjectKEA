@@ -28,7 +28,7 @@
     </thead>
     <tbody>
     <p></p>
-    <div sec:authorize="hasRole('ROLE_ADMIN')">
+    <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
     <a href="/course/create" type="button" class="btn">Opret</a>
     </div>
     <p></p>
