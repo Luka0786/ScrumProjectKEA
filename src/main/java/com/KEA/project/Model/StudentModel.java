@@ -22,8 +22,9 @@ public class StudentModel
     @Column(name = "student_username")
     private String username;
 
+    /*
     @Column(name = "student_password")
-    private String password;
+    private String password;*/
 
     @Column(name = "student_enabled")
     private int enabled;
@@ -38,12 +39,11 @@ public class StudentModel
     @JoinColumn(name = "counselor_id",nullable = false)
     private CounselorModel counselor;*/
 
-    public StudentModel(String name, @Email String email, String username, String password, int enabled)
+    public StudentModel(String name, @Email String email, String username, int enabled)
     {
         this.name = name;
         this.email = email;
         this.username = username;
-        this.password = password;
         this.enabled = enabled;
     }
 
@@ -77,14 +77,6 @@ public class StudentModel
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public int getEnabled() {

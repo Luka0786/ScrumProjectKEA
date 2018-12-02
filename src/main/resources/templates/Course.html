@@ -1,6 +1,6 @@
 <!DOCTYPE html >
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xlmns:th="http://www.thymeleaf.org"
-      xmlns:xlmns="http://www.w3.org/1999/xhtml">
+      xmlns:xlmns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>AllCourses</title>
@@ -28,7 +28,9 @@
     </thead>
     <tbody>
     <p></p>
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
     <a href="/course/create" type="button" class="btn">Opret</a>
+    </div>
     <p></p>
     <tr th:each="Course : ${Courses}">
         <td th:text="${Course.nameDanish}"></td>
@@ -46,11 +48,13 @@
         <td th:text="${Course.learningOutcome}"></td>
         <td th:text="${Course.examForm}"></td>
 
+        <div sec:authorize="hasRole('ROLE_ADMIN','ROLE_TEACHER')">
         <td>
             <a th:href="${'/course/details?id='+Course.getId()}" type="button" class="btn">Detaljer</a>
             <a th:href="${'/course/update?id='+Course.getId()}" type="button" class="btn">Opdater</a>
             <a th:href="${'/course/delete?id='+Course.getId()}" type="button" class="btn">Slet</a>
         </td>
+        </div>
     </tr>
     </tbody>
 </table>
