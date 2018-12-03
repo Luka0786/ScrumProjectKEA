@@ -4,15 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <title>AllCourses</title>
+    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
 </head>
 <body>
-<table class="table-bordered table">
+<div class="container">
+<table class="table-bordered">
     <thead>
     <tr>
         <th>Navn dansk</th>
         <th>Navn engelsk</th>
         <th>Semester</th>
         <th>Klasse kode</th>
+        <th>Studie programmet</th>
         <th>Type</th>
         <th>ECTS</th>
         <th>Fagets sprog</th>
@@ -24,6 +27,7 @@
         <th>Fagets indhold</th>
         <th>Lærings aktiviteter</th>
         <th>Eksamensform</th>
+        <th>Indstillinger</th>
     </tr>
     </thead>
     <tbody>
@@ -46,9 +50,12 @@
         <td th:text="${Course.maximumOfStudents}"></td>
         <td th:text="${Course.prerequisites}"></td>
         <td th:text="${Course.learningOutcome}"></td>
+        <td th:text="${Course.content}"></td>
+        <td th:text="${Course.learningActivities}"></td>
         <td th:text="${Course.examForm}"></td>
 
-        <div sec:authorize="hasRole('ROLE_ADMIN','ROLE_TEACHER')">
+
+        <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
         <td>
             <a th:href="${'/course/details?id='+Course.getId()}" type="button" class="btn">Detaljer</a>
             <a th:href="${'/course/update?id='+Course.getId()}" type="button" class="btn">Opdater</a>
@@ -58,5 +65,7 @@
     </tr>
     </tbody>
 </table>
+<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+</div>
 </body>
 </html>
