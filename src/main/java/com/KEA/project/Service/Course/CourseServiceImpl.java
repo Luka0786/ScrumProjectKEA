@@ -16,38 +16,38 @@ public class CourseServiceImpl implements CourseService
     CourseRepository courseRepository;
 
     @Override
-    public void create(CourseModel courseModel)
+    public void createCourse(CourseModel courseModel)
     {
         courseRepository.save(courseModel);
     }
 
     @Override
-    public void delete(CourseModel courseModel)
+    public void deleteCourse(CourseModel courseModel)
     {
         courseRepository.delete(courseModel);
     }
 
 
     @Override
-    public void update(CourseModel courseModel)
+    public void updateCourse(CourseModel courseModel)
     {
         courseRepository.save(courseModel);
     }
 
     @Override
-    public Optional<CourseModel> findById(long id)
+    public Optional<CourseModel> findCourseById(long id)
     {
         return courseRepository.findById(id);
     }
 
     @Override
-    public CourseModel findSpecificModel(long id)
+    public CourseModel findSpecificCourse(long id)
     {
         return courseRepository.getOne(id);
     }
 
     @Override
-    public List<CourseModel> getAll() {
+    public List<CourseModel> getAllCourses() {
         return courseRepository.findAll();
     }
 }
