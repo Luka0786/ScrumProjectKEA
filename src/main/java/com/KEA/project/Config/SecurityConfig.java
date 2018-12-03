@@ -1,4 +1,4 @@
-/*package com.KEA.project.Config;
+package com.KEA.project.Config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         auth.jdbcAuthentication().dataSource(securityDataSource)
                 .passwordEncoder(passwordEncoder())
-                .usersByUsernameQuery("select username, password, enabled from Login_Table where username=?")
+                .usersByUsernameQuery("select login_username, login_password, enabled from Login_Table where login_username=?")
                 .authoritiesByUsernameQuery("select username, role from Login_Roles where username=?");
 
     }
@@ -38,16 +38,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception
     {
         http.authorizeRequests()
-                .antMatchers("/course").hasRole("STUDENT")
-                .antMatchers("/course/**").hasRole("TEACHER")
-                .antMatchers("/course/**").hasRole("ADMIN")
+                .antMatchers("/course").hasAnyRole("STUDENT","ADMIN","TEACHER")
+                .antMatchers("/course/**").hasAnyRole("ADMIN","TEACHER")
                 .and().formLogin().loginPage("/login")
-                .loginProcessingUrl("/authenticateTheUser")
                 .permitAll()
+                .defaultSuccessUrl("/course")
+                .failureUrl("/fejl")
                 .and()
-                .logout().permitAll()
-                .and()
-                .exceptionHandling().accessDeniedPage("/access-denied");
+                .logout().permitAll();
     }
 
 
@@ -128,10 +126,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
 }
-
+     */
 
 
 
 
 }
-*/

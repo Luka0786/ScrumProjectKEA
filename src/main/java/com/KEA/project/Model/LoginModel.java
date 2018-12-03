@@ -15,7 +15,7 @@ public class LoginModel
     private String password;
 
     @Column(name = "enabled")
-    private String enabled;
+    private int enabled;
 
     public LoginModel(String username, String password) {
         this.username = username;

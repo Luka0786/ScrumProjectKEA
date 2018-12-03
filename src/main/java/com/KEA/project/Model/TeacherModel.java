@@ -19,8 +19,12 @@ public class TeacherModel
     @Column(name = "teacher_email")
     private String email;
 
+    @Column(name = "teacher_username", unique = true)
+    private String username;
+
     public TeacherModel(String name, @Email String email) {
         this.name = name;
         this.email = email;
+        this.username = email;
     }
 }
