@@ -1,0 +1,54 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xlmns:th="http://www.thymeleaf.org"
+      xmlns:xlmns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>CourseDetails</title>
+</head>
+<body>
+<table class="table-bordered table">
+    <thead>
+    <tr>
+        <th>Navn dansk</th>
+        <th>Navn engelsk</th>
+        <th>Semester</th>
+        <th>Klasse kode</th>
+        <th>Type</th>
+        <th>ECTS</th>
+        <th>Fagets sprog</th>
+        <th>Minimum antal af studerende</th>
+        <th>Forventet antal af studerende</th>
+        <th>Maximum antal af studerende</th>
+        <th>Forudsætninger for faget</th>
+        <th>Indtast læringsmål</th>
+        <th>Fagets indhold</th>
+        <th>Lærings aktiviteter</th>
+        <th>Eksamensform</th>
+    </tr>
+    </thead>
+    <tbody>
+
+        <td th:text="${Course.nameDanish}"></td>
+        <td th:text="${Course.nameEnglish}"></td>
+        <td th:text="${Course.semester}"></td>
+        <td th:text="${Course.classCode}"></td>
+        <td th:text="${Course.studyProgramme}"></td>
+        <td th:text="${Course.type}"></td>
+        <td th:text="${Course.ects}"></td>
+        <td th:text="${Course.language}"></td>
+        <td th:text="${Course.minimumOfStudents}"></td>
+        <td th:text="${Course.expectedOfStudents}"></td>
+        <td th:text="${Course.maximumOfStudents}"></td>
+        <td th:text="${Course.prerequisites}"></td>
+        <td th:text="${Course.learningOutcome}"></td>
+        <td th:text="${Course.examForm}"></td>
+
+        <td>
+            <a th:href="${'/course/update?id='+Course.getId()}" type="button" class="btn">Opdater</a>
+            <a th:href="${'/course/delete?id='+Course.getId()}" type="button" class="btn">Slet</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
