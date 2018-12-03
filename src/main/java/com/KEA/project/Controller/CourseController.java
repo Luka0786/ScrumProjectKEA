@@ -56,7 +56,7 @@ public class CourseController
     }
 
     @GetMapping("/details")
-    public String details(@RequestParam("id") long id, Model model)
+    public String detailsById(@RequestParam("id") long id, Model model)
     {
         model.addAttribute("Course", courseServiceImpl.findSpecificModel(id));
 
@@ -74,9 +74,9 @@ public class CourseController
     }
 
     @PostMapping("/delete")
-    public String deleteCourse(@ModelAttribute CourseModel courseModel)
+    public String deleteCourseById(@ModelAttribute CourseModel courseModel)
     {
-        courseServiceImpl.deleteCourse(courseModel);
+        courseServiceImpl.delete(courseModel);
         return "redirect:/course";
     }
 

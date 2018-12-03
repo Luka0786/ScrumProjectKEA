@@ -1,12 +1,12 @@
 package com.KEA.project.Model;
 
 import javax.persistence.*;
-import java.io.Serializable;
+
 import java.util.HashMap;
 
 @Entity
 @Table(name = "Course_table")
-public class CourseModel implements Serializable
+public class CourseModel
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

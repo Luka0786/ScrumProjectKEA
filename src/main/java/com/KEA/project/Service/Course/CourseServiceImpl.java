@@ -22,7 +22,7 @@ public class CourseServiceImpl implements CourseService
     }
 
     @Override
-    public void deleteCourse(CourseModel courseModel)
+    public void delete(CourseModel courseModel)
     {
         courseRepository.delete(courseModel);
     }
