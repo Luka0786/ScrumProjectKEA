@@ -1,7 +1,11 @@
 package com.KEA.project.Model;
 
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import java.util.HashMap;
 
 @Entity
 @Table(name = "Student_Table")
@@ -25,7 +29,7 @@ public class StudentModel
     /*
     @Column(name = "student_password")
     private String password;*/
-
+   // @Nullable
     @Column(name = "student_enabled")
     private int enabled;
 
@@ -39,12 +43,23 @@ public class StudentModel
     @JoinColumn(name = "counselor_id",nullable = false)
     private CounselorModel counselor;*/
 
+
+
+ /*   @Column(name = "requests_map")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "sign_up_id")
+    SignUpModel signups;*/
+
+
     public StudentModel(String name, @Email String email, String username, int enabled)
     {
         this.name = name;
         this.email = email;
         this.username = username;
         this.enabled = enabled;
+    }
+
+    public StudentModel(){
+
     }
 
     public long getId() {
