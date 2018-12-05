@@ -18,13 +18,19 @@
         <th>Minimum antal af studerende</th>
         <th>Maximum antal af studerende</th>
         <th>Forudsætninger for faget</th>
+        <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
         <th>Indstillinger</th>
+        </div>
+        <div sec:authorize="hasRole('ROLE_STUDENT')">
+            <th>Indstillinger</th>
+        </div>
     </tr>
     </thead>
     <tbody>
     <p></p>
     <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
     <a href="/course/create" type="button" class="btn">Opret</a>
+    </div>
     <br/>
         <form th:action="@{/course/search}" th:object="${course}" method="get">
             <input type="search" name="searchForCourse" placeholder="Search for course" th:value="${name}"/>
@@ -44,12 +50,9 @@
                             <a th:href="${'/course/delete?id='+courses.getId()}" type="button">Slet</a>
                         </td>
                     </div>
-                    <div sec:authorize="hasRole('ROLE_STUDENT')">
-                        <a th:href="${'/course/signUp?id='+Course.getId()}" type="button">Tilmeld</a>
-                    </div>
+
             </tr>
         </form>
-    </div>
     <tr th:each="Course : ${Courses}">
         <td th:text="${Course.nameDanish}"></td>
         <td th:text="${Course.nameEnglish}"></td>
@@ -67,10 +70,12 @@
         </td>
         </div>
         <div sec:authorize="hasRole('ROLE_STUDENT')">
-            <a th:href="${'/course/signUp?id='+Course.getId()}" type="button">Tilmeld</a>
+            <td>
+                <a th:href="${'/course/details?id='+Course.getId()}" type="button" >Detaljer</a>
+                <a th:href="${'/course/signUp?id='+Course.getId()}" type="button">Tilmeld</a>
+            </td>
         </div>
     </tr>
-    </div>
     </tbody>
 </table>
 <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
