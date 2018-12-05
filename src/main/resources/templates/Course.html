@@ -28,6 +28,7 @@
     <br/>
         <form th:action="@{/course/search}" th:object="${course}" method="get">
             <input type="search" name="searchForCourse" placeholder="Search for course" th:value="${name}"/>
+            <button type="submit">Search</button>
             <tr th:each="courses : ${searchCourse}">
                     <td th:text="${courses.nameDanish}"></td>
                     <td th:text="${courses.nameEnglish}"></td>
@@ -36,9 +37,19 @@
                     <td th:text="${courses.minimumOfStudents}"></td>
                     <td th:text="${courses.maximumOfStudents}"></td>
                     <td th:text="${courses.prerequisites}"></td>
-                <button type="submit">Search</button>
+                    <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
+                        <td>
+                            <a th:href="${'/course/details?id='+courses.getId()}" type="button">Detaljer</a>
+                            <a th:href="${'/course/update?id='+courses.getId()}" type="button">Opdater</a>
+                            <a th:href="${'/course/delete?id='+courses.getId()}" type="button">Slet</a>
+                        </td>
+                    </div>
+                    <div sec:authorize="hasRole('ROLE_STUDENT')">
+                        <a th:href="${'/course/signUp?id='+Course.getId()}" type="button">Tilmeld</a>
+                    </div>
             </tr>
         </form>
+    </div>
     <tr th:each="Course : ${Courses}">
         <td th:text="${Course.nameDanish}"></td>
         <td th:text="${Course.nameEnglish}"></td>
@@ -50,13 +61,13 @@
 
         <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
         <td>
-            <a th:href="${'/course/details?id='+Course.getId()}" type="button" class="btn btn-info">Detaljer</a>
-            <a th:href="${'/course/update?id='+Course.getId()}" type="button" class="btn btn-success">Opdater</a>
-            <a th:href="${'/course/delete?id='+Course.getId()}" type="button" class="btn btn-danger">Slet</a>
+            <a th:href="${'/course/details?id='+Course.getId()}" type="button">Detaljer</a>
+            <a th:href="${'/course/update?id='+Course.getId()}" type="button">Opdater</a>
+            <a th:href="${'/course/delete?id='+Course.getId()}" type="button">Slet</a>
         </td>
         </div>
         <div sec:authorize="hasRole('ROLE_STUDENT')">
-            <a th:href="${'/course/signUp?id='+Course.getId()}" type="button" class="btn btn-info" >Tilmeld</a>
+            <a th:href="${'/course/signUp?id='+Course.getId()}" type="button">Tilmeld</a>
         </div>
     </tr>
     </div>
