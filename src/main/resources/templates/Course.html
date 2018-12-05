@@ -13,20 +13,11 @@
     <tr>
         <th>Navn dansk</th>
         <th>Navn engelsk</th>
-        <th>Semester</th>
-        <th>Klasse kode</th>
-        <th>Studie programmet</th>
-        <th>Type</th>
         <th>ECTS</th>
         <th>Fagets sprog</th>
         <th>Minimum antal af studerende</th>
-        <th>Forventet antal af studerende</th>
         <th>Maximum antal af studerende</th>
         <th>Forudsætninger for faget</th>
-        <th>Indtast læringsmål</th>
-        <th>Fagets indhold</th>
-        <th>Lærings aktiviteter</th>
-        <th>Eksamensform</th>
         <th>Indstillinger</th>
     </tr>
     </thead>
@@ -34,26 +25,28 @@
     <p></p>
     <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
     <a href="/course/create" type="button" class="btn">Opret</a>
-    </div>
-    <p></p>
+    <br/>
+        <form th:action="@{/course/search}" th:object="${course}" method="get">
+            <input type="search" name="searchForCourse" placeholder="Search for course" th:value="${name}"/>
+            <tr th:each="courses : ${searchCourse}">
+                    <td th:text="${courses.nameDanish}"></td>
+                    <td th:text="${courses.nameEnglish}"></td>
+                    <td th:text="${courses.ects}"></td>
+                    <td th:text="${courses.language}"></td>
+                    <td th:text="${courses.minimumOfStudents}"></td>
+                    <td th:text="${courses.maximumOfStudents}"></td>
+                    <td th:text="${courses.prerequisites}"></td>
+                <button type="submit">Search</button>
+            </tr>
+        </form>
     <tr th:each="Course : ${Courses}">
         <td th:text="${Course.nameDanish}"></td>
         <td th:text="${Course.nameEnglish}"></td>
-        <td th:text="${Course.semester}"></td>
-        <td th:text="${Course.classCode}"></td>
-        <td th:text="${Course.studyProgramme}"></td>
-        <td th:text="${Course.type}"></td>
         <td th:text="${Course.ects}"></td>
         <td th:text="${Course.language}"></td>
         <td th:text="${Course.minimumOfStudents}"></td>
-        <td th:text="${Course.expectedOfStudents}"></td>
         <td th:text="${Course.maximumOfStudents}"></td>
         <td th:text="${Course.prerequisites}"></td>
-        <td th:text="${Course.learningOutcome}"></td>
-        <td th:text="${Course.content}"></td>
-        <td th:text="${Course.learningActivities}"></td>
-        <td th:text="${Course.examForm}"></td>
-
 
         <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
         <td>
@@ -63,6 +56,7 @@
         </td>
         </div>
     </tr>
+    </div>
     </tbody>
 </table>
 <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>

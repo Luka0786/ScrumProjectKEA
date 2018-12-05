@@ -13,4 +13,5 @@ public interface CourseService
     CourseModel findSpecificCourse(long id);
     Optional<CourseModel> findCourseById(long id);
     List<CourseModel> getAllCourses();
+    List<CourseModel> searchCourses(String search);
 }

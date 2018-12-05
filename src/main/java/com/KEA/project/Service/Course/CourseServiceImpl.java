@@ -50,5 +50,10 @@ public class CourseServiceImpl implements CourseService
     public List<CourseModel> getAllCourses() {
         return courseRepository.findAll();
     }
+
+    @Override
+    public List<CourseModel> searchCourses(String nameDanish) {
+        return courseRepository.findAllByNameDanishOrderByEctsDesc(nameDanish);
+    }
 }
 
