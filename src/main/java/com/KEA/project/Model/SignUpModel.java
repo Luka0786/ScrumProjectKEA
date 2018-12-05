@@ -31,6 +31,9 @@ public class SignUpModel {
     private StudentModel studentModel;
 
 
+    public SignUpModel() {
+    }
+
     public SignUpModel(CourseModel courseModel, StudentModel studentModel) {
         this.courseModel = courseModel;
         this.studentModel = studentModel;

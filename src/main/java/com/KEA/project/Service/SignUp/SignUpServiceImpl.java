@@ -5,6 +5,7 @@ import com.KEA.project.Repository.SignUpRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,5 +24,8 @@ public class SignUpServiceImpl implements SignUpService {
         signUpRepository.save(signUpModel);
     }
 
-
+    @Override
+    public List<SignUpModel> getAllSignUps() {
+        return signUpRepository.findAll();
+    }
 }

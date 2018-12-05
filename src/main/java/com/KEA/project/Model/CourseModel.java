@@ -248,5 +248,10 @@ public class CourseModel
     public void setTeachers(HashMap<Long, TeacherModel> teachers) {
         this.teachers = teachers;
     }
+
+    @Override
+    public String toString() {
+        return "Name danish: " + nameDanish + " Name english: " + nameEnglish + "ECTS: " + ects + " Language: " + language;
+    }
 }
 
