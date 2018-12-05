@@ -285,5 +285,10 @@ public class CourseModel
     public void setStudents2(ArrayList<StudentModel> students2) {
         this.students2 = students2;
     }
+
+    @Override
+    public String toString() {
+        return "Name danish: " + nameDanish + " Name english: " + nameEnglish + "ECTS: " + ects + " Language: " + language;
+    }
 }
 

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -49,17 +50,24 @@ public class SignUpController {
             username = principal.toString();
         }
 
-
         StudentModel student = studentController.studentServiceImpl.findStudentByUsername(username);
-
 
         SignUpModel signUp = new SignUpModel(courseModel,student);
 
         signUpServiceImpl.CreateSignUp(signUp);
 
-
         return "redirect:/course";
     }
+
+    @GetMapping("/signedUpCourses")
+    public String signedUpCourses(Model model)
+    {
+        model.addAttribute("SignedUpCourses",signUpServiceImpl.getAllSignUps());
+
+        return "SignedUpCourses";
+    }
+
+
 
 
 

@@ -36,5 +36,9 @@ public class SignUpServiceImpl implements SignUpService
         return signUpRepository.findById(id);
     }
 
+    @Override
+    public List<SignUpModel> getAllSignUps() {
+        return signUpRepository.findAll();
+    }
 
 }
