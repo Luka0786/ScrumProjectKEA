@@ -53,7 +53,7 @@ public class CourseServiceImpl implements CourseService
 
     @Override
     public List<CourseModel> searchCourses(String nameDanish) {
-        return courseRepository.findAllByNameDanishOrderByEctsDesc(nameDanish);
+        return courseRepository.findAllByNameDanishContainsOrderByEctsDesc(nameDanish);
     }
 }
 
