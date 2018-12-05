@@ -1,0 +1,32 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xlmns:th="http://www.thymeleaf.org"
+      xmlns:xlmns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>AllCourses</title>
+    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+<div class="container">
+    <table class="table-bordered">
+        <thead>
+        <tr>
+            <th>Navn dansk</th>
+            <th>Navn engelsk</th>
+            <th>ECTS</th>
+            <th>Language</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="Course : ${SignedUpCourses}">
+            <td th:text="${Course.courseModel.getNameDanish()}"></td>
+            <td th:text="${Course.courseModel.getNameEnglish()}"></td>
+            <td th:text="${Course.courseModel.getEcts()}"></td>
+            <td th:text="${Course.courseModel.getLanguage()}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+</div>
+</body>
+</html>
