@@ -2,7 +2,9 @@ package com.KEA.project.Model;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @Entity
 @Table(name = "Course_table")
@@ -62,12 +64,19 @@ public class CourseModel
     private String examForm;
 
     private HashMap<Long,StudentModel> students;
+    private ArrayList<StudentModel> students2;
 
 
-    @Column(name = "students_map")
+  /*  @Column(name = "students_map")
     @OneToMany(mappedBy = "student_id",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     public HashMap<Long,StudentModel> getStudents() {
         return students;
+    }*/
+
+    @Column(name = "students_map")
+    @OneToMany(mappedBy = "student_id",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    public ArrayList<StudentModel> getStudents() {
+        return students2;
     }
 
     private HashMap<Long,TeacherModel> teachers;
@@ -83,7 +92,7 @@ public class CourseModel
     {
 
     }
-
+/*
     public CourseModel(String nameDanish, String nameEnglish, int semester, String classCode, String studyProgramme, boolean type, int ects, String language, int minimumOfStudents, int expectedOfStudents, int maximumOfStudents, String prerequisites, String learningOutcome, String content, String learningActivities, String examForm, HashMap<Long, StudentModel> students, HashMap<Long, TeacherModel> teachers) {
         this.nameDanish = nameDanish;
         this.nameEnglish = nameEnglish;
@@ -104,7 +113,27 @@ public class CourseModel
         this.students = students;
         this.teachers = teachers;
     }
-
+*/
+    public CourseModel(String nameDanish, String nameEnglish, int semester, String classCode, String studyProgramme, boolean type, int ects, String language, int minimumOfStudents, int expectedOfStudents, int maximumOfStudents, String prerequisites, String learningOutcome, String content, String learningActivities, String examForm, ArrayList<StudentModel> students, HashMap<Long, TeacherModel> teachers) {
+        this.nameDanish = nameDanish;
+        this.nameEnglish = nameEnglish;
+        this.semester = semester;
+        this.classCode = classCode;
+        this.studyProgramme = studyProgramme;
+        this.type = type;
+        this.ects = ects;
+        this.language = language;
+        this.minimumOfStudents = minimumOfStudents;
+        this.expectedOfStudents = expectedOfStudents;
+        this.maximumOfStudents = maximumOfStudents;
+        this.prerequisites = prerequisites;
+        this.learningOutcome = learningOutcome;
+        this.content = content;
+        this.learningActivities = learningActivities;
+        this.examForm = examForm;
+        this.students2 = students;
+        this.teachers = teachers;
+    }
     public long getId() {
         return id;
     }
@@ -240,13 +269,21 @@ public class CourseModel
     public void setExamForm(String examForm) {
         this.examForm = examForm;
     }
-
+/*
     public void setStudents(HashMap<Long, StudentModel> students) {
         this.students = students;
     }
 
     public void setTeachers(HashMap<Long, TeacherModel> teachers) {
         this.teachers = teachers;
+    }*/
+
+    public ArrayList<StudentModel> getStudents2() {
+        return students2;
+    }
+
+    public void setStudents2(ArrayList<StudentModel> students2) {
+        this.students2 = students2;
     }
 }
 

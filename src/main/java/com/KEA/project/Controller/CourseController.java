@@ -1,11 +1,16 @@
 package com.KEA.project.Controller;
 
 import com.KEA.project.Model.CourseModel;
+import com.KEA.project.Model.StudentModel;
 import com.KEA.project.Service.Course.CourseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 @Controller
 @RequestMapping("/course")
@@ -34,7 +39,11 @@ public class CourseController
     @PostMapping("/create")
     public String createCourse(@ModelAttribute CourseModel courseModel)
     {
+        //courseModel.setStudents(new HashMap<>());
+        courseModel.setStudents2(new ArrayList<>());
         courseServiceImpl.createCourse(courseModel);
+
+
 
         return "redirect:/course";
     }
@@ -59,6 +68,8 @@ public class CourseController
     public String courseDetailsById(@RequestParam("id") long id, Model model)
     {
         model.addAttribute("Course", courseServiceImpl.findSpecificCourse(id));
+
+        System.out.println(courseServiceImpl.findSpecificCourse(id).getStudents2().get(0).getName());
 
         return "CourseDetails";
     }

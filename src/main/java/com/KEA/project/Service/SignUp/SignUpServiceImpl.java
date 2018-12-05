@@ -5,22 +5,35 @@ import com.KEA.project.Repository.SignUpRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
-public class SignUpServiceImpl implements SignUpService {
+public class SignUpServiceImpl implements SignUpService
+{
 
     @Autowired
     SignUpRepository signUpRepository;
 
+
     @Override
-    public Optional<SignUpModel> getAllSignUpsByIdOrderByTimestamp(long id) {
-        return signUpRepository.findAllByIdOrderByTimestamp(id);
+    public List<SignUpModel> getAllSignUpsByCourseIdOrderByTimestamp(long id) {
+        return signUpRepository.findAllByCourseModel_IdOrderByTimestamp(id);
     }
 
     @Override
     public void CreateSignUp(SignUpModel signUpModel) {
         signUpRepository.save(signUpModel);
+    }
+
+    @Override
+    public SignUpModel findSpecificSignUp(long id) {
+        return signUpRepository.getOne(id);
+    }
+
+    @Override
+    public Optional<SignUpModel> findSignUpById(long id) {
+        return signUpRepository.findById(id);
     }
 
 

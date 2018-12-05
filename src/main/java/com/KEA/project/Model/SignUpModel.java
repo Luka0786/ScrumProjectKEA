@@ -20,7 +20,7 @@ public class SignUpModel {
 
     @Column(name = "Timestamp", nullable = false, updatable = false)
     @CreationTimestamp
-    private Date timestamp;
+    public Date timestamp;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id", referencedColumnName = "course_id")
@@ -35,6 +35,8 @@ public class SignUpModel {
         this.courseModel = courseModel;
         this.studentModel = studentModel;
     }
+
+    public SignUpModel(){}
 
     public long getId() {
         return id;

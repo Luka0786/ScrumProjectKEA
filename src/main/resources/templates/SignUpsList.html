@@ -1,0 +1,54 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xlmns:th="http://www.thymeleaf.org"
+      xmlns:xlmns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>AllCourses</title>
+    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+<div class="container">
+    <table class="table-bordered">
+        <thead>
+        <tr>
+            <th>Timestamp</th>
+            <th>Kursus Navn</th>
+            <th>Student Navn</th>
+            <th>Indstillinger</th>
+        </tr>
+        </thead>
+        <tbody>
+        <p></p>
+        <br/>
+        <!--
+     <tr th:each="signUp : ${signUpList}">
+            <td th:text="${signUp.timestamp}"></td>
+            <td th:text="${signUp.courseModel.getNameDanish()}"></td>
+            <td th:text="${signUp.studentModel.getName()}"></td>
+
+            <button class="btn btn-success" type="submit">Ja</button>
+            <a href="/course"><button type="button" class="btn btn-danger" >Nej</button></a>
+
+        </tr>
+        -->
+
+
+
+            <tr th:each="signUp : ${signUpList}">
+
+                <td th:text="${signUp.timestamp}"></td>
+                <td th:text="${signUp.courseModel.getNameDanish()}"></td>
+                <td th:text="${signUp.studentModel.getName()}"></td>
+
+                <a th:href="${'/admin/signUpAnswer?id='+signUp.getId()}" type="button">Besvar tilmeldelse</a>
+
+
+            </tr>
+
+
+        </tbody>
+    </table>
+    <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+</div>
+</body>
+</html>
