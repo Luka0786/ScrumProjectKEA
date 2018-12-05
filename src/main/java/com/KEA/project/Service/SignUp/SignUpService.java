@@ -15,4 +15,6 @@ public interface SignUpService {
 
     Optional<SignUpModel> findSignUpById(long id);
 
+    List<SignUpModel> getAllSignUps();
+
 }
