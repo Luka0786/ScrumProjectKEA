@@ -50,10 +50,13 @@
 
         <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
         <td>
-            <a th:href="${'/course/details?id='+Course.getId()}" type="button" class="btn">Detaljer</a>
-            <a th:href="${'/course/update?id='+Course.getId()}" type="button" class="btn">Opdater</a>
-            <a th:href="${'/course/delete?id='+Course.getId()}" type="button" class="btn">Slet</a>
+            <a th:href="${'/course/details?id='+Course.getId()}" type="button" class="btn btn-info">Detaljer</a>
+            <a th:href="${'/course/update?id='+Course.getId()}" type="button" class="btn btn-success">Opdater</a>
+            <a th:href="${'/course/delete?id='+Course.getId()}" type="button" class="btn btn-danger">Slet</a>
         </td>
+        </div>
+        <div sec:authorize="hasRole('ROLE_STUDENT')">
+            <a th:href="${'/course/signUp?id='+Course.getId()}" type="button" class="btn btn-info" >Tilmeld</a>
         </div>
     </tr>
     </div>
