@@ -32,13 +32,14 @@ public class SignUpServiceImpl implements SignUpService
     }
 
     @Override
-    public Optional<SignUpModel> findSignUpById(long id) {
-        return signUpRepository.findById(id);
+    public List<SignUpModel> getAllSignUps() {
+        return signUpRepository.findAll();
     }
 
     @Override
-    public List<SignUpModel> getAllSignUps() {
-        return signUpRepository.findAll();
+    public void deleteSignUpModel(SignUpModel signUpModel)
+    {
+        signUpRepository.delete(signUpModel);
     }
 
 }

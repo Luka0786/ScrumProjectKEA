@@ -63,19 +63,13 @@ public class CourseModel
     @Column(name = "exam_form")
     private String examForm;
 
-    private HashMap<Long,StudentModel> students;
     private ArrayList<StudentModel> students2;
 
 
-  /*  @Column(name = "students_map")
-    @OneToMany(mappedBy = "student_id",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    public HashMap<Long,StudentModel> getStudents() {
-        return students;
-    }*/
-
     @Column(name = "students_map")
     @OneToMany(mappedBy = "student_id",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    public ArrayList<StudentModel> getStudents() {
+    public ArrayList<StudentModel> getStudents()
+    {
         return students2;
     }
 
@@ -286,9 +280,11 @@ public class CourseModel
         this.students2 = students2;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "Name danish: " + nameDanish + " Name english: " + nameEnglish + "ECTS: " + ects + " Language: " + language;
+
     }
+    */
 }
 

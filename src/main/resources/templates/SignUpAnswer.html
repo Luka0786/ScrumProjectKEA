@@ -14,8 +14,10 @@
     <h2>Tilmeld studerende til kursus?</h2>
     <form action="#" th:action="@{/admin/signUpAnswer}" method="post" >
         <input type="hidden"  th:field="${signUp.id}"  />
-        <button class="btn btn-success" type="submit">Ja</button>
-        <a href="/admin/signUpsList"><button type="button" class="btn btn-danger" >Nej</button></a>
+
+        <button type="submit" value="accept" name="accept" class="=btn btn-success">JA</button>
+        <button type="submit" value="decline" name="decline" class="btn btn-danger">NEJ</button>
+
     </form>
 </div>
 </body>

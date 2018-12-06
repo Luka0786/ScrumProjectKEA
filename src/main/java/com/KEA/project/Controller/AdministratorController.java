@@ -55,41 +55,45 @@ public class AdministratorController {
     }
 
     @PostMapping("/signUpAnswer")
-    public String acceptOrDeclineSignUp(@ModelAttribute SignUpModel signUpModel)
+    public String acceptOrDeclineSignUp(@ModelAttribute SignUpModel signUpModel,
+                                        @RequestParam(required=false, value="accept") String accept,
+                                        @RequestParam(required=false, value="decline") String decline)
     {
-        /*
-       SignUpModel signUp = signUpController.signUpServiceImpl.findSpecificSignUp(id);
 
-       StudentModel studentModel = signUp.getStudentModel();
 
-        System.out.println(studentModel);*/
+        if (accept!=null)
+        {
+            System.out.println(signUpController.signUpServiceImpl.findSpecificSignUp(signUpModel.getId()).getStudentModel());
 
-        System.out.println(signUpController.signUpServiceImpl.findSpecificSignUp(signUpModel.getId()).getStudentModel());
-
-        SignUpModel CurrentSignUpModel = signUpController.signUpServiceImpl.findSpecificSignUp(signUpModel.getId());
+            SignUpModel CurrentSignUpModel = signUpController.signUpServiceImpl.findSpecificSignUp(signUpModel.getId());
 
 
 
-        StudentModel requestedStudent = CurrentSignUpModel.getStudentModel();
+            StudentModel requestedStudent = CurrentSignUpModel.getStudentModel();
 
-        System.out.println(requestedStudent);
-
-
-        ArrayList<StudentModel> Students = CurrentSignUpModel.getCourseModel().getStudents2();
-        System.out.println(Students+ "DRJAKJLSEHJLAKSJEJSKLE");
-
-        Students.add(requestedStudent);
+            System.out.println(requestedStudent);
 
 
-        System.out.println(Students);
-        CourseModel courseModel = CurrentSignUpModel.getCourseModel();
-        courseModel.setStudents2(Students);
+            ArrayList<StudentModel> Students = CurrentSignUpModel.getCourseModel().getStudents();
+            System.out.println(Students+ "DRJAKJLSEHJLAKSJEJSKLE");
 
-        courseController.updateCourse(courseModel);
+            Students.add(requestedStudent);
+
+
+            System.out.println(Students);
+            CourseModel courseModel = CurrentSignUpModel.getCourseModel();
+            courseModel.setStudents2(Students);
+
+            courseController.updateCourse(courseModel);
+
+            //signUpController.signUpServiceImpl.deleteSignUpModel(signUpModel);
+        }
+        else if (decline!=null)
+        {
+            signUpController.signUpServiceImpl.deleteSignUpModel(signUpModel);
+        }
 
         return "redirect:/course";
-
     }
-
 
 }

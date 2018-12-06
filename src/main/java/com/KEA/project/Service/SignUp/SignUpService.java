@@ -13,8 +13,8 @@ public interface SignUpService {
 
     SignUpModel findSpecificSignUp(long id);
 
-    Optional<SignUpModel> findSignUpById(long id);
-
     List<SignUpModel> getAllSignUps();
+
+    void deleteSignUpModel(SignUpModel signUpModel);
 
 }

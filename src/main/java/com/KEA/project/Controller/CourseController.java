@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -39,7 +40,6 @@ public class CourseController
     @PostMapping("/create")
     public String createCourse(@ModelAttribute CourseModel courseModel)
     {
-        //courseModel.setStudents(new HashMap<>());
         courseModel.setStudents2(new ArrayList<>());
         courseServiceImpl.createCourse(courseModel);
 
@@ -64,12 +64,13 @@ public class CourseController
         return "redirect:/course";
     }
 
+
     @GetMapping("/details")
     public String courseDetailsById(@RequestParam("id") long id, Model model)
     {
         model.addAttribute("Course", courseServiceImpl.findSpecificCourse(id));
 
-       // System.out.println(courseServiceImpl.findSpecificCourse(id).getStudents2().get(0).getName());
+        //System.out.println(courseServiceImpl.findSpecificCourse(id).getStudents2().get(0).getName());
 
         return "CourseDetails";
     }
