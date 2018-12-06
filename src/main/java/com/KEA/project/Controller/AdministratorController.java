@@ -15,11 +15,6 @@ import java.util.ArrayList;
 @RequestMapping("/admin")
 public class AdministratorController {
 
-    @Autowired
-    SignUpController signUpController;
-
-    @Autowired
-    CourseController courseController;
 
     @Autowired
     AdministratorServiceImpl administratorServiceImpl;
@@ -27,7 +22,7 @@ public class AdministratorController {
     @GetMapping("/signUpsList")
     public String getAllSignUpsFromSpecificCourse(@RequestParam("id") long id, Model model)
     {
-        model.addAttribute("signUpList", signUpController.signUpServiceImpl.getAllSignUpsByCourseIdOrderByTimestamp(id));
+        model.addAttribute("signUpList", administratorServiceImpl.getAllSignUpsByCourseIdOrderByTimestamp(id));
 
 
         return "SignUpsList";
@@ -45,11 +40,9 @@ public class AdministratorController {
     @GetMapping("/signUpAnswer")
     public String acceptOrDeclineSignUp(@RequestParam("id") long id, Model model)
     {
-        model.addAttribute("signUp",signUpController.signUpServiceImpl.findSpecificSignUp(id));
+        model.addAttribute("signUp",administratorServiceImpl.findSpecificSignUp(id));
 
-        SignUpModel signUpModel = signUpController.signUpServiceImpl.findSpecificSignUp(id);
-
-        System.out.println(signUpModel.getStudentModel());
+        SignUpModel signUpModel = administratorServiceImpl.findSpecificSignUp(id);
 
         return "SignUpAnswer";
     }
@@ -59,38 +52,13 @@ public class AdministratorController {
                                         @RequestParam(required=false, value="accept") String accept,
                                         @RequestParam(required=false, value="decline") String decline)
     {
-
-
         if (accept!=null)
         {
-            System.out.println(signUpController.signUpServiceImpl.findSpecificSignUp(signUpModel.getId()).getStudentModel());
-
-            SignUpModel CurrentSignUpModel = signUpController.signUpServiceImpl.findSpecificSignUp(signUpModel.getId());
-
-
-
-            StudentModel requestedStudent = CurrentSignUpModel.getStudentModel();
-
-            System.out.println(requestedStudent);
-
-
-            ArrayList<StudentModel> Students = CurrentSignUpModel.getCourseModel().getStudents();
-            System.out.println(Students+ "DRJAKJLSEHJLAKSJEJSKLE");
-
-            Students.add(requestedStudent);
-
-
-            System.out.println(Students);
-            CourseModel courseModel = CurrentSignUpModel.getCourseModel();
-            courseModel.setStudents2(Students);
-
-            courseController.updateCourse(courseModel);
-
-            signUpController.signUpServiceImpl.deleteSignUpModel(signUpModel);
+            administratorServiceImpl.acceptSignUp(signUpModel);
         }
         else if (decline!=null)
         {
-            signUpController.signUpServiceImpl.deleteSignUpModel(signUpModel);
+            administratorServiceImpl.declineSignUp(signUpModel);
         }
 
         return "redirect:/course";
