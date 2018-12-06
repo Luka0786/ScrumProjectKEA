@@ -86,7 +86,7 @@ public class AdministratorController {
 
             courseController.updateCourse(courseModel);
 
-            //signUpController.signUpServiceImpl.deleteSignUpModel(signUpModel);
+            signUpController.signUpServiceImpl.deleteSignUpModel(signUpModel);
         }
         else if (decline!=null)
         {
