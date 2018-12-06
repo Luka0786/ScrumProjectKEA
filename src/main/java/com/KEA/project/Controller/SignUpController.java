@@ -62,11 +62,12 @@ public class SignUpController {
     @GetMapping("/signedUpCourses")
     public String signedUpCourses(Model model)
     {
+
         model.addAttribute("SignedUpCourses",signUpServiceImpl.getAllSignUps());
+        model.addAttribute("ApprovedSignUps", signUpServiceImpl.getAllApprovedSignUps());
 
         return "SignedUpCourses";
     }
-
 
 
 

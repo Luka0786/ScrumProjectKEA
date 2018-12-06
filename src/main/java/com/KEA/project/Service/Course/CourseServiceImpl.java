@@ -1,6 +1,7 @@
 package com.KEA.project.Service.Course;
 
 import com.KEA.project.Model.CourseModel;
+import com.KEA.project.Model.StudentModel;
 import com.KEA.project.Repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

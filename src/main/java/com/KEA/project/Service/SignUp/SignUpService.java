@@ -17,4 +17,5 @@ public interface SignUpService {
 
     void deleteSignUpModel(SignUpModel signUpModel);
 
+
 }

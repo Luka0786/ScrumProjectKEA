@@ -10,9 +10,6 @@ import java.util.Date;
 @Entity
 @Table(name = "Sign_Up_Table")
 public class SignUpModel {
-
-
-
     @Id
     @Column(name = "sign_up_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
