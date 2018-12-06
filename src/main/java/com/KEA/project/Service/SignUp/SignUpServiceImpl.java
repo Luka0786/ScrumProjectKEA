@@ -6,6 +6,7 @@ import com.KEA.project.Model.StudentModel;
 import com.KEA.project.Repository.CourseRepository;
 import com.KEA.project.Repository.SignUpRepository;
 import com.KEA.project.Service.Course.CourseServiceImpl;
+import com.KEA.project.Service.Student.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,6 +26,9 @@ public class SignUpServiceImpl implements SignUpService
     @Autowired
     CourseServiceImpl courseServiceImpl;
 
+    @Autowired
+    StudentServiceImpl studentServiceImpl;
+
     @Override
     public List<SignUpModel> getAllSignUpsByCourseIdOrderByTimestamp(long id) {
         return signUpRepository.findAllByCourseModel_IdOrderByTimestamp(id);
@@ -34,6 +38,8 @@ public class SignUpServiceImpl implements SignUpService
     public void CreateSignUp(SignUpModel signUpModel) {
         signUpRepository.save(signUpModel);
     }
+
+
 
     @Override
     public SignUpModel findSpecificSignUp(long id) {
@@ -51,7 +57,25 @@ public class SignUpServiceImpl implements SignUpService
         signUpRepository.delete(signUpModel);
     }
 
-    public List<CourseModel> getAllApprovedSignUps() {
+    @Override
+    public void signUpToCourse(CourseModel courseModel) {
+        String username;
+
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            username = ((UserDetails)principal).getUsername();
+        } else {
+            username = principal.toString();
+        }
+
+        StudentModel student = studentServiceImpl.findStudentByUsername(username);
+
+        SignUpModel signUp = new SignUpModel(courseModel,student);
+
+        CreateSignUp(signUp);
+    }
+
+   /* public List<CourseModel> getAllApprovedSignUps() {
         List<CourseModel> courses = courseServiceImpl.getAllCourses();
         List<CourseModel> approved = new ArrayList<>();
 
@@ -75,5 +99,5 @@ public class SignUpServiceImpl implements SignUpService
         }
         System.out.println(approved.toString());
         return approved;
-    }
+    }*/
 }

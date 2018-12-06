@@ -14,4 +14,5 @@ public interface CourseService
     Optional<CourseModel> findCourseById(long id);
     List<CourseModel> getAllCourses();
     List<CourseModel> searchCourses(String search);
+
 }

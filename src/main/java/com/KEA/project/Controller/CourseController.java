@@ -1,14 +1,12 @@
 package com.KEA.project.Controller;
 
 import com.KEA.project.Model.CourseModel;
-import com.KEA.project.Model.StudentModel;
 import com.KEA.project.Service.Course.CourseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 
 
@@ -43,7 +41,6 @@ public class CourseController
         courseServiceImpl.createCourse(courseModel);
 
 
-
         return "redirect:/course";
     }
 
@@ -69,7 +66,12 @@ public class CourseController
     {
         model.addAttribute("Course", courseServiceImpl.findSpecificCourse(id));
 
-        System.out.println(courseServiceImpl.findSpecificCourse(id).getStudents2().get(0).getName());
+        for (int i = 0; i < courseServiceImpl.findSpecificCourse(id).getStudents().size(); i++) {
+            System.out.println(courseServiceImpl.findSpecificCourse(id).getStudents2().get(i).getUsername());
+
+        }
+
+
 
         return "CourseDetails";
     }

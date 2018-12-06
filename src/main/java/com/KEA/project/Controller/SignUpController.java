@@ -11,10 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Timestamp;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/course")
@@ -41,20 +37,7 @@ public class SignUpController {
     @PostMapping("/signUp")
     public String signUpToCourse(@ModelAttribute CourseModel courseModel){
 
-        String username;
-
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof UserDetails) {
-            username = ((UserDetails)principal).getUsername();
-        } else {
-            username = principal.toString();
-        }
-
-        StudentModel student = studentController.studentServiceImpl.findStudentByUsername(username);
-
-        SignUpModel signUp = new SignUpModel(courseModel,student);
-
-        signUpServiceImpl.CreateSignUp(signUp);
+       signUpServiceImpl.signUpToCourse(courseModel);
 
         return "redirect:/course";
     }
@@ -64,7 +47,7 @@ public class SignUpController {
     {
 
         model.addAttribute("SignedUpCourses",signUpServiceImpl.getAllSignUps());
-        model.addAttribute("ApprovedSignUps", signUpServiceImpl.getAllApprovedSignUps());
+       // model.addAttribute("ApprovedSignUps", signUpServiceImpl.getAllApprovedSignUps());
 
         return "SignedUpCourses";
     }

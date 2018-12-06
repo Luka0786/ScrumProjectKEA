@@ -28,15 +28,6 @@ public class AdministratorController {
         return "SignUpsList";
     }
 
-  /*  @GetMapping("/signUpRequest")
-    public String courseDetailsById(@RequestParam("id") long id, Model model)
-    {
-        model.addAttribute("Course", courseController.courseServiceImpl.findSpecificCourse(id));
-
-        return "CourseDetails";
-    }*/
-
-
     @GetMapping("/signUpAnswer")
     public String acceptOrDeclineSignUp(@RequestParam("id") long id, Model model)
     {
@@ -45,6 +36,7 @@ public class AdministratorController {
         SignUpModel signUpModel = administratorServiceImpl.findSpecificSignUp(id);
 
         return "SignUpAnswer";
+
     }
 
     @PostMapping("/signUpAnswer")

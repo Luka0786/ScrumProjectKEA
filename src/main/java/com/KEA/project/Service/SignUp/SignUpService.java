@@ -1,5 +1,6 @@
 package com.KEA.project.Service.SignUp;
 
+import com.KEA.project.Model.CourseModel;
 import com.KEA.project.Model.SignUpModel;
 
 import java.util.List;
@@ -17,5 +18,6 @@ public interface SignUpService {
 
     void deleteSignUpModel(SignUpModel signUpModel);
 
+    void signUpToCourse(CourseModel courseModel);
 
 }
