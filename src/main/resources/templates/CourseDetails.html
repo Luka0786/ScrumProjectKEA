@@ -1,9 +1,10 @@
 <!DOCTYPE html >
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xlmns:th="http://www.thymeleaf.org"
-      xmlns:xlmns="http://www.w3.org/1999/xhtml">
+      xmlns:xlmns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>CourseDetails</title>
+    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
 </head>
 <body>
 <table class="table-bordered table">
@@ -13,6 +14,7 @@
         <th>Navn engelsk</th>
         <th>Semester</th>
         <th>Klasse kode</th>
+        <th>Studie program</th>
         <th>Type</th>
         <th>ECTS</th>
         <th>Fagets sprog</th>
@@ -24,6 +26,9 @@
         <th>Fagets indhold</th>
         <th>Lærings aktiviteter</th>
         <th>Eksamensform</th>
+        <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
+            <th>Indstillinger</th>
+        </div>
     </tr>
     </thead>
     <tbody>
@@ -41,14 +46,19 @@
         <td th:text="${Course.maximumOfStudents}"></td>
         <td th:text="${Course.prerequisites}"></td>
         <td th:text="${Course.learningOutcome}"></td>
+        <td th:text="${Course.content}"></td>
+        <td th:text="${Course.learningActivities}"></td>
         <td th:text="${Course.examForm}"></td>
 
-        <td>
-            <a th:href="${'/course/update?id='+Course.getId()}" type="button" class="btn">Opdater</a>
-            <a th:href="${'/course/delete?id='+Course.getId()}" type="button" class="btn">Slet</a>
-        </td>
+        <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
+            <td>
+                <a th:href="${'/course/update?id='+Course.getId()}" type="button">Opdater</a>
+                <a th:href="${'/course/delete?id='+Course.getId()}" type="button">Slet</a>
+            </td>
+        </div>
     </tr>
     </tbody>
 </table>
+<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
 </body>
 </html>
