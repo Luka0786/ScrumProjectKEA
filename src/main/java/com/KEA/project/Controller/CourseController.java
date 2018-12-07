@@ -66,13 +66,6 @@ public class CourseController
     {
         model.addAttribute("Course", courseServiceImpl.findSpecificCourse(id));
 
-        for (int i = 0; i < courseServiceImpl.findSpecificCourse(id).getStudents().size(); i++) {
-            System.out.println(courseServiceImpl.findSpecificCourse(id).getStudents2().get(i).getUsername());
-
-        }
-
-
-
         return "CourseDetails";
     }
 

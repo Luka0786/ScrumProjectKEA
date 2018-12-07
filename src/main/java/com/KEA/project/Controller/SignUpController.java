@@ -47,7 +47,7 @@ public class SignUpController {
     {
 
         model.addAttribute("SignedUpCourses",signUpServiceImpl.getAllSignUps());
-       // model.addAttribute("ApprovedSignUps", signUpServiceImpl.getAllApprovedSignUps());
+        model.addAttribute("ApprovedSignUps", signUpServiceImpl.getAllApprovedSignUps());
 
         return "SignedUpCourses";
     }

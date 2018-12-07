@@ -75,8 +75,9 @@ public class SignUpServiceImpl implements SignUpService
         CreateSignUp(signUp);
     }
 
-   /* public List<CourseModel> getAllApprovedSignUps() {
+    public List<CourseModel> getAllApprovedSignUps() {
         List<CourseModel> courses = courseServiceImpl.getAllCourses();
+
         List<CourseModel> approved = new ArrayList<>();
 
         String username;
@@ -88,16 +89,19 @@ public class SignUpServiceImpl implements SignUpService
             username = principal.toString();
         }
 
-        for (int i = 1; i < courses.size(); i++) {
-            List<StudentModel> students = courseServiceImpl.findSpecificCourse(i).getStudents2();
-            for (int j = 1; j < students.size(); j++) {
-                if (students.get(j).getUsername().equals(username))   {
-                    System.out.println("Inde i j fori loop");
-                    approved.add(courses.get(j));
+        for (int i = 0; i < courses.size(); i++) {
+
+           List<StudentModel>students = courses.get(i).getStudents2();
+
+
+            for (int j = 0; j < students.size(); j++) {
+                if (students.get(j).getUsername().equals(username))
+                {
+                    approved.add(courses.get(i));
                 }
             }
         }
-        System.out.println(approved.toString());
+
         return approved;
-    }*/
+    }
 }
