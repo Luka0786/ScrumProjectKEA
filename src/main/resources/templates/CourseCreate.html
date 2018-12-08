@@ -4,12 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
 </head>
 <body>
 
-<div class="container">
-    <form class="form-group-lg" method="POST" th:action="@{/course/create}">
+<div class="container ">
+    <form class="form-horizontal" method="POST" th:action="@{/course/create}">
 
         <div>
         <input type="hidden"   th:field="${Course.id}"/></br>
@@ -40,7 +39,7 @@
         <p>Indtast læringsmål</p>
         <input required type="text" th:field="${Course.learningOutcome}"></br>
         <p>Indtast fagets indhold</p>
-        <input required type="text" th:field="${Course.content}"></br>
+        <textarea required type="text" th:field="${Course.content}" /></br>
         <p>Indtast lærings aktiviteter</p>
         <input required type="text" th:field="${Course.learningActivities}"></br>
         <p>Indtast eksamens form</p>
@@ -52,6 +51,5 @@
         </div>
     </form>
 </div>
-<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
 </body>
 </html>
