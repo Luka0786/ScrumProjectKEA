@@ -7,6 +7,7 @@
     <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
 </head>
 <body>
+
 <div class="container">
 <table class="table-bordered">
     <thead>
@@ -26,7 +27,8 @@
         </div>
     </tr>
     </thead>
-    <tbody>
+    <input type="search" id="inputSearch" name="searchInput" placeholder="Search for course" th:value="${name}"/>
+    <tbody id="courseTable">
     <p></p>
     <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
     <a href="/course/create" type="button" class="btn">Opret</a>
@@ -35,33 +37,7 @@
         <a href="/course/signedUpCourses" type="button" class="btn">Se tilmeldte kurser</a>
     </div>
     <br/>
-        <form th:action="@{/course/search}" th:object="${course}" method="get">
-            <input type="search" name="searchForCourse" placeholder="Search for course" th:value="${name}"/>
-            <button type="submit">Search</button>
-            <tr th:each="courses : ${searchCourse}">
-                    <td th:text="${courses.nameDanish}"></td>
-                    <td th:text="${courses.nameEnglish}"></td>
-                    <td th:text="${courses.ects}"></td>
-                    <td th:text="${courses.language}"></td>
-                    <td th:text="${courses.minimumOfStudents}"></td>
-                    <td th:text="${courses.maximumOfStudents}"></td>
-                    <td th:text="${courses.prerequisites}"></td>
-                    <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
-                        <td>
-                            <a th:href="${'/course/details?id='+courses.getId()}" type="button">Detaljer</a>
-                            <a th:href="${'/course/update?id='+courses.getId()}" type="button">Opdater</a>
-                            <a th:href="${'/course/delete?id='+courses.getId()}" type="button">Slet</a>
-                        </td>
-                    </div>
-                <div sec:authorize="hasRole('ROLE_STUDENT')">
-                    <td>
-                        <a th:href="${'/course/details?id='+Course.getId()}" type="button" >Detaljer</a>
-                        <a th:href="${'/course/signUp?id='+Course.getId()}" type="button">Tilmeld</a>
-                    </td>
-                </div>
 
-            </tr>
-        </form>
     <tr th:each="Course : ${Courses}">
         <td th:text="${Course.nameDanish}"></td>
         <td th:text="${Course.nameEnglish}"></td>
@@ -88,6 +64,16 @@
     </tbody>
 </table>
 <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script>
+        $(document).ready(function(){
+            $("#inputSearch").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#courseTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 </div>
 </body>
 </html>

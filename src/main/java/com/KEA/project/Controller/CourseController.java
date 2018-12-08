@@ -85,15 +85,4 @@ public class CourseController
         courseServiceImpl.deleteCourse(courseModel);
         return "redirect:/course";
     }
-
-    @GetMapping("/search")
-    public String searchCourses(@RequestParam(defaultValue = "") String searchForCourse, Model model){
-
-        model.addAttribute("courses", courseServiceImpl.getAllCourses());
-        model.addAttribute("searchCourse",courseServiceImpl.searchCourses(searchForCourse));
-
-        return "Course";
-    }
-
-
 }

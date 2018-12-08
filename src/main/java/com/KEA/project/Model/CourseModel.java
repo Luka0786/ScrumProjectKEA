@@ -280,11 +280,11 @@ public class CourseModel
         this.students2 = students2;
     }
 
-    /*@Override
+    @Override
     public String toString() {
         return "Name danish: " + nameDanish + " Name english: " + nameEnglish + "ECTS: " + ects + " Language: " + language;
 
     }
-    */
+
 }
 
