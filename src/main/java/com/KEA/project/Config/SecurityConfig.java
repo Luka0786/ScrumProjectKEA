@@ -42,6 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/course/signUp").hasRole("STUDENT")
                 .antMatchers("/course/signedUpCourses").hasRole("STUDENT")
                 .antMatchers("/course/**").hasAnyRole("ADMIN","TEACHER")
+                .antMatchers("/admin/**").hasRole("ADMIN")
                 .and().formLogin().loginPage("/login")
                 .permitAll()
                 .defaultSuccessUrl("/course")
