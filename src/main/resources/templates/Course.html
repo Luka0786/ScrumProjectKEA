@@ -53,6 +53,12 @@
                             <a th:href="${'/course/delete?id='+courses.getId()}" type="button">Slet</a>
                         </td>
                     </div>
+                <div sec:authorize="hasRole('ROLE_STUDENT')">
+                    <td>
+                        <a th:href="${'/course/details?id='+Course.getId()}" type="button" >Detaljer</a>
+                        <a th:href="${'/course/signUp?id='+Course.getId()}" type="button">Tilmeld</a>
+                    </td>
+                </div>
 
             </tr>
         </form>
