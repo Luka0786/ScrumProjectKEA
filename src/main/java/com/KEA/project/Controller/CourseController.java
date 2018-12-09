@@ -1,5 +1,6 @@
 package com.KEA.project.Controller;
 
+import com.KEA.project.Controller.RestController.CourseRestController;
 import com.KEA.project.Model.CourseModel;
 import com.KEA.project.Service.Course.CourseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,15 @@ public class CourseController
     @Autowired
     CourseServiceImpl courseServiceImpl;
 
+    @Autowired
+    CourseRestController courseRestController;
+
     @GetMapping()
     public String getAllCourses(Model model)
     {
+
+        courseServiceImpl.createAllCourses(courseRestController.fetchAllCourses());
+
         model.addAttribute("Courses", courseServiceImpl.getAllCourses());
 
         return "Course";
@@ -37,7 +44,7 @@ public class CourseController
     @PostMapping("/create")
     public String createCourse(@ModelAttribute CourseModel courseModel)
     {
-        courseModel.setStudents2(new ArrayList<>());
+        courseModel.setStudents(new ArrayList<>());
         courseServiceImpl.createCourse(courseModel);
 
 

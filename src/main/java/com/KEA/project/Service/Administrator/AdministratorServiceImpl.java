@@ -3,7 +3,6 @@ package com.KEA.project.Service.Administrator;
 import com.KEA.project.Model.CourseModel;
 import com.KEA.project.Model.SignUpModel;
 import com.KEA.project.Model.StudentModel;
-import com.KEA.project.Repository.AdministratorRepository;
 import com.KEA.project.Service.Course.CourseServiceImpl;
 import com.KEA.project.Service.SignUp.SignUpServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +33,7 @@ public class AdministratorServiceImpl implements AdministratorService
         Students.add(requestedStudent);
 
         CourseModel courseModel = CurrentSignUpModel.getCourseModel();
-        courseModel.setStudents2(Students);
+        courseModel.setStudents(Students);
 
         courseServiceImpl.updateCourse(courseModel);
 

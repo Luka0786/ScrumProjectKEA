@@ -13,21 +13,21 @@
         <div>
         <input type="hidden"   th:field="${Course.id}"/></br>
         <p>Indtast dansk navn</p>
-        <input required type="text" th:field="${Course.nameDanish}"></br>
+        <input required type="text" th:field="${Course.namedanish}"></br>
         <p>Indtast engelsk navn</p>
-        <input required type="text" th:field="${Course.nameEnglish}"></br>
+        <input required type="text" th:field="${Course.name}"></br>
         <p>Indtast semester</p>
         <input required type="number" th:field="${Course.semester}"></br>
         <p>Indtast klasse koden</p>
         <input required type="text" th:field="${Course.classCode}"></br>
         <p>Indtast studie programmet</p>
-        <input required type="text" th:field="${Course.studyProgramme}"></br>
+        <input required type="text" th:field="${Course.studyprogramme}"></br>
         <p>Indtast fagets type</p>
         <input required type="text" th:field="${Course.type}"></br>
         <p>Indtast ects</p>
         <input required type="number" th:field="${Course.ects}"></br>
         <p>Indtast fagets sprog</p>
-        <input required type="text" th:field="${Course.language}"></br>
+        <input required type="text" th:field="${Course.languange}"></br>
         <p>Indtast minimum antal af studerende</p>
         <input required type="number" th:field="${Course.minimumOfStudents}"></br>
         <p>Indtast forventet antal af studerende</p>
@@ -37,7 +37,7 @@
         <p>Indtast forudsætninger for faget</p>
         <input required type="text" th:field="${Course.prerequisites}"></br>
         <p>Indtast læringsmål</p>
-        <input required type="text" th:field="${Course.learningOutcome}"></br>
+        <input required type="text" th:field="${Course.description}"></br>
         <p>Indtast fagets indhold</p>
         <textarea required type="text" th:field="${Course.content}" /></br>
         <p>Indtast lærings aktiviteter</p>

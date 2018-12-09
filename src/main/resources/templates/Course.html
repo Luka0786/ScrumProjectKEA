@@ -9,7 +9,7 @@
 <body>
 
 <div class="container">
-<table class="table-bordered">
+<table class="table-responsive">
     <thead>
     <tr>
         <th>Navn dansk</th>
@@ -39,10 +39,10 @@
     <br/>
 
     <tr th:each="Course : ${Courses}">
-        <td th:text="${Course.nameDanish}"></td>
-        <td th:text="${Course.nameEnglish}"></td>
+        <td th:text="${Course.namedanish}"></td>
+        <td th:text="${Course.name}"></td>
         <td th:text="${Course.ects}"></td>
-        <td th:text="${Course.language}"></td>
+        <td th:text="${Course.languange}"></td>
         <td th:text="${Course.minimumOfStudents}"></td>
         <td th:text="${Course.maximumOfStudents}"></td>
         <td th:text="${Course.prerequisites}"></td>

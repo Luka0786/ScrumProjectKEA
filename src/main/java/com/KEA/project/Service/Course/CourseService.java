@@ -2,6 +2,7 @@ package com.KEA.project.Service.Course;
 
 import com.KEA.project.Model.CourseModel;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,4 +14,5 @@ public interface CourseService
     CourseModel findSpecificCourse(long id);
     Optional<CourseModel> findCourseById(long id);
     List<CourseModel> getAllCourses();
+    List<CourseModel> createAllCourses(ArrayList<CourseModel> courseModels);
 }

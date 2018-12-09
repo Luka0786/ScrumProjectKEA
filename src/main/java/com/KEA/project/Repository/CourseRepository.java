@@ -13,5 +13,5 @@ import java.util.List;
 
 public interface CourseRepository extends JpaRepository<CourseModel, Long>
 {
-   List<CourseModel> findAllByNameDanishContainsOrderByEctsDesc(String nameDanish);
+
 }

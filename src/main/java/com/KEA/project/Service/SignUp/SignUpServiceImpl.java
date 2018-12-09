@@ -3,7 +3,6 @@ package com.KEA.project.Service.SignUp;
 import com.KEA.project.Model.CourseModel;
 import com.KEA.project.Model.SignUpModel;
 import com.KEA.project.Model.StudentModel;
-import com.KEA.project.Repository.CourseRepository;
 import com.KEA.project.Repository.SignUpRepository;
 import com.KEA.project.Service.Course.CourseServiceImpl;
 import com.KEA.project.Service.Student.StudentServiceImpl;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class SignUpServiceImpl implements SignUpService
@@ -91,8 +89,7 @@ public class SignUpServiceImpl implements SignUpService
 
         for (int i = 0; i < courses.size(); i++) {
 
-           List<StudentModel>students = courses.get(i).getStudents2();
-
+            List<StudentModel>students = courses.get(i).getStudentss();
 
             for (int j = 0; j < students.size(); j++) {
                 if (students.get(j).getUsername().equals(username))

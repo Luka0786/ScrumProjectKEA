@@ -6,6 +6,7 @@ import com.KEA.project.Repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,6 +51,11 @@ public class CourseServiceImpl implements CourseService
     @Override
     public List<CourseModel> getAllCourses() {
         return courseRepository.findAll();
+    }
+
+    @Override
+    public List<CourseModel> createAllCourses(ArrayList<CourseModel> courseModels) {
+        return courseRepository.saveAll(courseModels);
     }
 }
 

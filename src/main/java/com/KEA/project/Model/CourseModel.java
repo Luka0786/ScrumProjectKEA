@@ -4,7 +4,6 @@ import javax.persistence.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 @Entity
 @Table(name = "Course_table")
@@ -16,10 +15,10 @@ public class CourseModel
     private long id;
 
     @Column(name = "name_danish")
-    private String nameDanish;
+    private String namedanish;
 
     @Column(name = "name_english")
-    private String nameEnglish;
+    private String name;
 
     @Column(name = "semester")
     private int semester;
@@ -28,7 +27,7 @@ public class CourseModel
     private String classCode;
 
     @Column(name = "study_programme")
-    private String studyProgramme;
+    private String studyprogramme;
 
     @Column(name = "type")
     private boolean type;
@@ -36,8 +35,8 @@ public class CourseModel
     @Column(name = "ects")
     private int ects;
 
-    @Column(name = "language")
-    private String language;
+    @Column(name = "languange")
+    private String languange;
 
     @Column(name = "minimum_of_students")
     private int minimumOfStudents;
@@ -52,7 +51,7 @@ public class CourseModel
     private String prerequisites;
 
     @Column(name = "learning_outcome")
-    private String learningOutcome;
+    private String description;
 
     @Column(name = "content")
     private String content;
@@ -63,14 +62,14 @@ public class CourseModel
     @Column(name = "exam_form")
     private String examForm;
 
-    private ArrayList<StudentModel> students2;
+    private ArrayList<StudentModel> students;
 
 
     @Column(name = "students_map")
     @OneToMany(mappedBy = "student_id",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     public ArrayList<StudentModel> getStudents()
     {
-        return students2;
+        return students;
     }
 
     private HashMap<Long,TeacherModel> teachers;
@@ -86,46 +85,25 @@ public class CourseModel
     {
 
     }
-/*
-    public CourseModel(String nameDanish, String nameEnglish, int semester, String classCode, String studyProgramme, boolean type, int ects, String language, int minimumOfStudents, int expectedOfStudents, int maximumOfStudents, String prerequisites, String learningOutcome, String content, String learningActivities, String examForm, HashMap<Long, StudentModel> students, HashMap<Long, TeacherModel> teachers) {
-        this.nameDanish = nameDanish;
-        this.nameEnglish = nameEnglish;
+
+    public CourseModel(String namedanish, String name, int semester, String classCode, String studyprogramme, boolean type, int ects, String languange, int minimumOfStudents, int expectedOfStudents, int maximumOfStudents, String prerequisites, String description, String content, String learningActivities, String examForm, ArrayList<StudentModel> students, HashMap<Long, TeacherModel> teachers) {
+        this.namedanish = namedanish;
+        this.name = name;
         this.semester = semester;
         this.classCode = classCode;
-        this.studyProgramme = studyProgramme;
+        this.studyprogramme = studyprogramme;
         this.type = type;
         this.ects = ects;
-        this.language = language;
+        this.languange = languange;
         this.minimumOfStudents = minimumOfStudents;
         this.expectedOfStudents = expectedOfStudents;
         this.maximumOfStudents = maximumOfStudents;
         this.prerequisites = prerequisites;
-        this.learningOutcome = learningOutcome;
+        this.description = description;
         this.content = content;
         this.learningActivities = learningActivities;
         this.examForm = examForm;
         this.students = students;
-        this.teachers = teachers;
-    }
-*/
-    public CourseModel(String nameDanish, String nameEnglish, int semester, String classCode, String studyProgramme, boolean type, int ects, String language, int minimumOfStudents, int expectedOfStudents, int maximumOfStudents, String prerequisites, String learningOutcome, String content, String learningActivities, String examForm, ArrayList<StudentModel> students, HashMap<Long, TeacherModel> teachers) {
-        this.nameDanish = nameDanish;
-        this.nameEnglish = nameEnglish;
-        this.semester = semester;
-        this.classCode = classCode;
-        this.studyProgramme = studyProgramme;
-        this.type = type;
-        this.ects = ects;
-        this.language = language;
-        this.minimumOfStudents = minimumOfStudents;
-        this.expectedOfStudents = expectedOfStudents;
-        this.maximumOfStudents = maximumOfStudents;
-        this.prerequisites = prerequisites;
-        this.learningOutcome = learningOutcome;
-        this.content = content;
-        this.learningActivities = learningActivities;
-        this.examForm = examForm;
-        this.students2 = students;
         this.teachers = teachers;
     }
     public long getId() {
@@ -136,20 +114,20 @@ public class CourseModel
         this.id = id;
     }
 
-    public String getNameDanish() {
-        return nameDanish;
+    public String getNamedanish() {
+        return namedanish;
     }
 
-    public void setNameDanish(String nameDanish) {
-        this.nameDanish = nameDanish;
+    public void setNamedanish(String namedanish) {
+        this.namedanish = namedanish;
     }
 
-    public String getNameEnglish() {
-        return nameEnglish;
+    public String getName() {
+        return name;
     }
 
-    public void setNameEnglish(String nameEnglish) {
-        this.nameEnglish = nameEnglish;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getSemester() {
@@ -168,12 +146,12 @@ public class CourseModel
         this.classCode = classCode;
     }
 
-    public String getStudyProgramme() {
-        return studyProgramme;
+    public String getStudyprogramme() {
+        return studyprogramme;
     }
 
-    public void setStudyProgramme(String studyProgramme) {
-        this.studyProgramme = studyProgramme;
+    public void setStudyprogramme(String studyprogramme) {
+        this.studyprogramme = studyprogramme;
     }
 
     public boolean isType() {
@@ -192,12 +170,12 @@ public class CourseModel
         this.ects = ects;
     }
 
-    public String getLanguage() {
-        return language;
+    public String getLanguange() {
+        return languange;
     }
 
-    public void setLanguage(String language) {
-        this.language = language;
+    public void setLanguange(String languange) {
+        this.languange = languange;
     }
 
     public int getMinimumOfStudents() {
@@ -232,12 +210,12 @@ public class CourseModel
         this.prerequisites = prerequisites;
     }
 
-    public String getLearningOutcome() {
-        return learningOutcome;
+    public String getDescription() {
+        return description;
     }
 
-    public void setLearningOutcome(String learningOutcome) {
-        this.learningOutcome = learningOutcome;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getContent() {
@@ -263,7 +241,13 @@ public class CourseModel
     public void setExamForm(String examForm) {
         this.examForm = examForm;
     }
-/*
+
+    public ArrayList<StudentModel> getStudentss()
+    {
+        return students;
+    }
+
+    /*
     public void setStudents(HashMap<Long, StudentModel> students) {
         this.students = students;
     }
@@ -272,19 +256,41 @@ public class CourseModel
         this.teachers = teachers;
     }*/
 
-    public ArrayList<StudentModel> getStudents2() {
-        return students2;
+
+
+    public void setStudents(ArrayList<StudentModel> students) {
+        this.students = students;
     }
 
-    public void setStudents2(ArrayList<StudentModel> students2) {
-        this.students2 = students2;
-    }
+   /* @Override
+    public String toString() {
+        return "Name danish: " + namedanish + " Name english: " + name + "ECTS: " + ects + " Language: " + languange;
+
+    }*/
 
     @Override
     public String toString() {
-        return "Name danish: " + nameDanish + " Name english: " + nameEnglish + "ECTS: " + ects + " Language: " + language;
-
+        return "CourseModel{" +
+                "id=" + id +
+                ", namedanish='" + namedanish + '\'' +
+                ", name='" + name + '\'' +
+                ", semester=" + semester +
+                ", classCode='" + classCode + '\'' +
+                ", studyprogramme='" + studyprogramme + '\'' +
+                ", type=" + type +
+                ", ects=" + ects +
+                ", languange='" + languange + '\'' +
+                ", minimumOfStudents=" + minimumOfStudents +
+                ", expectedOfStudents=" + expectedOfStudents +
+                ", maximumOfStudents=" + maximumOfStudents +
+                ", prerequisites='" + prerequisites + '\'' +
+                ", description='" + description + '\'' +
+                ", content='" + content + '\'' +
+                ", learningActivities='" + learningActivities + '\'' +
+                ", examForm='" + examForm + '\'' +
+                ", students=" + students +
+                ", teachers=" + teachers +
+                '}';
     }
-
 }
 

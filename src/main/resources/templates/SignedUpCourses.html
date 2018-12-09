@@ -21,10 +21,10 @@
         </thead>
         <tbody>
         <tr th:each="Course : ${SignedUpCourses}">
-            <td th:text="${Course.courseModel.getNameDanish()}"></td>
-            <td th:text="${Course.courseModel.getNameEnglish()}"></td>
+            <td th:text="${Course.courseModel.getNamedanish()}"></td>
+            <td th:text="${Course.courseModel.getName()}"></td>
             <td th:text="${Course.courseModel.getEcts()}"></td>
-            <td th:text="${Course.courseModel.getLanguage()}"></td>
+            <td th:text="${Course.courseModel.getLanguange()}"></td>
         </tr>
         </tbody>
     </table>
@@ -41,10 +41,10 @@
         </thead>
         <tbody>
         <tr th:each="Course : ${ApprovedSignUps}">
-            <td th:text="${Course.getNameDanish()}"></td>
-            <td th:text="${Course.getNameEnglish()}"></td>
+            <td th:text="${Course.getNamedanish()}"></td>
+            <td th:text="${Course.getName()}"></td>
             <td th:text="${Course.getEcts()}"></td>
-            <td th:text="${Course.getLanguage()}"></td>
+            <td th:text="${Course.getLanguange()}"></td>
         </tr>
         </tbody>
     </table>

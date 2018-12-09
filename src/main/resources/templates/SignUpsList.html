@@ -14,7 +14,6 @@
             <th>Timestamp</th>
             <th>Kursus Navn</th>
             <th>Student Navn</th>
-            <th>Indstillinger</th>
         </tr>
         </thead>
         <tbody>
@@ -23,7 +22,7 @@
         <!--
      <tr th:each="signUp : ${signUpList}">
             <td th:text="${signUp.timestamp}"></td>
-            <td th:text="${signUp.courseModel.getNameDanish()}"></td>
+            <td th:text="${signUp.courseModel.getNamedanish()}"></td>
             <td th:text="${signUp.studentModel.getName()}"></td>
 
             <button class="btn btn-success" type="submit">Ja</button>
@@ -37,7 +36,7 @@
             <tr th:each="signUp : ${signUpList}">
 
                 <td th:text="${signUp.timestamp}"></td>
-                <td th:text="${signUp.courseModel.getNameDanish()}"></td>
+                <td th:text="${signUp.courseModel.getNamedanish()}"></td>
                 <td th:text="${signUp.studentModel.getName()}"></td>
 
                 <a th:href="${'/admin/signUpAnswer?id='+signUp.getId()}" type="button">Besvar tilmeldelse</a>
