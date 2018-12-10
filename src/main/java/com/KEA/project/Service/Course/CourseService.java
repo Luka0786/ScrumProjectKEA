@@ -13,6 +13,9 @@ public interface CourseService
     void updateCourse(CourseModel courseModel);
     CourseModel findSpecificCourse(long id);
     Optional<CourseModel> findCourseById(long id);
+    CourseModel findByClassCode(String classCode);
     List<CourseModel> getAllCourses();
     List<CourseModel> createAllCourses(LinkedList<CourseModel> courseModels);
+
+
 }

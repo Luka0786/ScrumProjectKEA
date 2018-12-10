@@ -1,5 +1,8 @@
 package com.KEA.project.Model;
 
+import org.hibernate.annotations.ColumnDefault;
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.persistence.*;
 
 import java.util.ArrayList;

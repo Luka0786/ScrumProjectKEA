@@ -44,6 +44,11 @@ public class CourseServiceImpl implements CourseService
     }
 
     @Override
+    public CourseModel findByClassCode(String classCode) {
+        return courseRepository.findByClassCode(classCode);
+    }
+
+    @Override
     public CourseModel findSpecificCourse(long id)
     {
         return courseRepository.getOne(id);
