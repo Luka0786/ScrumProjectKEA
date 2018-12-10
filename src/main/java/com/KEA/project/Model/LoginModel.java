@@ -21,4 +21,8 @@ public class LoginModel
         this.username = username;
         this.password = password;
     }
+
+    public LoginModel(){
+
+    }
 }
