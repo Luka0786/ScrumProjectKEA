@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>AllCourses</title>
 </head>
+
 <body>
 
 <div class="container">
@@ -37,6 +38,7 @@
     </div>
     <br/>
 
+
     <tr th:each="Course : ${Courses}">
         <td th:text="${Course.namedanish}"></td>
         <td th:text="${Course.name}"></td>
@@ -62,16 +64,18 @@
     </tr>
     </tbody>
 </table>
-    <script>
-        $(document).ready(function(){
-            $("#inputSearch").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $("#courseTable tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
+
 </div>
 </body>
+<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+<script>
+    $(document).ready(function(){
+        $("#inputSearch").on("input", function() {
+            var value = $(this).val().toLowerCase();
+            $("#courseTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
 </html>
