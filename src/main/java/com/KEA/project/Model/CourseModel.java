@@ -67,7 +67,6 @@ public class CourseModel
 
     private ArrayList<StudentModel> students;
 
-
     @Column(name = "students_map")
     @OneToMany(mappedBy = "student_id",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     public ArrayList<StudentModel> getStudents()

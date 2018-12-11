@@ -10,7 +10,6 @@
 
 <div class="container">
     <form class="form-group-lg" method="POST" th:action="@{/course/update}">
-
         <div>
         <input type="hidden"   th:field="${Course.id}"/></br>
         <p>Indtast dansk navn</p>
@@ -46,7 +45,7 @@
         <p>Indtast eksamens form</p>
         <input required type="text" th:field="${Course.examForm}"></br>
 
-        <input class="button btn-success" type="submit" value="Opdater" />
+        <input type="submit" value="Opdater" />
 
         </div>
     </form>

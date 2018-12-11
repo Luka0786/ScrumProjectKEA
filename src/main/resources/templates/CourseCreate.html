@@ -9,9 +9,8 @@
 
 <div class="container ">
     <form class="form-horizontal" method="POST" th:action="@{/course/create}">
-
         <div>
-        <input type="hidden"   th:field="${Course.id}"/></br>
+        <input type="hidden" th:field="${Course.id}"/></br>
         <p>Indtast dansk navn</p>
         <input required type="text" th:field="${Course.namedanish}"></br>
         <p>Indtast engelsk navn</p>
@@ -45,8 +44,7 @@
         <p>Indtast eksamens form</p>
         <input required type="text" th:field="${Course.examForm}"></br>
 
-
-        <input class="button btn-success" type="submit" value="Opret" />
+        <input type="submit" value="Opret" />
 
         </div>
     </form>
