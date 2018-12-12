@@ -16,7 +16,9 @@ public class CourseRestService {
     @Autowired
     CourseServiceImpl courseServiceImpl;
 
-public LinkedList<CourseModel> fetchAllCourses(ResponseEntity<LinkedList<CourseModel>> courseResponse) {
+public LinkedList<CourseModel> fetchAllCourses(ResponseEntity<LinkedList<CourseModel>> courseResponse)
+{
+
     LinkedList<CourseModel> courses = courseResponse.getBody();
 
     int year = Calendar.getInstance().get(Calendar.YEAR);
@@ -62,4 +64,15 @@ public LinkedList<CourseModel> fetchAllCourses(ResponseEntity<LinkedList<CourseM
     return courses;
 
 }
+
+
+    public ResponseEntity<CourseModel> reflectCreatedCourse(ResponseEntity<CourseModel> postCourse)
+    {
+        return postCourse;
+    }
+
+    public ResponseEntity<CourseModel> reflectUpdatedCourse(ResponseEntity<CourseModel> response)
+    {
+        return response;
+    }
 }

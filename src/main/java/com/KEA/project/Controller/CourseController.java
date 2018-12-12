@@ -26,6 +26,7 @@ public class CourseController
 
     @Autowired
     TeacherRestController teacherRestController;
+
     @Autowired
     TeacherServiceImpl teacherServiceImpl;
 
@@ -54,7 +55,7 @@ public class CourseController
     {
         courseModel.setStudents(new ArrayList<>());
         courseServiceImpl.createCourse(courseModel);
-
+        courseRestController.reflectCourse(courseModel);
 
         return "redirect:/course";
     }
@@ -71,6 +72,7 @@ public class CourseController
     public String updateCourse(@ModelAttribute CourseModel courseModel)
     {
         courseServiceImpl.updateCourse(courseModel);
+        courseRestController.reflectCourse(courseModel);
 
         return "redirect:/course";
     }

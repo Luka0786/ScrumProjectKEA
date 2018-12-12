@@ -1,8 +1,5 @@
 package com.KEA.project.Model;
 
-import org.hibernate.annotations.ColumnDefault;
-import org.springframework.beans.factory.annotation.Value;
-
 import javax.persistence.*;
 
 import java.util.ArrayList;
@@ -23,6 +20,9 @@ public class CourseModel
     @Column(name = "name_english")
     private String name;
 
+    @Column(name = "number_of_teachers")
+    private int numberOfTeachers;
+
     @Column(name = "semester")
     private int semester;
 
@@ -36,7 +36,7 @@ public class CourseModel
     private boolean type;
 
     @Column(name = "ects")
-    private int ects;
+    private String ects;
 
     @Column(name = "languange")
     private String languange;
@@ -88,7 +88,7 @@ public class CourseModel
 
     }
 
-    public CourseModel(String namedanish, String name, int semester, String classCode, String studyprogramme, boolean type, int ects, String languange, int minimumOfStudents, int expectedOfStudents, int maximumOfStudents, String prerequisites, String description, String content, String learningActivities, String examForm, ArrayList<StudentModel> students, HashMap<Long, TeacherModel> teachers) {
+    public CourseModel(String namedanish, String name, int semester, String classCode, String studyprogramme, boolean type, String ects, String languange, int minimumOfStudents, int expectedOfStudents, int maximumOfStudents, String prerequisites, String description, String content, String learningActivities, String examForm, ArrayList<StudentModel> students, int numberOfTeachers) {
         this.namedanish = namedanish;
         this.name = name;
         this.semester = semester;
@@ -106,7 +106,7 @@ public class CourseModel
         this.learningActivities = learningActivities;
         this.examForm = examForm;
         this.students = students;
-        this.teachers = teachers;
+        this.numberOfTeachers = numberOfTeachers;
     }
     public long getId() {
         return id;
@@ -164,11 +164,11 @@ public class CourseModel
         this.type = type;
     }
 
-    public int getEcts() {
+    public String getEcts() {
         return ects;
     }
 
-    public void setEcts(int ects) {
+    public void setEcts(String ects) {
         this.ects = ects;
     }
 
@@ -249,7 +249,14 @@ public class CourseModel
         return students;
     }
 
-    /*
+    public int getNumberOfTeachers() {
+        return numberOfTeachers;
+    }
+
+    public void setNumberOfTeachers(int numberOfTeachers) {
+        this.numberOfTeachers = numberOfTeachers;
+    }
+/*
     public void setStudents(HashMap<Long, StudentModel> students) {
         this.students = students;
     }
@@ -276,11 +283,12 @@ public class CourseModel
                 "id=" + id +
                 ", namedanish='" + namedanish + '\'' +
                 ", name='" + name + '\'' +
+                ", numberOfTeachers=" + numberOfTeachers +
                 ", semester=" + semester +
                 ", classCode='" + classCode + '\'' +
                 ", studyprogramme='" + studyprogramme + '\'' +
                 ", type=" + type +
-                ", ects=" + ects +
+                ", ects='" + ects + '\'' +
                 ", languange='" + languange + '\'' +
                 ", minimumOfStudents=" + minimumOfStudents +
                 ", expectedOfStudents=" + expectedOfStudents +
@@ -291,7 +299,6 @@ public class CourseModel
                 ", learningActivities='" + learningActivities + '\'' +
                 ", examForm='" + examForm + '\'' +
                 ", students=" + students +
-                ", teachers=" + teachers +
                 '}';
     }
 }

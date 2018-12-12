@@ -2,7 +2,9 @@ package com.KEA.project.Service.Course;
 
 import com.KEA.project.Model.CourseModel;
 import com.KEA.project.Repository.CourseRepository;
+import org.apache.catalina.core.ApplicationContext;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -62,5 +64,11 @@ public class CourseServiceImpl implements CourseService
     public List<CourseModel> createAllCourses(LinkedList<CourseModel> courseModels) {
         return courseRepository.saveAll(courseModels);
     }
+
+    public void addToLegacySystem(CourseModel courseModel)
+    {
+
+    }
+
 }
 
