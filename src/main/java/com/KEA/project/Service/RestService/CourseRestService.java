@@ -3,6 +3,7 @@ package com.KEA.project.Service.RestService;
 import com.KEA.project.Model.CourseModel;
 import com.KEA.project.Service.Course.CourseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +16,7 @@ public class CourseRestService {
 
     @Autowired
     CourseServiceImpl courseServiceImpl;
-
-public LinkedList<CourseModel> fetchAllCourses(ResponseEntity<LinkedList<CourseModel>> courseResponse) {
+    public LinkedList<CourseModel> fetchAllCourses(ResponseEntity<LinkedList<CourseModel>> courseResponse) {
     LinkedList<CourseModel> courses = courseResponse.getBody();
 
     int year = Calendar.getInstance().get(Calendar.YEAR);

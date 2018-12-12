@@ -4,60 +4,94 @@
 <head>
     <meta charset="UTF-8">
     <title>AllCourses</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.1.0/css/bootstrap.css" />
+
 </head>
 
-<body>
+<style>
 
+
+
+
+</style>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #233249">
+    <a class="navbar-brand" href="https://kea.dk/">KEA</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample05">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link "  href="/course">Kurser<span class="sr-only" >(current)</span></a>
+            </li>
+            <div sec:authorize="hasAnyRole('ROLE_STUDENT')">
+                <li class="nav-item">
+                    <a class="nav-link "  href="/course/signedUpCourses">Link</a>
+                </li>
+            </div>
+        </ul>
+        <!--
+        <form class="form-inline my-2 my-md-0">
+            <button onclick="goBack()" class="btn btn-info" type="button">Tilbage</button>
+        </form>-->
+    </div>
+</nav>
 <div class="container">
-<table class="table-responsive">
+<table class="table-bordered" >
+
     <thead>
-    <tr>
-        <th>Navn dansk</th>
-        <th>Navn engelsk</th>
-        <th>ECTS</th>
-        <th>Fagets sprog</th>
-        <th>Minimum antal af studerende</th>
-        <th>Maximum antal af studerende</th>
-        <th>Forudsætninger for faget</th>
+    <tr class="d-lg-table-row ">
+
+        <th ><p>Navn dansk</p></th>
+        <th><p>Navn engelsk</p></th>
+        <th><p>Semester</p></th>
+        <th ><p>ECTS</p></th>
+        <th ><p>Fagets sprog</p></th>
+
         <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
-            <th>Indstillinger</th>
+            <th ><p>Indstillinger</p></th>
         </div>
         <div sec:authorize="hasRole('ROLE_STUDENT')">
-            <th>Indstillinger</th>
+            <th ><p>Indstillinger</p></th>
         </div>
     </tr>
     </thead>
-    <input type="search" id="inputSearch" name="searchInput" placeholder="Search for course" th:value="${name}"/>
+    <input class="form-control" type="search" id="inputSearch" name="searchInput" placeholder="Search for course" th:value="${name}" style="margin-top: 8px"/>
     <tbody id="courseTable">
     <p></p>
     <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
-    <a href="/course/create" type="button" class="btn">Opret</a>
+    <a href="/course/create" type="button" class="btn btn-success ">Opret</a>
     </div>
     <div sec:authorize="hasAnyRole('ROLE_STUDENT')">
-        <a href="/course/signedUpCourses" type="button" class="btn">Se tilmeldte kurser</a>
+        <a href="/course/signedUpCourses" type="button" class="btn btn-info ">Se tilmeldte kurser</a>
     </div>
     <br/>
 
-    <tr th:each="Course : ${Courses}">
-        <td th:text="${Course.namedanish}"></td>
-        <td th:text="${Course.name}"></td>
-        <td th:text="${Course.ects}"></td>
-        <td th:text="${Course.languange}"></td>
-        <td th:text="${Course.minimumOfStudents}"></td>
-        <td th:text="${Course.maximumOfStudents}"></td>
-        <td th:text="${Course.prerequisites}"></td>
+    <tr class="d-lg-table-row" th:each="Course : ${Courses}">
+        <td  th:text="${Course.namedanish}"></td>
+        <td  th:text="${Course.name}"></td>
+        <td  th:text="${Course.ects}"></td>
+        <td th:text="${Course.semester}"></td>
+        <td  th:text="${Course.languange}"></td>
+
 
         <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
-        <td>
-            <a th:href="${'/course/details?id='+Course.getId()}" type="button">Detaljer</a>
-            <a th:href="${'/course/update?id='+Course.getId()}" type="button">Opdater</a>
-            <a th:href="${'/course/delete?id='+Course.getId()}" type="button">Slet</a>
+        <td  >
+            <a th:href="${'/course/details?id='+Course.getId()}" class="btn-sm btn-info" style="margin-bottom: 2px" type="button">Detaljer</a>
+
+            <a th:href="${'/course/update?id='+Course.getId()}" class="btn-sm btn-warning" style="margin-bottom: 2px" type="button">Opdater</a>
+
+            <a th:href="${'/course/delete?id='+Course.getId()}" class="btn-sm btn-danger " type="button">Slet</a>
+
         </td>
         </div>
         <div sec:authorize="hasRole('ROLE_STUDENT')">
-            <td>
-                <a th:href="${'/course/details?id='+Course.getId()}" type="button" >Detaljer</a>
-                <a th:href="${'/course/signUp?id='+Course.getId()}" type="button">Tilmeld</a>
+            <td >
+                <a th:href="${'/course/details?id='+Course.getId()}" class="btn-sm btn-info" type="button" >Detaljer</a>
+                <a th:href="${'/course/signUp?id='+Course.getId()}" class="btn-sm btn-success" type="button">Tilmeld</a>
             </td>
         </div>
     </tr>
@@ -67,6 +101,7 @@
 </div>
 </body>
 <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.1.0/js/bootstrap.min.js}"></script>
 <script>
     $(document).ready(function(){
         $("#inputSearch").on("input", function() {

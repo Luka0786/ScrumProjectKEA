@@ -22,9 +22,6 @@ public class SignUpController {
     @Autowired
     CourseController courseController;
 
-    @Autowired
-    StudentController studentController;
-
     @GetMapping("/signUp")
     public String signUpToCourse(@RequestParam("id") long id, Model model){
 

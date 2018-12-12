@@ -29,10 +29,10 @@ public class TeacherRestService {
 
             String temporaryPassword = teacher.getName() + teacher.getId();
 
-            LoginModel loginModel = new LoginModel(teacher.getUsername(),BCrypt.hashpw(temporaryPassword,BCrypt.gensalt()));
+            LoginModel loginModel = new LoginModel(teacher.getUsername(),BCrypt.hashpw(temporaryPassword,BCrypt.gensalt()),1);
             loginServiceImpl.createLogin(loginModel);
 
-            LoginRolesModel loginRolesModel = new LoginRolesModel(loginModel,"TEACHER");
+            LoginRolesModel loginRolesModel = new LoginRolesModel(loginModel,"ROLE_TEACHER");
             loginRolesServiceImpl.createRoles(loginRolesModel);
         }
 
