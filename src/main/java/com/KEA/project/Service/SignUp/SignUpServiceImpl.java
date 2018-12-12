@@ -33,11 +33,9 @@ public class SignUpServiceImpl implements SignUpService
     }
 
     @Override
-    public void CreateSignUp(SignUpModel signUpModel) {
+    public void createSignUp(SignUpModel signUpModel) {
         signUpRepository.save(signUpModel);
     }
-
-
 
     @Override
     public SignUpModel findSpecificSignUp(long id) {
@@ -70,7 +68,7 @@ public class SignUpServiceImpl implements SignUpService
 
         SignUpModel signUp = new SignUpModel(courseModel,student);
 
-        CreateSignUp(signUp);
+        createSignUp(signUp);
     }
 
     public List<CourseModel> getAllApprovedSignUps() {

@@ -10,7 +10,7 @@ public interface SignUpService {
 
     List<SignUpModel> getAllSignUpsByCourseIdOrderByTimestamp(long id);
 
-    void CreateSignUp(SignUpModel signUpModel);
+    void createSignUp(SignUpModel signUpModel);
 
     SignUpModel findSpecificSignUp(long id);
 
