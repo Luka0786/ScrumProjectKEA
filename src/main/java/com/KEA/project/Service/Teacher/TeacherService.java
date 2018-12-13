@@ -9,5 +9,7 @@ import java.util.List;
 public interface TeacherService
 {
     List<TeacherModel> createAllTeachers(List<TeacherModel> teachers);
+
     void teacherConnectToCourse(CourseModel courseModel);
+
 }

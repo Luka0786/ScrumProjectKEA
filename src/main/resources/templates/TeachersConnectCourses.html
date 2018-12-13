@@ -3,7 +3,7 @@
       xmlns:xlmns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>AllCourses</title>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.1.0/css/bootstrap.css" />
 </head>
 <body>
@@ -62,52 +62,36 @@
         </form>-->
     </span>
 </nav>
-
 <div class="container">
-    <form class="form-group-lg" method="POST" th:action="@{/course/update}">
-        <div>
-        <input type="hidden"   th:field="${Course.id}"/></br>
-        <p>Indtast dansk navn</p>
-        <input required type="text" th:field="${Course.namedanish}"></br>
-        <p>Indtast engelsk navn</p>
-        <input required type="text" th:field="${Course.name}"></br>
-        <p>Indtast semester</p>
-        <input required type="number" th:field="${Course.semester}"></br>
-        <p>Indtast klasse koden</p>
-        <input required type="text" th:field="${Course.classCode}"></br>
-        <p>Indtast studie programmet</p>
-        <input required type="text" th:field="${Course.studyprogramme}"></br>
-        <p>Indtast fagets type</p>
-        <input required type="text" th:field="${Course.type}"></br>
-        <p>Indtast ects</p>
-        <input required type="number" th:field="${Course.ects}"></br>
-        <p>Indtast fagets sprog</p>
-        <input required type="text" th:field="${Course.languange}"></br>
-        <p>Indtast minimum antal af studerende</p>
-        <input required type="number" th:field="${Course.minimumOfStudents}"></br>
-        <p>Indtast forventet antal af studerende</p>
-        <input required type="number" th:field="${Course.expectedOfStudents}"></br>
-        <p>Indtast maksimum antal af studerende</p>
-        <input required type="number" th:field="${Course.maximumOfStudents}"></br>
-        <p>Indtast forudsætninger for faget</p>
-        <input required type="text" th:field="${Course.prerequisites}"></br>
-        <p>Indtast læringsmål</p>
-        <input required type="text" th:field="${Course.description}"></br>
-        <p>Indtast fagets indhold</p>
-        <input required type="text" th:field="${Course.content}"></br>
-        <p>Indtast lærings aktiviteter</p>
-        <input required type="text" th:field="${Course.learningActivities}"></br>
-        <p>Indtast eksamens form</p>
-        <input required type="text" th:field="${Course.examForm}"></br>
-        <p>Antal lærere</p>
-        <input required type="text" th:field="${Course.numberOfTeachers}"></br>
+    <h1>Mine Kurser</h1>
+    <table class="table-bordered">
+        <thead>
+        <tr>
+            <th>Navn dansk</th>
+            <th>Navn engelsk</th>
+            <th>ECTS</th>
+            <th>Language</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="Course : ${ConnectedCourses}">
+            <td th:text="${Course.getNamedanish()}"></td>
+            <td th:text="${Course.getName()}"></td>
+            <td th:text="${Course.getEcts()}"></td>
+            <td th:text="${Course.getLanguange()}"></td>
 
-        <input type="submit" value="Opdater" />
-
-        </div>
-    </form>
+            <div>
+                <td >
+                    <a th:href="${'/course/details?id='+Course.getId()}" class="btn-sm btn-info" type="button" >Detaljer</a>
+                    <a th:href="${'/course/update?id='+Course.getId()}" class="btn-sm btn-warning" style="margin-bottom: 2px" type="button">Opdater</a>
+                    <a th:href="${'/course/delete?id='+Course.getId()}" class="btn-sm btn-danger " type="button">Slet</a>
+                </td>
+            </div>
+        </tr>
+        </tbody>
+    </table>
+    <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.1.0/js/bootstrap.min.js}"></script>
 </div>
-<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
-<script th:src="@{/webjars/bootstrap/4.1.0/js/bootstrap.min.js}"></script>
 </body>
 </html>

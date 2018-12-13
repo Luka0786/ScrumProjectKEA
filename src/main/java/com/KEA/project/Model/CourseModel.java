@@ -250,6 +250,11 @@ public class CourseModel
         return students;
     }
 
+    public ArrayList<TeacherModel> getTeacherss()
+    {
+        return teachers;
+    }
+
     public int getNumberOfTeachers() {
         return numberOfTeachers;
     }

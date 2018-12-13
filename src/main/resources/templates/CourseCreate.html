@@ -27,6 +27,11 @@
                     <a class="nav-link " style="width: 60px"  href="/course/signedUpCourses">Tilmeldte Kurser</a>
                 </li>
             </span>
+            <span sec:authorize="hasAnyRole('ROLE_TEACHER')">
+                <li class="nav-item active">
+                    <a class="nav-link " style="width: 60px"  href="/course/myCourses">Mine Kurser</a>
+                </li>
+            </span>
             <span sec:authorize="hasRole('ADMIN')" >
                 <li class="nav-item">
                     <a class="nav-link " style="width: 60px" href="/course/admin">Admin</a>

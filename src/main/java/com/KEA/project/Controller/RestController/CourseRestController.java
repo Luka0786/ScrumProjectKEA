@@ -31,7 +31,7 @@ public class CourseRestController {
         courseServiceImpl.createAllCourses(courseRestService.fetchAllCourses());
 
         try {
-            response.sendRedirect("/course/admin");
+            response.sendRedirect("/course");
         } catch (IOException e) {
             e.printStackTrace();
         }

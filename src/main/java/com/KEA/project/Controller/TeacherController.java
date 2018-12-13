@@ -18,7 +18,7 @@ public class TeacherController
     CourseController courseController;
 
     @GetMapping("/teacherConnectToCourse")
-    public String signUpToCourse(@RequestParam("id") long id, Model model){
+    public String teacherConnectToCourse(@RequestParam("id") long id, Model model){
 
         model.addAttribute("Course", courseController.courseServiceImpl.findCourseById(id));
 
@@ -27,11 +27,21 @@ public class TeacherController
     }
 
     @PostMapping("/teacherConnectToCourse")
-    public String signUpToCourse(@ModelAttribute CourseModel courseModel){
+    public String teacherConnectToCourse(@ModelAttribute CourseModel courseModel){
 
         teacherServiceImpl.teacherConnectToCourse(courseModel);
 
         return "redirect:/course";
+    }
+
+
+
+    @GetMapping("/myCourses")
+    public String getAllConnectedFromSpecificCourse(Model model)
+    {
+        model.addAttribute("ConnectedCourses", teacherServiceImpl.getAllConnectedByCourseId());
+
+        return "TeachersConnectCourses";
     }
 
 }

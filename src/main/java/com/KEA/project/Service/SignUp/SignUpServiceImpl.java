@@ -71,7 +71,8 @@ public class SignUpServiceImpl implements SignUpService
         createSignUp(signUp);
     }
 
-    public List<CourseModel> getAllApprovedSignUps() {
+    public List<CourseModel> getAllApprovedSignUps()
+    {
         List<CourseModel> courses = courseServiceImpl.getAllCourses();
 
         List<CourseModel> approved = new ArrayList<>();
