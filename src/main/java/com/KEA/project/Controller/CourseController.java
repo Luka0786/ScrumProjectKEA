@@ -49,7 +49,11 @@ public class CourseController
     @GetMapping("/create")
     public String createCourse(Model model)
     {
-        model.addAttribute("Course", new CourseModel());
+        CourseModel courseModel = new CourseModel();
+
+        courseModel.setId((long)courseServiceImpl.getAllCourses().size()+1);
+        //DETTE ER EN LAPPE LØSNING SOM VIRKER SÅ ALLE ER GLADE
+        model.addAttribute("Course", courseModel);
 
         return "CourseCreate";
     }

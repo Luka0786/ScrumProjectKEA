@@ -11,7 +11,6 @@ import java.util.ArrayList;
 public class CourseModel
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "course_id")
     private Long id;
 
