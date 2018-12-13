@@ -29,10 +29,10 @@ public class AdministratorServiceImpl implements AdministratorService
 
         ArrayList<StudentModel> Students = CurrentSignUpModel.getCourseModel().getStudents();
 
-        System.out.println(requestedStudent.getUsername());
         Students.add(requestedStudent);
 
         CourseModel courseModel = CurrentSignUpModel.getCourseModel();
+
         courseModel.setStudents(Students);
 
         courseServiceImpl.updateCourse(courseModel);

@@ -2,10 +2,13 @@ package com.KEA.project.Model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 @Entity
 @Table(name = "Teacher_Table")
-public class TeacherModel
+public class TeacherModel implements Serializable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +24,15 @@ public class TeacherModel
 
     @Column(name = "teacher_username", unique = true)
     private String username;
+
+    private ArrayList<CourseModel> courses;
+
+    @Column(name = "course_map")
+    @OneToMany(mappedBy = "course_id",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    public ArrayList<CourseModel> getCourses()
+    {
+        return courses;
+    }
 
     public TeacherModel(String name, @Email String email) {
         this.name = name;
@@ -62,5 +74,14 @@ public class TeacherModel
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Override
+    public String toString() {
+        return "TeacherModel{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                '}';
     }
 }

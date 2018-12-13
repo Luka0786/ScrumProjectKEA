@@ -30,6 +30,9 @@ public class CourseController
     @Autowired
     TeacherServiceImpl teacherServiceImpl;
 
+    @Autowired
+    TeacherController teacherController;
+
     @GetMapping()
     public String getAllCourses(Model model)
     {
@@ -54,8 +57,10 @@ public class CourseController
     public String createCourse(@ModelAttribute CourseModel courseModel)
     {
         courseModel.setStudents(new ArrayList<>());
+        courseModel.setTeachers(new ArrayList<>());
         courseServiceImpl.createCourse(courseModel);
         courseRestController.reflectCourse(courseModel);
+        teacherController.teacherServiceImpl.teacherConnectToCourse(courseModel);
 
         return "redirect:/course";
     }

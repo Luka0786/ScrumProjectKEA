@@ -5,7 +5,6 @@ import org.springframework.lang.Nullable;
 import javax.persistence.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 @Entity
 @Table(name = "Course_table")
@@ -14,7 +13,7 @@ public class CourseModel
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "course_id")
-    private long id;
+    private Long id;
 
     @Column(name = "name_danish")
     private String namedanish;
@@ -77,11 +76,11 @@ public class CourseModel
         return students;
     }
 
-    private HashMap<Long,TeacherModel> teachers;
+    private ArrayList<TeacherModel> teachers;
 
     @Column(name = "teachers_map")
     @OneToMany(mappedBy = "teacher_id",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    public HashMap<Long, TeacherModel> getTeachers()
+    public ArrayList<TeacherModel> getTeachers()
     {
         return teachers;
     }
@@ -111,11 +110,11 @@ public class CourseModel
         this.students = students;
         this.numberOfTeachers = numberOfTeachers;
     }
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -279,6 +278,10 @@ public class CourseModel
         return "Name danish: " + namedanish + " Name english: " + name + "ECTS: " + ects + " Language: " + languange;
 
     }*/
+
+    public void setTeachers(ArrayList<TeacherModel> teachers) {
+        this.teachers = teachers;
+    }
 
     @Override
     public String toString() {

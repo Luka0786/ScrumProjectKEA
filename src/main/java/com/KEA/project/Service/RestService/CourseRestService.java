@@ -40,6 +40,7 @@ public LinkedList<CourseModel> fetchAllCourses(ResponseEntity<LinkedList<CourseM
                 course.setLearningActivities(courseServiceImpl.findByClassCode(course.getClassCode()).getLearningActivities());
                 course.setExamForm(courseServiceImpl.findByClassCode(course.getClassCode()).getExamForm());
                 course.setStudents(courseServiceImpl.findByClassCode(course.getClassCode()).getStudents());
+                course.setTeachers(courseServiceImpl.findByClassCode(course.getClassCode()).getTeachers());
 
             }
 
@@ -55,16 +56,12 @@ public LinkedList<CourseModel> fetchAllCourses(ResponseEntity<LinkedList<CourseM
             course.setLearningActivities("Live Coding, Group Projects, Individual Projects");
             course.setExamForm("Oral Exam");
             course.setStudents(new ArrayList<>());
+            course.setTeachers(new ArrayList<>());
         }
-
-
-
-
     }
     return courses;
 
 }
-
 
     public ResponseEntity<CourseModel> reflectCreatedCourse(ResponseEntity<CourseModel> postCourse)
     {
