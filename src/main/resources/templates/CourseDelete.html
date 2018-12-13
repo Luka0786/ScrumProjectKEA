@@ -60,12 +60,12 @@
 </nav>
 
 
-<div class="container">
+<div class="container text-center">
     <h2>Er du sikker på at du vil slette dette Course</h2>
     <form action="#" th:action="@{/course/delete}" method="post" >
         <input type="hidden"  th:field="${Course.id}"/>
-        <button type="submit">Ja</button>
-        <a href="/course"><button type="button">Nej</button></a>
+        <button class="btn-lg btn-success" style="width: 30%;" type="submit">Ja</button>
+        <button class="btn-lg btn-danger" style="width: 30%;" type="button" onclick="window.location.href='/course'" >Nej</button>
     </form>
 </div>
 <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>

@@ -107,8 +107,8 @@
 
         <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
             <td>
-                <a th:href="${'/course/update?id='+Course.getId()}" type="button">Opdater</a>
-                <a th:href="${'/course/delete?id='+Course.getId()}" type="button">Slet</a>
+                <a class="btn btn-info" th:href="${'/course/update?id='+Course.getId()}" type="button">Opdater</a>
+                <a class="btn btn-danger" th:href="${'/course/delete?id='+Course.getId()}" type="button">Slet</a>
             </td>
         </div>
     </tr>

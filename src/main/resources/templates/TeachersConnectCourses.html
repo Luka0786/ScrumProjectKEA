@@ -20,7 +20,7 @@
                 <a class="nav-link " style="width: 60px" href="/course">Kurser</a>
             </li>
             <span sec:authorize="hasAnyRole('ROLE_STUDENT')">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link " style="width: 60px"  href="/course/signedUpCourses">Tilmeldte Kurser</a>
                 </li>
             </span>
@@ -62,22 +62,26 @@
         </form>-->
     </span>
 </nav>
-<div class="container">
+<div class="container text-center">
     <h1>Mine Kurser</h1>
-    <table class="table-bordered">
+    <table class="table-bordered ml-auto mr-auto text-center">
         <thead>
-        <tr>
+        <tr class="d-lg-table-row">
             <th>Navn dansk</th>
             <th>Navn engelsk</th>
             <th>ECTS</th>
+            <th>Semester</th>
+            <th>Læringsmål</th>
             <th>Language</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="Course : ${ConnectedCourses}">
+        <tr class="d-lg-table-row" th:each="Course : ${ConnectedCourses}">
             <td th:text="${Course.getNamedanish()}"></td>
             <td th:text="${Course.getName()}"></td>
             <td th:text="${Course.getEcts()}"></td>
+            <td th:text="${Course.getSemester()}"></td>
+            <td th:text="${Course.getDescription()}"></td>
             <td th:text="${Course.getLanguange()}"></td>
 
             <div>
