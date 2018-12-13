@@ -3,8 +3,11 @@ package com.KEA.project.Service.RestService;
 import com.KEA.project.Model.CourseModel;
 import com.KEA.project.Service.Course.CourseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -16,8 +19,20 @@ public class CourseRestService {
     @Autowired
     CourseServiceImpl courseServiceImpl;
 
-public LinkedList<CourseModel> fetchAllCourses(ResponseEntity<LinkedList<CourseModel>> courseResponse)
+    final String courseUrl = "http://18.185.40.91/course";
+
+
+    public LinkedList<CourseModel> fetchAllCourses()
 {
+
+    RestTemplate restTemplate = new RestTemplate();
+
+
+    ResponseEntity<LinkedList<CourseModel>> courseResponse =
+            restTemplate.exchange(courseUrl,
+                    HttpMethod.GET, null, new ParameterizedTypeReference<LinkedList<CourseModel>>()
+                    {
+                    });
 
     LinkedList<CourseModel> courses = courseResponse.getBody();
 

@@ -1,39 +1,39 @@
 package com.KEA.project.Controller.RestController;
 
-import com.KEA.project.Model.CourseModel;
-import com.KEA.project.Model.TeacherModel;
-import com.KEA.project.Service.Course.CourseServiceImpl;
-import com.KEA.project.Service.RestService.TeacherRestService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
-import java.util.*;
+import com.KEA.project.Service.RestService.TeacherRestService;
+import com.KEA.project.Service.Teacher.TeacherServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 
 @RestController
+@RequestMapping("/course")
 public class TeacherRestController {
 
-    final String courseUrl = "http://18.185.40.91/teacher";
+
 
     @Autowired
     TeacherRestService teacherRestService;
 
+    @Autowired
+    TeacherServiceImpl teacherServiceImpl;
 
-    public LinkedList<TeacherModel> fetchAllTeachers() {
-        RestTemplate restTemplate = new RestTemplate();
+    @GetMapping("/admin/fetchTeachers")
+    public void fetchAllTeachers(HttpServletResponse response) {
 
+        teacherServiceImpl.createAllTeachers(teacherRestService.fetchAllTeachers());
 
-        ResponseEntity<LinkedList<TeacherModel>> teacherResponse =
-                restTemplate.exchange(courseUrl,
-                        HttpMethod.GET, null, new ParameterizedTypeReference<LinkedList<TeacherModel>>() {
-                        });
-
-
-
-        return teacherRestService.fetchAllTeachers(teacherResponse);
+        try {
+            response.sendRedirect("/course/admin");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

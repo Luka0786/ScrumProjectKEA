@@ -1,22 +1,17 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xlmns:th="http://www.thymeleaf.org"
       xmlns:xlmns="http://www.w3.org/1999/xhtml">
-<head></head>
-<body>
-<h1>Login</h1>
+<head>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.1.0/css/bootstrap.css" />
+</head>
+<body class="text-center jumbotron">
 <form name='f' th:action="@{/login}" method='POST' >
-    <table>
-        <tr>
-            <td>User:</td>
-            <td><input type='text' name='username' value=''></td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td><input type='password' name='password' /></td>
-        </tr>
-        <tr>
-            <td><input name="submit" type="submit" value="submit" /></td>
-        </tr>
-    </table>
+    <form class="form-signin">
+        <img class="mb-4 " src="https://kea.dk/images/DA/Presse/Downloads/KEA_logo_DK_Web.jpg" alt="" width="280" height="124">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <input type='text' name='username' value='' placeholder="Username" required="" style="font-size: 18px; width: 250px; height: 50px; margin: 3px"><br>
+        <input type='password' name='password' placeholder="Password" required="" style="font-size: 18px; width: 250px; height: 50px; margin: 3px"><br>
+        <button class="btn btn-primary btn-lg" name="submit" type="submit" style="margin: 3px">Sign in</button>
+    </form>
 </form>
 </body>
 </html>

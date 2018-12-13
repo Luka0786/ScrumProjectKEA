@@ -3,6 +3,7 @@ package com.KEA.project.Controller;
 import com.KEA.project.Model.CourseModel;
 import com.KEA.project.Model.SignUpModel;
 import com.KEA.project.Model.StudentModel;
+import com.KEA.project.Service.Course.CourseServiceImpl;
 import com.KEA.project.Service.SignUp.SignUpServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,12 +21,12 @@ public class SignUpController {
     SignUpServiceImpl signUpServiceImpl;
 
     @Autowired
-    CourseController courseController;
+    CourseServiceImpl courseServiceImpl;
 
     @GetMapping("/signUp")
     public String signUpToCourse(@RequestParam("id") long id, Model model){
 
-        model.addAttribute("Course",courseController.courseServiceImpl.findCourseById(id) );
+        model.addAttribute("Course",courseServiceImpl.findCourseById(id) );
 
         return "SignUp";
 

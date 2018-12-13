@@ -1,12 +1,21 @@
 <!DOCTYPE html >
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xlmns:th="http://www.thymeleaf.org"
       xmlns:xlmns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
-
-
 <head>
+    <meta charset="UTF-8">
+    <title>AllCourses</title>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.1.0/css/bootstrap.css" />
-    <title>CourseDelete</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
 </head>
+
+<style>
+button{
+
+}
+
+
+</style>
+
 <body>
 <nav class="navbar navbar-expand-xl navbar-dark" style="background-color: #233249">
     <a class="navbar-brand" href="https://kea.dk/"><img  src="https://kea.dk/images/DA/Presse/Downloads/KEA_logo_DK_Web.jpg" alt="" width="110" height="52">
@@ -21,12 +30,12 @@
                 <a class="nav-link " style="width: 60px" href="/course">Kurser</a>
             </li>
             <span sec:authorize="hasAnyRole('ROLE_STUDENT')">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link " style="width: 60px"  href="/course/signedUpCourses">Tilmeldte Kurser</a>
                 </li>
             </span>
             <span sec:authorize="hasRole('ADMIN')" >
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link " style="width: 60px" href="/course/admin">Admin</a>
                 </li>
             </span>
@@ -58,18 +67,57 @@
         </form>-->
     </span>
 </nav>
-
-
 <div class="container">
-    <h2>Er du sikker på at du vil tilmelde dig dette Course</h2>
+    <table id="tableTest" class="table-bordered d-lg-table ml-auto mr-auto" style="width: 100%" >
 
-    <form action="#" th:action="@{/course/signUp}" method="post" >
-        <input type="hidden"  th:field="${Course.id}"  />
-        <button type="submit">Ja</button>
-        <a href="/course"><button type="button">Nej</button></a>
-    </form>
+        <thead>
+        <tr class="d-lg-table-row text-center ">
+
+            <th ><p>Navn dansk</p></th>
+            <th><p>Navn engelsk</p></th>
+            <th><p>Semester</p></th>
+            <th ><p>ECTS</p></th>
+            <th ><p>Fagets sprog</p></th>
+
+            <div sec:authorize="hasAnyRole('ROLE_ADMIN')">
+                <th ><p>Indstillinger</p></th>
+            </div>
+        </tr>
+        </thead>
+        <input class="form-control" type="search" id="inputSearch" name="searchInput" placeholder="Søg efter kursus" th:value="${name}" style="margin-top: 8px; margin-bottom: 8px;"/>
+        <tbody id="courseTable">
+
+        <tr class="d-lg-table-row text-center" th:each="Course : ${Courses}">
+            <td  th:text="${Course.namedanish}"></td>
+            <td  th:text="${Course.name}"></td>
+            <td th:text="${Course.semester}"></td>
+            <td  th:text="${Course.ects}"></td>
+            <td  th:text="${Course.languange}"></td>
+
+
+            <div sec:authorize="hasAnyRole('ROLE_ADMIN')">
+                <td  >
+                    <a th:href="${'/course/admin/signUpsList?id='+Course.getId()}" class="btn-sm btn-info" style="margin-bottom: 2px" type="button">Se Tilmeldinger</a>
+
+                </td>
+            </div>
+        </tr>
+        </tbody>
+    </table>
+
 </div>
+</body>
 <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/4.1.0/js/bootstrap.min.js}"></script>
-</body>
+<script>
+    $(document).ready(function(){
+        $("#inputSearch").on("input", function() {
+            var value = $(this).val().toLowerCase();
+            $("#courseTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+
 </html>
