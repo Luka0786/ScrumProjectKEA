@@ -24,22 +24,22 @@ public class AdministratorServiceImpl implements AdministratorService
 
     public void acceptSignUp (SignUpModel signUpModel)
     {
-        SignUpModel CurrentSignUpModel = signUpServiceImpl.findSpecificSignUp(signUpModel.getId());
-        StudentModel requestedStudent = CurrentSignUpModel.getStudentModel();
+        SignUpModel currentSignUpModel = signUpServiceImpl.findSpecificSignUp(signUpModel.getId());
+        StudentModel requestedStudent = currentSignUpModel.getStudentModel();
 
         System.out.println(requestedStudent.getUsername() + "KEK");
 
-        ArrayList<StudentModel> Students = CurrentSignUpModel.getCourseModel().getStudents();
+        ArrayList<StudentModel> students = currentSignUpModel.getCourseModel().getStudents();
 
-        System.out.println(Students.size()+ "KEK");
+        System.out.println(students.size()+ "KEK");
 
-        Students.add(requestedStudent);
+        students.add(requestedStudent);
 
-        CourseModel courseModel = CurrentSignUpModel.getCourseModel();
+        CourseModel courseModel = currentSignUpModel.getCourseModel();
 
         System.out.println(courseModel.getName()+ "KEK");
 
-        courseModel.setStudents(Students);
+        courseModel.setStudents(students);
 
         courseServiceImpl.updateCourse(courseModel);
 
