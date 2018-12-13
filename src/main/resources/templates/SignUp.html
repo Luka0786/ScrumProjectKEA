@@ -60,13 +60,14 @@
 </nav>
 
 
-<div class="container">
-    <h2>Er du sikker på at du vil tilmelde dig dette Course</h2>
-
+<div class="container text-center">
+    <h2>Er du sikker på at du vil tilmelde dig kurset </h2>
     <form action="#" th:action="@{/course/signUp}" method="post" >
+
+
         <input type="hidden"  th:field="${Course.id}"  />
-        <button type="submit">Ja</button>
-        <a href="/course"><button type="button">Nej</button></a>
+        <button class="btn-lg btn-success" style="width: 30%;" type="submit">Ja</button>
+        <button class="btn-lg btn-danger" style="width: 30%;" onclick="window.location.href='/course'">Nej</button>
     </form>
 </div>
 <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>

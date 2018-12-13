@@ -58,48 +58,82 @@
     </span>
 </nav>
 
-<div class="container">
-    <form class="form-group-lg" method="POST" th:action="@{/course/update}">
+<div class="container text-center mt-3 mb-3">
+    <form class="form-control" method="POST" th:action="@{/course/update}">
         <div>
-        <input type="hidden"   th:field="${Course.id}"/></br>
-        <p>Indtast dansk navn</p>
-        <input required type="text" th:field="${Course.namedanish}"></br>
-        <p>Indtast engelsk navn</p>
-        <input required type="text" th:field="${Course.name}"></br>
-        <p>Indtast semester</p>
-        <input required type="number" th:field="${Course.semester}"></br>
-        <p>Indtast klasse koden</p>
-        <input required type="text" th:field="${Course.classCode}"></br>
-        <p>Indtast studie programmet</p>
-        <input required type="text" th:field="${Course.studyprogramme}"></br>
-        <p>Indtast fagets type</p>
-        <input required type="text" th:field="${Course.type}"></br>
-        <p>Indtast ects</p>
-        <input required type="number" th:field="${Course.ects}"></br>
-        <p>Indtast fagets sprog</p>
-        <input required type="text" th:field="${Course.languange}"></br>
-        <p>Indtast minimum antal af studerende</p>
-        <input required type="number" th:field="${Course.minimumOfStudents}"></br>
-        <p>Indtast forventet antal af studerende</p>
-        <input required type="number" th:field="${Course.expectedOfStudents}"></br>
-        <p>Indtast maksimum antal af studerende</p>
-        <input required type="number" th:field="${Course.maximumOfStudents}"></br>
-        <p>Indtast forudsætninger for faget</p>
-        <input required type="text" th:field="${Course.prerequisites}"></br>
-        <p>Indtast læringsmål</p>
-        <input required type="text" th:field="${Course.description}"></br>
-        <p>Indtast fagets indhold</p>
-        <input required type="text" th:field="${Course.content}"></br>
-        <p>Indtast lærings aktiviteter</p>
-        <input required type="text" th:field="${Course.learningActivities}"></br>
-        <p>Indtast eksamens form</p>
-        <input required type="text" th:field="${Course.examForm}"></br>
-        <p>Antal lærere</p>
-        <input required type="text" th:field="${Course.numberOfTeachers}"></br>
-
-        <input type="submit" value="Opdater" />
-
+            <label>Indtast dansk navn</label>
+            <input class="form-control" required type="text" th:field="${Course.namedanish}"><br>
         </div>
+        <div class="form-group">
+            <label>Indtast engelsk navn</label>
+            <input class="form-control" required type="text" th:field="${Course.name}"><br>
+        </div>
+        <div class="form-group">
+            <label>Indtast semester</label>
+            <input class="form-control" required type="number" th:field="${Course.semester}"><br>
+        </div>
+        <div class="form-group">
+            <label>Indtast klasse koden</label>
+            <input class="form-control" required type="text" th:field="${Course.classCode}"><br>
+        </div>
+        <div class="form-group">
+            <label>Indtast studie programmet</label>
+            <input class="form-control" required type="text" th:field="${Course.studyprogramme}"><br>
+        </div>
+        <div class="form-group">
+            <label>Indtast fagets type</label>
+            <input class="form-control" required type="text" th:field="${Course.type}"><br>
+        </div>
+        <div class="form-group">
+            <label>Indtast ects</label>
+            <input class="form-control" required type="number" th:field="${Course.ects}"><br>
+        </div>
+        <div class="form-group">
+            <label>Indtast fagets sprog</label>
+            <input class="form-control" required type="text" th:field="${Course.languange}"><br>
+        </div>
+        <div class="form-group">
+            <label>Indtast minimum antal af studerende</label>
+            <input class="form-control" required type="number" th:field="${Course.minimumOfStudents}"><br>
+        </div>
+        <div class="form-group">
+            <label>Indtast forventet antal af studerende</label>
+            <input class="form-control" required type="number" th:field="${Course.expectedOfStudents}"><br>
+        </div>
+        <div class="form-group">
+            <label>Indtast maksimum antal af studerende</label>
+        </div>
+        <div class="form-group">
+            <input class="form-control" required type="number" th:field="${Course.maximumOfStudents}"><br>
+        </div>
+        <div class="form-group">
+            <p>Indtast forudsætninger for faget</p>
+            <input class="form-control" required type="text" th:field="${Course.prerequisites}"><br>
+        </div>
+        <div class="form-group">
+            <label>Indtast læringsmål</label>
+            <input class="form-control" required type="text" th:field="${Course.description}"><br>
+        </div>
+        <div class="form-group">
+            <label>Indtast fagets indhold</label>
+            <textarea class="form-control" required type="text" th:field="${Course.content}" /><br>
+        </div>
+        <div class="form-group">
+            <label>Indtast lærings aktiviteter</label>
+            <input class="form-control" required type="text" th:field="${Course.learningActivities}"><br>
+        </div>
+        <div class="form-group">
+            <label>Indtast eksamens form</label>
+            <input class="form-control" required type="text" th:field="${Course.examForm}"><br>
+        </div>
+        <div class="form-group">
+        <label>Antal lærere</label>
+        <input class="form-control" required type="text" th:field="${Course.numberOfTeachers}"><br>
+        </div>
+        <br>
+        <button type="submit" class="btn-lg btn-primary" >Opdater</button>
+
+
     </form>
 </div>
 <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>

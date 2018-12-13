@@ -72,7 +72,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr class="d-lg-table" th:each="Course : ${SignedUpCourses}">
+        <tr class="d-lg-table-row" th:each="Course : ${SignedUpCourses}">
             <td th:text="${Course.courseModel.getNamedanish()}"></td>
             <td th:text="${Course.courseModel.getName()}"></td>
             <td th:text="${Course.courseModel.getEcts()}"></td>
