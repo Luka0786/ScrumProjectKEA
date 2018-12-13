@@ -1,5 +1,7 @@
 package com.KEA.project.Model;
 
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ public class CourseModel
     @Column(name = "name_english")
     private String name;
 
+    @Nullable
     @Column(name = "number_of_teachers")
     private int numberOfTeachers;
 

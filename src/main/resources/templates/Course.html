@@ -12,7 +12,6 @@
 
 
 
-
 </style>
 
 <body>
@@ -25,11 +24,16 @@
     <div class="collapse navbar-collapse" id="navbarsExample05">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link "  href="/course">Kurser<span class="sr-only" >(current)</span></a>
+                <a class="nav-link " style="width: 60px" href="/course">Kurser<span class="sr-only" >(current)</span></a>
             </li>
             <div sec:authorize="hasAnyRole('ROLE_STUDENT')">
                 <li class="nav-item">
-                    <a class="nav-link "  href="/course/signedUpCourses">Link</a>
+                    <a class="nav-link " style="width: 60px" href="/course/signedUpCourses">Tilmeldte Kurser</a>
+                </li>
+            </div>
+            <div sec:authorize="hasRole('ADMIN')" >
+                <li class="nav-item">
+                    <a class="nav-link " style="width: 60px"  href="/admin/signUpsList">Admin</a>
                 </li>
             </div>
         </ul>
@@ -40,10 +44,10 @@
     </div>
 </nav>
 <div class="container">
-<table class="table-bordered" >
+<table class="table-bordered d-lg-table ml-auto mr-auto" style="width: 100%" >
 
     <thead>
-    <tr class="d-lg-table-row ">
+    <tr class="d-lg-table-row text-center ">
 
         <th ><p>Navn dansk</p></th>
         <th><p>Navn engelsk</p></th>
@@ -59,18 +63,15 @@
         </div>
     </tr>
     </thead>
-    <input class="form-control" type="search" id="inputSearch" name="searchInput" placeholder="Search for course" th:value="${name}" style="margin-top: 8px"/>
+    <input class="form-control" type="search" id="inputSearch" name="searchInput" placeholder="Søg efter kursus" th:value="${name}" style="margin-top: 8px"/>
     <tbody id="courseTable">
     <p></p>
     <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
     <a href="/course/create" type="button" class="btn btn-success ">Opret</a>
     </div>
-    <div sec:authorize="hasAnyRole('ROLE_STUDENT')">
-        <a href="/course/signedUpCourses" type="button" class="btn btn-info ">Se tilmeldte kurser</a>
-    </div>
     <br/>
 
-    <tr class="d-lg-table-row" th:each="Course : ${Courses}">
+    <tr class="d-lg-table-row text-center" th:each="Course : ${Courses}">
         <td  th:text="${Course.namedanish}"></td>
         <td  th:text="${Course.name}"></td>
         <td  th:text="${Course.ects}"></td>

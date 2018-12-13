@@ -52,7 +52,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/fejl")
                 .and()
                 .logout().permitAll()
-                .logoutUrl("/logout")
                 .logoutSuccessUrl("/login");
 
     }
