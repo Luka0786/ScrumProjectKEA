@@ -57,43 +57,51 @@
         </form>-->
     </span>
 </nav>
-<div class="container">
+<div class="container text-center">
     <h1>Tilmeldte fag</h1>
 
-    <table class="table-bordered">
+    <table class="table-bordered  ml-auto mr-auto text-center">
         <thead>
-        <tr>
+        <tr class="d-lg-table-row">
             <th>Navn dansk</th>
             <th>Navn engelsk</th>
             <th>ECTS</th>
+            <th>Semester</th>
+            <th>Læringsmål</th>
             <th>Language</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="Course : ${SignedUpCourses}">
+        <tr class="d-lg-table" th:each="Course : ${SignedUpCourses}">
             <td th:text="${Course.courseModel.getNamedanish()}"></td>
             <td th:text="${Course.courseModel.getName()}"></td>
             <td th:text="${Course.courseModel.getEcts()}"></td>
+            <td th:text="${Course.courseModel.getSemester()}"></td>
+            <td th:text="${Course.courseModel.getDescription()}"></td>
             <td th:text="${Course.courseModel.getLanguange()}"></td>
         </tr>
         </tbody>
     </table>
 
     <h1>Accepterede fag</h1>
-    <table class="table-bordered">
+    <table class="table-bordered ml-auto mr-auto text-center">
         <thead>
-        <tr>
+        <tr class="d-lg-table-row">
             <th>Navn dansk</th>
             <th>Navn engelsk</th>
             <th>ECTS</th>
+            <th>Semester</th>
+            <th>Læringsmål</th>
             <th>Language</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="Course : ${ApprovedSignUps}">
+        <tr class="d-lg-table-row" th:each="Course : ${ApprovedSignUps}">
             <td th:text="${Course.getNamedanish()}"></td>
             <td th:text="${Course.getName()}"></td>
             <td th:text="${Course.getEcts()}"></td>
+            <td th:text="${Course.getSemester()}"></td>
+            <td th:text="${Course.getDescription()}"></td>
             <td th:text="${Course.getLanguange()}"></td>
         </tr>
         </tbody>

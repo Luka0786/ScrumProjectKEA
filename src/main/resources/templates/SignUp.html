@@ -16,12 +16,12 @@
     </button>
 
     <span class="collapse navbar-collapse " style="position: relative" id="navbarsExample05">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav active">
             <li class="nav-item">
                 <a class="nav-link " style="width: 60px" href="/course">Kurser</a>
             </li>
             <span sec:authorize="hasAnyRole('ROLE_STUDENT')">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link " style="width: 60px"  href="/course/signedUpCourses">Tilmeldte Kurser</a>
                 </li>
             </span>

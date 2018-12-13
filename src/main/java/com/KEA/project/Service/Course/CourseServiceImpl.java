@@ -3,6 +3,7 @@ package com.KEA.project.Service.Course;
 import com.KEA.project.Model.CourseModel;
 import com.KEA.project.Model.TeacherModel;
 import com.KEA.project.Repository.CourseRepository;
+import com.KEA.project.Service.SignUp.SignUpServiceImpl;
 import org.apache.catalina.core.ApplicationContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -20,6 +21,9 @@ public class CourseServiceImpl implements CourseService
     @Autowired
     CourseRepository courseRepository;
 
+    @Autowired
+    SignUpServiceImpl signUpServiceImpl;
+
     @Override
     public void createCourse(CourseModel courseModel)
     {
@@ -29,6 +33,8 @@ public class CourseServiceImpl implements CourseService
     @Override
     public void deleteCourse(CourseModel courseModel)
     {
+
+        signUpServiceImpl.deleteAllSignUpModelsByCourseModel(courseModel);
         courseRepository.delete(courseModel);
     }
 

@@ -17,5 +17,5 @@ public interface SignUpRepository extends JpaRepository<SignUpModel,Long> {
     @Override
     SignUpModel getOne(Long aLong);
 
-
+    void deleteAllByCourseModel(CourseModel courseModel);
 }

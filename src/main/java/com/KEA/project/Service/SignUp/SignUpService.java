@@ -20,4 +20,6 @@ public interface SignUpService {
 
     void signUpToCourse(CourseModel courseModel);
 
+    void deleteAllSignUpModelsByCourseModel(CourseModel courseModel);
+
 }
