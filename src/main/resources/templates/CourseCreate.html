@@ -20,10 +20,10 @@
     <span class="collapse navbar-collapse " style="position: relative" id="navbarsExample05">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link " style="width: 60px" href="/course">Kurser</a>
+                <a class="nav-link active" style="width: 60px" href="/course">Kurser</a>
             </li>
             <span sec:authorize="hasAnyRole('ROLE_STUDENT')">
-                <li class="nav-item active">
+                <li class="nav-item ">
                     <a class="nav-link " style="width: 60px"  href="/course/signedUpCourses">Tilmeldte Kurser</a>
                 </li>
             </span>
@@ -65,9 +65,9 @@
         </form>-->
     </span>
 </nav>
-<div class="container">
-    <form method="POST" th:action="@{/course/create}">
-        <div>
+<div class="container text-center mt-3 mb-3">
+    <form class="form-control" method="POST" th:action="@{/course/create}">
+
         <input type="hidden" th:field="${Course.id}"/><br>
             <div class="form-group">
         <label>Indtast dansk navn</label>
@@ -139,7 +139,6 @@
         <input class="btn btn-success" style="margin-bottom: 10px" type="submit" value="Opret" />
 
 
-        </div>
     </form>
 </div>
 <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>

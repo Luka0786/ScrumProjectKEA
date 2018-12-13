@@ -19,7 +19,7 @@ public class SignUpModel {
     @CreationTimestamp
     public Date timestamp;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "course_id", referencedColumnName = "course_id")
     private CourseModel courseModel;
 

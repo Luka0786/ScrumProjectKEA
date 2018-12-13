@@ -1,10 +1,11 @@
 package com.KEA.project.Model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "Login_table")
-public class LoginModel
+public class LoginModel implements Serializable
 {
 
     @Id

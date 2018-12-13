@@ -53,7 +53,7 @@ public class AdministratorController {
             administratorServiceImpl.declineSignUp(signUpModel);
         }
 
-        return "redirect:/lort";
+        return "redirect:/course/admin";
     }
 
 

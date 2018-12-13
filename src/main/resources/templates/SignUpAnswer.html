@@ -61,13 +61,13 @@
 </nav>
 
 
-<div class="container">
+<div class="container text-center">
     <h2>Tilmeld studerende til kursus?</h2>
-    <form action="#" th:action="@{/admin/signUpAnswer}" method="post" >
+    <form action="#" th:action="@{/course/admin/signUpAnswer}" method="post" >
         <input type="hidden"  th:field="${signUp.id}"  />
 
-        <button type="submit" value="accept" name="accept" >JA</button>
-        <button type="submit" value="decline" name="decline" >NEJ</button>
+        <button class="btn-lg btn-success" style="width: 30%;"  type="submit" value="accept" name="accept" >Ja</button>
+        <button class="btn-lg btn-danger" style="width: 30%;"  type="submit" value="decline" name="decline" >Nej</button>
 
     </form>
 </div>

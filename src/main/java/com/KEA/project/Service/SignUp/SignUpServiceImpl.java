@@ -11,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,8 +72,14 @@ public class SignUpServiceImpl implements SignUpService
         createSignUp(signUp);
     }
 
-    public List<CourseModel> getAllApprovedSignUps()
-    {
+    @Override
+    @Transactional
+    public void deleteAllSignUpModelsByCourseModel(CourseModel courseModel) {
+        signUpRepository.deleteAllByCourseModel(courseModel);
+    }
+
+    public List<CourseModel> getAllApprovedSignUps() {
+
         List<CourseModel> courses = courseServiceImpl.getAllCourses();
 
         List<CourseModel> approved = new ArrayList<>();

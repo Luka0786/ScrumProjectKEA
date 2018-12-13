@@ -58,25 +58,29 @@
     </span>
 </nav>
 <div class="container">
-    <table class="table-bordered">
+    <table class="table-bordered ml-auto mr-auto text-center">
         <thead>
-        <tr>
+        <tr class="d-lg-table-row">
             <th>Timestamp</th>
             <th>Kursus Navn</th>
             <th>Student Navn</th>
+            <th>ECTS</th>
+            <th>Semester</th>
+            <th>Indstillinger</th>
         </tr>
         </thead>
         <tbody>
         <p></p>
         <br/>
 
-            <tr th:each="signUp : ${signUpList}">
+            <tr class="d-lg-table-row" th:each="signUp : ${signUpList}">
 
-                <td th:text="${signUp.timestamp}"></td>
-                <td th:text="${signUp.courseModel.getNamedanish()}"></td>
-                <td th:text="${signUp.studentModel.getName()}"></td>
-
-                <a th:href="${'/admin/signUpAnswer?id='+signUp.getId()}" type="button">Besvar tilmeldelse</a>
+                <td class="p-2" th:text="${signUp.timestamp}"></td>
+                <td class="p-2"  th:text="${signUp.courseModel.getNamedanish()}"></td>
+                <td class="p-2"  th:text="${signUp.studentModel.getName()}"></td>
+                <td class="p-2"  th:text="${signUp.courseModel.getEcts()}"></td>
+                <td class="p-2"  th:text="${signUp.courseModel.getSemester()}"></td>
+                <td class="p-2"  ><a th:href="${'/course/admin/signUpAnswer?id='+signUp.getId()}" class="btn btn-info" type="button">Besvar tilmeldelse</a></td>
 
 
             </tr>

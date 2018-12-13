@@ -4,11 +4,12 @@ import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 @Entity
 @Table(name = "Course_table")
-public class CourseModel
+public class CourseModel implements Serializable
 {
     @Id
     @Column(name = "course_id")
