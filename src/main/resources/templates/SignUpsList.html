@@ -4,9 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <title>AllCourses</title>
-    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.1.0/css/bootstrap.css" />
 </head>
 <body>
+<nav class="navbar navbar-expand-xl navbar-dark" style="background-color: #233249">
+    <a class="navbar-brand" href="https://kea.dk/"><img  src="https://kea.dk/images/DA/Presse/Downloads/KEA_logo_DK_Web.jpg" alt="" width="110" height="52">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <span class="collapse navbar-collapse " style="position: relative" id="navbarsExample05">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link " style="width: 60px" href="/course">Kurser</a>
+            </li>
+            <span sec:authorize="hasAnyRole('ROLE_STUDENT')">
+                <li class="nav-item">
+                    <a class="nav-link " style="width: 60px"  href="/course/signedUpCourses">Tilmeldte Kurser</a>
+                </li>
+            </span>
+            <span sec:authorize="hasRole('ADMIN')" >
+                <li class="nav-item active">
+                    <a class="nav-link " style="width: 60px" href="/course/admin">Admin</a>
+                </li>
+            </span>
+            <span sec:authorize="hasRole('ADMIN')" >
+                <li class="nav-item">
+                    <a class="nav-link "  style="width: 100px" href="/course/admin/fetchCourses">Hent kurser</a>
+                </li>
+             </span>
+             <span sec:authorize="hasRole('ADMIN')" >
+                <li class="nav-item">
+                    <a class="nav-link " style="width: 100px"  href="/course/admin/fetchTeachers">Hent lærere</a>
+                </li>
+              </span>
+
+
+            <span style="position: absolute; right: 140px">
+                <li class="nav-item">
+                    <span class="nav-link">Bruger: <span sec:authentication="name"></span></span>
+                </li>
+
+            </span>
+            <span style="position: absolute; right: -2px; top: 5px;">
+                <li><button class="btn-sm btn-danger" onclick="window.location.href='/logout'" >Log ud</button> </li>
+            </span>
+        </ul>
+        <!--
+        <form class="form-inline my-2 my-md-0">
+            <button onclick="goBack()" class="btn btn-info" type="button">Tilbage</button>
+        </form>-->
+    </span>
+</nav>
 <div class="container">
     <table class="table-bordered">
         <thead>
@@ -19,19 +69,6 @@
         <tbody>
         <p></p>
         <br/>
-        <!--
-     <tr th:each="signUp : ${signUpList}">
-            <td th:text="${signUp.timestamp}"></td>
-            <td th:text="${signUp.courseModel.getNamedanish()}"></td>
-            <td th:text="${signUp.studentModel.getName()}"></td>
-
-            <button class="btn btn-success" type="submit">Ja</button>
-            <a href="/course"><button type="button" class="btn btn-danger" >Nej</button></a>
-
-        </tr>
-        -->
-
-
 
             <tr th:each="signUp : ${signUpList}">
 
@@ -48,6 +85,7 @@
         </tbody>
     </table>
     <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.1.0/js/bootstrap.min.js}"></script>
 </div>
 </body>
 </html>

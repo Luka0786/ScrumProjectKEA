@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/course/admin")
 public class AdministratorController {
 
 
     @Autowired
     AdministratorServiceImpl administratorServiceImpl;
+
+
 
     @GetMapping("/signUpsList")
     public String getAllSignUpsFromSpecificCourse(@RequestParam("id") long id, Model model)
@@ -53,5 +55,7 @@ public class AdministratorController {
 
         return "redirect:/lort";
     }
+
+
 
 }

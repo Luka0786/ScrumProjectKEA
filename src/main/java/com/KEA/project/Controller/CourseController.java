@@ -24,22 +24,23 @@ public class CourseController
     @Autowired
     CourseRestController courseRestController;
 
-    @Autowired
-    TeacherRestController teacherRestController;
 
-    @Autowired
-    TeacherServiceImpl teacherServiceImpl;
+
 
     @GetMapping()
     public String getAllCourses(Model model)
     {
-        teacherServiceImpl.createAllTeachers(teacherRestController.fetchAllTeachers());
-
-        courseServiceImpl.createAllCourses(courseRestController.fetchAllCourses());
-
         model.addAttribute("Courses", courseServiceImpl.getAllCourses());
 
         return "Course";
+    }
+
+    @GetMapping("/admin")
+    public String adminCourseView(Model model){
+
+        model.addAttribute("Courses", courseServiceImpl.getAllCourses());
+
+        return "Admin";
     }
 
     @GetMapping("/create")
