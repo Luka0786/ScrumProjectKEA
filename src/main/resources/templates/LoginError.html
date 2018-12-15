@@ -2,13 +2,14 @@
       xmlns:xlmns="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.1.0/css/bootstrap.css" />
-    <title>Login</title>
+    <title>Login Fejl</title>
 </head>
 <body class="text-center jumbotron">
 <form name='f' th:action="@{/login}" method='POST' >
     <form class="form-signin">
         <img class="mb-4 " src="https://kea.dk/images/DA/Presse/Downloads/KEA_logo_DK_Web.jpg" alt="" width="280" height="124">
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <h2 style="color: red">Forkerte login informationer. Prøv igen</h2>
         <input type='text' name='username' value='' placeholder="Username" required="" style="font-size: 18px; width: 250px; height: 50px; margin: 3px"><br>
         <input type='password' name='password' placeholder="Password" required="" style="font-size: 18px; width: 250px; height: 50px; margin: 3px"><br>
         <button class="btn btn-primary btn-lg" name="submit" type="submit" style="margin: 3px">Sign in</button>

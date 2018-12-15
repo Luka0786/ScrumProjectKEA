@@ -3,11 +3,16 @@
       xmlns:xlmns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>CourseDetails</title>
+    <title>Kursus Detaljer</title>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.1.0/css/bootstrap.css" />
 </head>
+<style>
+    body{
+        margin: 0px;
+    }
+</style>
 <body>
-<nav class="navbar navbar-expand-xl navbar-dark" style="background-color: #233249">
+<nav class="navbar navbar-expand-xl navbar-dark " style="background-color: #233249;">
     <a class="navbar-brand" href="https://kea.dk/"><img  src="https://kea.dk/images/DA/Presse/Downloads/KEA_logo_DK_Web.jpg" alt="" width="110" height="52">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,6 +67,7 @@
         </form>-->
     </span>
 </nav>
+<div>
 <table class="table-bordered table">
     <thead>
     <tr>
@@ -81,7 +87,7 @@
         <th>Fagets indhold</th>
         <th>Lærings aktiviteter</th>
         <th>Eksamensform</th>
-        <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
+        <div sec:authorize="hasAnyRole('ROLE_ADMIN')">
             <th>Indstillinger</th>
         </div>
     </tr>
@@ -105,15 +111,16 @@
         <td th:text="${Course.learningActivities}"></td>
         <td th:text="${Course.examForm}"></td>
 
-        <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
+        <div sec:authorize="hasAnyRole('ROLE_ADMIN')">
             <td>
-                <a class="btn btn-info" th:href="${'/course/update?id='+Course.getId()}" type="button">Opdater</a>
+                <a style="margin-bottom: 6px" class="btn btn-info" th:href="${'/course/update?id='+Course.getId()}" type="button">Opdater</a>
                 <a class="btn btn-danger" th:href="${'/course/delete?id='+Course.getId()}" type="button">Slet</a>
             </td>
         </div>
     </tr>
     </tbody>
 </table>
+</div>
 <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/4.1.0/js/bootstrap.min.js}"></script>
 </body>

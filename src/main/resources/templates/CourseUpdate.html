@@ -3,7 +3,7 @@
       xmlns:xlmns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Opdater Kursus</title>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.1.0/css/bootstrap.css" />
 </head>
 <body>
@@ -65,6 +65,7 @@
 
 <div class="container text-center mt-3 mb-3">
     <form class="form-control" method="POST" th:action="@{/course/update}">
+        <input type="hidden" th:field="${Course.id}">
         <div>
             <label>Indtast dansk navn</label>
             <input class="form-control" required type="text" th:field="${Course.namedanish}"><br>

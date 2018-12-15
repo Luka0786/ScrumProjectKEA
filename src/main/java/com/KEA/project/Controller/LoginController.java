@@ -12,25 +12,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class LoginController {
 
-
-   @Autowired
-   TeacherServiceImpl teacherServiceImpl;
-
-   @Autowired
-    TeacherRestService teacherRestService;
-
-   @Autowired
-    CourseServiceImpl courseServiceImpl;
-
-
     @GetMapping("/login")
     public String login() {
 
-        //teacherServiceImpl.createAllTeachers(teacherRestService.fetchAllTeachers());
 
-       //courseServiceImpl.createAllCourses(courseRestController.fetchAllCourses());
 
         return "login";
+    }
+
+    @GetMapping("/loginError")
+    public String loginError()
+    {
+        return "LoginError";
     }
 
     
