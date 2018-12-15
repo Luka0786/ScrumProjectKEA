@@ -1,7 +1,6 @@
 package com.KEA.project.Model;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;
 import java.util.Date;

@@ -3,7 +3,6 @@ package com.KEA.project.Model;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 

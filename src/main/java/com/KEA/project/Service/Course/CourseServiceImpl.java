@@ -1,15 +1,11 @@
 package com.KEA.project.Service.Course;
 
 import com.KEA.project.Model.CourseModel;
-import com.KEA.project.Model.TeacherModel;
 import com.KEA.project.Repository.CourseRepository;
 import com.KEA.project.Service.SignUp.SignUpServiceImpl;
-import org.apache.catalina.core.ApplicationContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;

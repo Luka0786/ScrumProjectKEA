@@ -92,17 +92,20 @@ public class SignUpServiceImpl implements SignUpService
         } else {
             username = principal.toString();
         }
-
+        //Uden try catch vil der forekomme nullpointer crash
         for (int i = 0; i < courses.size(); i++) {
 
             List<StudentModel>students = courses.get(i).getStudentss();
-
-            for (int j = 0; j < students.size(); j++) {
-                if (students.get(j).getUsername().equals(username))
-                {
-                    approved.add(courses.get(i));
+            try{
+                for (int j = 0; j < students.size(); j++) {
+                    if (students.get(j).getUsername().equals(username)) {
+                        approved.add(courses.get(i));
+                    }
                 }
+            }catch (NullPointerException NPE){
+
             }
+
         }
 
         return approved;

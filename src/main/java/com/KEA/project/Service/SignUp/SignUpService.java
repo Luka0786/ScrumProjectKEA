@@ -4,7 +4,6 @@ import com.KEA.project.Model.CourseModel;
 import com.KEA.project.Model.SignUpModel;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface SignUpService {
 

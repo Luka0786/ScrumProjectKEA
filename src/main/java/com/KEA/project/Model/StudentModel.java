@@ -1,12 +1,8 @@
 package com.KEA.project.Model;
 
-import org.springframework.lang.Nullable;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.HashMap;
 
 @Entity
 @Table(name = "Student_Table")

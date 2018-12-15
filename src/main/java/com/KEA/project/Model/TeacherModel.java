@@ -4,7 +4,6 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 @Entity
 @Table(name = "Teacher_Table")
