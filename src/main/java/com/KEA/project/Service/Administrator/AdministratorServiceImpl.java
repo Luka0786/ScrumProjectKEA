@@ -31,19 +31,17 @@ public class AdministratorServiceImpl implements AdministratorService
 
         ArrayList<StudentModel> students = currentSignUpModel.getCourseModel().getStudents();
 
-        System.out.println(students.size()+ "KEK");
+
 
         students.add(requestedStudent);
 
         CourseModel courseModel = currentSignUpModel.getCourseModel();
 
-        System.out.println(courseModel.getName()+ "KEK");
 
         courseModel.setStudents(students);
 
         courseServiceImpl.updateCourse(courseModel);
 
-        System.out.println(courseModel.getStudents().size());
 
         signUpServiceImpl.deleteSignUpModel(signUpModel);
     }
