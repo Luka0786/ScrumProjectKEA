@@ -38,6 +38,8 @@ public class CourseServiceImpl implements CourseService
     @Override
     public void updateCourse(CourseModel courseModel)
     {
+        courseModel.setStudents(findByClassCode(courseModel.getClassCode()).getStudents());
+        courseModel.setTeachers(findByClassCode(courseModel.getClassCode()).getTeachers());
         courseRepository.save(courseModel);
     }
 

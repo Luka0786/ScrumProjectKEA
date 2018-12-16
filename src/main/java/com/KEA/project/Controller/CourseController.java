@@ -71,7 +71,8 @@ public class CourseController
     @GetMapping("/update")
     public String updateCourse(@RequestParam("id") long id, Model model)
     {
-        model.addAttribute("Course", courseServiceImpl.findCourseById(id));
+        model.addAttribute("Course", courseServiceImpl.findSpecificCourse(id));
+
 
         return "CourseUpdate";
     }

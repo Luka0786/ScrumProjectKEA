@@ -68,12 +68,19 @@ public class TeacherServiceImpl implements TeacherService
 
             List<TeacherModel> teachers = courses.get(i).getTeacherss();
 
-            for (int j = 0; j < teachers.size(); j++) {
-                if (teachers.get(j).getUsername().equals(username))
-                {
-                    connected.add(courses.get(i));
+            try{
+                for (int j = 0; j < teachers.size(); j++) {
+                    if (teachers.get(j).getUsername().equals(username))
+                    {
+                        connected.add(courses.get(i));
+                    }
                 }
+            }catch (NullPointerException NPE)
+            {
+
             }
+
+
         }
 
         return connected;
