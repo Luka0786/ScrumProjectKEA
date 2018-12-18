@@ -67,7 +67,7 @@ button{
     <table id="tableTest" class="table-bordered d-lg-table ml-auto mr-auto" style="width: 100%" >
 
         <thead>
-        <tr class="d-lg-table-row text-center ">
+        <tr class="text-center ">
 
             <th ><p>Navn dansk</p></th>
             <th><p>Navn engelsk</p></th>
@@ -83,7 +83,7 @@ button{
         <input class="form-control" type="search" id="inputSearch" name="searchInput" placeholder="Søg efter kursus" th:value="${name}" style="margin-top: 8px; margin-bottom: 8px;"/>
         <tbody id="courseTable">
 
-        <tr class="d-lg-table-row text-center" th:each="Course : ${Courses}">
+        <tr class="text-center" th:each="Course : ${Courses}">
             <td  th:text="${Course.namedanish}"></td>
             <td  th:text="${Course.name}"></td>
             <td th:text="${Course.semester}"></td>

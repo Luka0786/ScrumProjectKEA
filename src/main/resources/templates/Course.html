@@ -71,7 +71,7 @@
 <table class="table-bordered d-lg-table ml-auto mr-auto" style="width: 100%" >
 
     <thead>
-    <tr class="d-lg-table-row text-center ">
+    <tr class="text-center ">
 
         <th ><p>Navn dansk</p></th>
         <th><p>Navn engelsk</p></th>
@@ -95,7 +95,7 @@
     </div>
     <br/>
 
-    <tr class="d-lg-table-row text-center" th:each="Course : ${Courses}">
+    <tr class="text-center" th:each="Course : ${Courses}">
         <td  th:text="${Course.namedanish}"></td>
         <td  th:text="${Course.name}"></td>
         <td th:text="${Course.semester}"></td>
