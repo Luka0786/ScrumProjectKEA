@@ -6,9 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface SignUpRepository extends JpaRepository<SignUpModel,Long> {
+public interface SignUpRepository extends JpaRepository<SignUpModel, Long>
+{
 
-     List<SignUpModel> findAllByCourseModel_IdOrderByTimestamp(Long id);
+    List<SignUpModel> findAllByCourseModel_IdOrderByTimestamp(Long id);
 
 
     @Override

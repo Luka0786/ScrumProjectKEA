@@ -5,7 +5,8 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "Login_roles")
-public class LoginRolesModel implements Serializable {
+public class LoginRolesModel implements Serializable
+{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,26 +19,33 @@ public class LoginRolesModel implements Serializable {
     @Column(name = "login_roles_role")
     private String role;
 
-    public LoginRolesModel(LoginModel username, String role) {
+    public LoginRolesModel(LoginModel username, String role)
+    {
         this.username = username;
         this.role = role;
     }
 
-    public LoginRolesModel() {}
+    public LoginRolesModel()
+    {
+    }
 
-    public LoginModel getUsername() {
+    public LoginModel getUsername()
+    {
         return username;
     }
 
-    public void setUsername(LoginModel username) {
+    public void setUsername(LoginModel username)
+    {
         this.username = username;
     }
 
-    public String getRole() {
+    public String getRole()
+    {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(String role)
+    {
         this.role = role;
     }
 }

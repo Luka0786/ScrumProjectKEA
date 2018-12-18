@@ -16,7 +16,8 @@ import org.springframework.web.client.RestTemplate;
 import java.util.LinkedList;
 
 @Service
-public class TeacherRestService {
+public class TeacherRestService
+{
 
     @Autowired
     LoginServiceImpl loginServiceImpl;
@@ -26,25 +27,28 @@ public class TeacherRestService {
 
     final String courseUrl = "http://18.185.40.91/teacher";
 
-    public LinkedList<TeacherModel> fetchAllTeachers() {
+    public LinkedList<TeacherModel> fetchAllTeachers()
+    {
 
         RestTemplate restTemplate = new RestTemplate();
 
         ResponseEntity<LinkedList<TeacherModel>> teacherResponse =
                 restTemplate.exchange(courseUrl,
-                        HttpMethod.GET, null, new ParameterizedTypeReference<LinkedList<TeacherModel>>() {
+                        HttpMethod.GET, null, new ParameterizedTypeReference<LinkedList<TeacherModel>>()
+                        {
                         });
         LinkedList<TeacherModel> teachers = teacherResponse.getBody();
 
-        for (TeacherModel teacher : teachers) {
-            teacher.setUsername(teacher.getEmail()+teacher.getId());
+        for (TeacherModel teacher : teachers)
+        {
+            teacher.setUsername(teacher.getEmail() + teacher.getId());
 
             String temporaryPassword = teacher.getName() + teacher.getId();
 
-            LoginModel loginModel = new LoginModel(teacher.getUsername(),BCrypt.hashpw(temporaryPassword,BCrypt.gensalt()),1);
+            LoginModel loginModel = new LoginModel(teacher.getUsername(), BCrypt.hashpw(temporaryPassword, BCrypt.gensalt()), 1);
             loginServiceImpl.createLogin(loginModel);
 
-            LoginRolesModel loginRolesModel = new LoginRolesModel(loginModel,"ROLE_TEACHER");
+            LoginRolesModel loginRolesModel = new LoginRolesModel(loginModel, "ROLE_TEACHER");
             loginRolesServiceImpl.createRoles(loginRolesModel);
         }
 

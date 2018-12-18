@@ -5,7 +5,8 @@ import com.KEA.project.Model.SignUpModel;
 
 import java.util.List;
 
-public interface SignUpService {
+public interface SignUpService
+{
 
     List<SignUpModel> getAllSignUpsByCourseIdOrderByTimestamp(long id);
 

@@ -29,22 +29,26 @@ public class SignUpServiceImpl implements SignUpService
     StudentServiceImpl studentServiceImpl;
 
     @Override
-    public List<SignUpModel> getAllSignUpsByCourseIdOrderByTimestamp(long id) {
+    public List<SignUpModel> getAllSignUpsByCourseIdOrderByTimestamp(long id)
+    {
         return signUpRepository.findAllByCourseModel_IdOrderByTimestamp(id);
     }
 
     @Override
-    public void createSignUp(SignUpModel signUpModel) {
+    public void createSignUp(SignUpModel signUpModel)
+    {
         signUpRepository.save(signUpModel);
     }
 
     @Override
-    public SignUpModel findSpecificSignUp(long id) {
+    public SignUpModel findSpecificSignUp(long id)
+    {
         return signUpRepository.getOne(id);
     }
 
     @Override
-    public List<SignUpModel> getAllSignUps() {
+    public List<SignUpModel> getAllSignUps()
+    {
         return signUpRepository.findAll();
     }
 
@@ -55,30 +59,35 @@ public class SignUpServiceImpl implements SignUpService
     }
 
     @Override
-    public void signUpToCourse(CourseModel courseModel) {
+    public void signUpToCourse(CourseModel courseModel)
+    {
         String username;
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof UserDetails) {
-            username = ((UserDetails)principal).getUsername();
-        } else {
+        if (principal instanceof UserDetails)
+        {
+            username = ((UserDetails) principal).getUsername();
+        } else
+        {
             username = principal.toString();
         }
 
         StudentModel student = studentServiceImpl.findStudentByUsername(username);
 
-        SignUpModel signUp = new SignUpModel(courseModel,student);
+        SignUpModel signUp = new SignUpModel(courseModel, student);
 
         createSignUp(signUp);
     }
 
     @Override
     @Transactional
-    public void deleteAllSignUpModelsByCourseModel(CourseModel courseModel) {
+    public void deleteAllSignUpModelsByCourseModel(CourseModel courseModel)
+    {
         signUpRepository.deleteAllByCourseModel(courseModel);
     }
 
-    public List<CourseModel> getAllApprovedSignUps() {
+    public List<CourseModel> getAllApprovedSignUps()
+    {
 
         List<CourseModel> courses = courseServiceImpl.getAllCourses();
 
@@ -87,22 +96,29 @@ public class SignUpServiceImpl implements SignUpService
         String username;
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof UserDetails) {
-            username = ((UserDetails)principal).getUsername();
-        } else {
+        if (principal instanceof UserDetails)
+        {
+            username = ((UserDetails) principal).getUsername();
+        } else
+        {
             username = principal.toString();
         }
         //Uden try catch vil der forekomme nullpointer crash
-        for (int i = 0; i < courses.size(); i++) {
+        for (int i = 0; i < courses.size(); i++)
+        {
 
-            List<StudentModel>students = courses.get(i).getStudentss();
-            try{
-                for (int j = 0; j < students.size(); j++) {
-                    if (students.get(j).getUsername().equals(username)) {
+            List<StudentModel> students = courses.get(i).getStudentss();
+            try
+            {
+                for (int j = 0; j < students.size(); j++)
+                {
+                    if (students.get(j).getUsername().equals(username))
+                    {
                         approved.add(courses.get(i));
                     }
                 }
-            }catch (NullPointerException NPE){
+            } catch (NullPointerException NPE)
+            {
 
             }
 

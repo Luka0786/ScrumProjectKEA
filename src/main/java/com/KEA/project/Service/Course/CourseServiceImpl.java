@@ -50,7 +50,8 @@ public class CourseServiceImpl implements CourseService
     }
 
     @Override
-    public CourseModel findByClassCode(String classCode) {
+    public CourseModel findByClassCode(String classCode)
+    {
         return courseRepository.findByClassCode(classCode);
     }
 
@@ -61,12 +62,14 @@ public class CourseServiceImpl implements CourseService
     }
 
     @Override
-    public List<CourseModel> getAllCourses() {
+    public List<CourseModel> getAllCourses()
+    {
         return courseRepository.findAll();
     }
 
     @Override
-    public List<CourseModel> createAllCourses(LinkedList<CourseModel> courseModels) {
+    public List<CourseModel> createAllCourses(LinkedList<CourseModel> courseModels)
+    {
         return courseRepository.saveAll(courseModels);
     }
 

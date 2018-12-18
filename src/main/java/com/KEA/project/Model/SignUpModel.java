@@ -8,7 +8,8 @@ import java.util.Date;
 
 @Entity
 @Table(name = "Sign_Up_Table")
-public class SignUpModel {
+public class SignUpModel
+{
     @Id
     @Column(name = "sign_up_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,48 +24,57 @@ public class SignUpModel {
     private CourseModel courseModel;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "student_id",referencedColumnName = "student_id")
+    @JoinColumn(name = "student_id", referencedColumnName = "student_id")
     private StudentModel studentModel;
 
 
-
-
-    public SignUpModel(CourseModel courseModel, StudentModel studentModel) {
+    public SignUpModel(CourseModel courseModel, StudentModel studentModel)
+    {
         this.courseModel = courseModel;
         this.studentModel = studentModel;
     }
 
-    public SignUpModel(){}
+    public SignUpModel()
+    {
+    }
 
-    public long getId() {
+    public long getId()
+    {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(long id)
+    {
         this.id = id;
     }
 
-    public Date getTimestamp() {
+    public Date getTimestamp()
+    {
         return timestamp;
     }
 
-    public void setTimestamp(Date timestamp) {
+    public void setTimestamp(Date timestamp)
+    {
         this.timestamp = timestamp;
     }
 
-    public CourseModel getCourseModel() {
+    public CourseModel getCourseModel()
+    {
         return courseModel;
     }
 
-    public void setCourseModel(CourseModel courseModel) {
+    public void setCourseModel(CourseModel courseModel)
+    {
         this.courseModel = courseModel;
     }
 
-    public StudentModel getStudentModel() {
+    public StudentModel getStudentModel()
+    {
         return studentModel;
     }
 
-    public void setStudentModel(StudentModel studentModel) {
+    public void setStudentModel(StudentModel studentModel)
+    {
         this.studentModel = studentModel;
     }
 }

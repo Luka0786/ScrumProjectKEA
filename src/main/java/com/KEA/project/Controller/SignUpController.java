@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/course")
-public class SignUpController {
+public class SignUpController
+{
 
     @Autowired
     SignUpServiceImpl signUpServiceImpl;
@@ -20,18 +21,20 @@ public class SignUpController {
     CourseServiceImpl courseServiceImpl;
 
     @GetMapping("/signUp")
-    public String signUpToCourse(@RequestParam("id") long id, Model model){
+    public String signUpToCourse(@RequestParam("id") long id, Model model)
+    {
 
-        model.addAttribute("Course",courseServiceImpl.findCourseById(id) );
+        model.addAttribute("Course", courseServiceImpl.findCourseById(id));
 
         return "SignUp";
 
     }
 
     @PostMapping("/signUp")
-    public String signUpToCourse(@ModelAttribute CourseModel courseModel){
+    public String signUpToCourse(@ModelAttribute CourseModel courseModel)
+    {
 
-       signUpServiceImpl.signUpToCourse(courseModel);
+        signUpServiceImpl.signUpToCourse(courseModel);
 
         return "redirect:/course";
     }
@@ -40,13 +43,11 @@ public class SignUpController {
     public String signedUpCourses(Model model)
     {
 
-        model.addAttribute("SignedUpCourses",signUpServiceImpl.getAllSignUps());
+        model.addAttribute("SignedUpCourses", signUpServiceImpl.getAllSignUps());
         model.addAttribute("ApprovedSignUps", signUpServiceImpl.getAllApprovedSignUps());
 
         return "SignedUpCourses";
     }
-
-
 
 
 }

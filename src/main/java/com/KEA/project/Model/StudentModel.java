@@ -23,28 +23,9 @@ public class StudentModel implements Serializable
     @Column(name = "student_username")
     private String username;
 
-    /*
-    @Column(name = "student_password")
-    private String password;*/
-   // @Nullable
     @Column(name = "student_enabled")
     private int enabled;
 
-/*
-    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name = "administrator_id",nullable = true,insertable = false,updatable = false)
-    private CounselorModel administrator;*/
-
-/*
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "counselor_id",nullable = false)
-    private CounselorModel counselor;*/
-
-
-
- /*   @Column(name = "requests_map")
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "sign_up_id")
-    SignUpModel signups;*/
 
 
     public StudentModel(String name, @Email String email, String username, int enabled)
@@ -55,55 +36,59 @@ public class StudentModel implements Serializable
         this.enabled = enabled;
     }
 
-    public StudentModel(){
+    public StudentModel()
+    {
 
     }
 
-    public long getId() {
+    public long getId()
+    {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(long id)
+    {
         this.id = id;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public String getEmail() {
+    public String getEmail()
+    {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email)
+    {
         this.email = email;
     }
 
-    public String getUsername() {
+    public String getUsername()
+    {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(String username)
+    {
         this.username = username;
     }
 
-    public int getEnabled() {
+    public int getEnabled()
+    {
         return enabled;
     }
 
-    public void setEnabled(int enabled) {
+    public void setEnabled(int enabled)
+    {
         this.enabled = enabled;
     }
 
-    /*public CounselorModel getCounselor() {
-        return counselor;
-    }
-
-    public void setCounselor(CounselorModel counselor) {
-        this.counselor = counselor;
-    }*/
 }

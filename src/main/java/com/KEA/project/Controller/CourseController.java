@@ -23,8 +23,6 @@ public class CourseController
     CourseRestController courseRestController;
 
 
-
-
     @Autowired
     TeacherController teacherController;
 
@@ -37,7 +35,8 @@ public class CourseController
     }
 
     @GetMapping("/admin")
-    public String adminCourseView(Model model){
+    public String adminCourseView(Model model)
+    {
 
         model.addAttribute("Courses", courseServiceImpl.getAllCourses());
 
@@ -49,8 +48,8 @@ public class CourseController
     {
         CourseModel courseModel = new CourseModel();
 
-        courseModel.setId((long)courseServiceImpl.getAllCourses().size()+1);
-        //DETTE ER EN LAPPE LØSNING SOM VIRKER SÅ ALLE ER GLADE
+        courseModel.setId((long) courseServiceImpl.getAllCourses().size() + 1);
+
         model.addAttribute("Course", courseModel);
 
         return "CourseCreate";

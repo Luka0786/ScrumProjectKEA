@@ -21,13 +21,15 @@ public class LoginModel implements Serializable
     @Column(name = "enabled")
     private int enabled;
 
-    public LoginModel(String username, String password,int enabled) {
+    public LoginModel(String username, String password, int enabled)
+    {
         this.username = username;
         this.password = password;
         this.enabled = enabled;
     }
 
-    public LoginModel(){
+    public LoginModel()
+    {
 
     }
 }

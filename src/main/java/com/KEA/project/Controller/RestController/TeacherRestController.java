@@ -14,8 +14,8 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/course")
-public class TeacherRestController {
-
+public class TeacherRestController
+{
 
 
     @Autowired
@@ -25,17 +25,19 @@ public class TeacherRestController {
     TeacherServiceImpl teacherServiceImpl;
 
     @GetMapping("/admin/fetchTeachers")
-    public void fetchAllTeachers(HttpServletResponse response) {
+    public void fetchAllTeachers(HttpServletResponse response)
+    {
 
         teacherServiceImpl.createAllTeachers(teacherRestService.fetchAllTeachers());
 
-        try {
+        try
+        {
             response.sendRedirect("/course/admin");
-        } catch (IOException e) {
+        } catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
-
 
 
 }

@@ -14,7 +14,8 @@ import java.util.Calendar;
 import java.util.LinkedList;
 
 @Service
-public class CourseRestService {
+public class CourseRestService
+{
 
     @Autowired
     CourseServiceImpl courseServiceImpl;
@@ -23,68 +24,68 @@ public class CourseRestService {
 
 
     public LinkedList<CourseModel> fetchAllCourses()
-{
+    {
 
-    RestTemplate restTemplate = new RestTemplate();
-
-
-    ResponseEntity<LinkedList<CourseModel>> courseResponse =
-            restTemplate.exchange(courseUrl,
-                    HttpMethod.GET, null, new ParameterizedTypeReference<LinkedList<CourseModel>>()
-                    {
-                    });
-
-    LinkedList<CourseModel> courses = courseResponse.getBody();
-
-    int year = Calendar.getInstance().get(Calendar.YEAR);
-
-    for (CourseModel course : courses) {
+        RestTemplate restTemplate = new RestTemplate();
 
 
-        course.setClassCode(course.getName() + "_" + course.getId() + "_" + year);
+        ResponseEntity<LinkedList<CourseModel>> courseResponse =
+                restTemplate.exchange(courseUrl,
+                        HttpMethod.GET, null, new ParameterizedTypeReference<LinkedList<CourseModel>>()
+                        {
+                        });
 
-        try {
-            if (!courseServiceImpl.findByClassCode(course.getClassCode()).getClassCode().isEmpty()) {
+        LinkedList<CourseModel> courses = courseResponse.getBody();
+
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+
+        for (CourseModel course : courses)
+        {
 
 
-                course.setMinimumOfStudents(courseServiceImpl.findByClassCode(course.getClassCode()).getMinimumOfStudents());
-                course.setExpectedOfStudents(courseServiceImpl.findByClassCode(course.getClassCode()).getExpectedOfStudents());
-                course.setMaximumOfStudents(courseServiceImpl.findByClassCode(course.getClassCode()).getMaximumOfStudents());
-                course.setPrerequisites(courseServiceImpl.findByClassCode(course.getClassCode()).getPrerequisites());
-                course.setContent(courseServiceImpl.findByClassCode(course.getClassCode()).getContent());
-                course.setLearningActivities(courseServiceImpl.findByClassCode(course.getClassCode()).getLearningActivities());
-                course.setExamForm(courseServiceImpl.findByClassCode(course.getClassCode()).getExamForm());
-                course.setStudents(courseServiceImpl.findByClassCode(course.getClassCode()).getStudents());
-                course.setTeachers(courseServiceImpl.findByClassCode(course.getClassCode()).getTeachers());
+            course.setClassCode(course.getName() + "_" + course.getId() + "_" + year);
 
+            try
+            {
+                if (!courseServiceImpl.findByClassCode(course.getClassCode()).getClassCode().isEmpty())
+                {
+
+
+                    course.setMinimumOfStudents(courseServiceImpl.findByClassCode(course.getClassCode()).getMinimumOfStudents());
+                    course.setExpectedOfStudents(courseServiceImpl.findByClassCode(course.getClassCode()).getExpectedOfStudents());
+                    course.setMaximumOfStudents(courseServiceImpl.findByClassCode(course.getClassCode()).getMaximumOfStudents());
+                    course.setPrerequisites(courseServiceImpl.findByClassCode(course.getClassCode()).getPrerequisites());
+                    course.setContent(courseServiceImpl.findByClassCode(course.getClassCode()).getContent());
+                    course.setLearningActivities(courseServiceImpl.findByClassCode(course.getClassCode()).getLearningActivities());
+                    course.setExamForm(courseServiceImpl.findByClassCode(course.getClassCode()).getExamForm());
+                    course.setStudents(courseServiceImpl.findByClassCode(course.getClassCode()).getStudents());
+                    course.setTeachers(courseServiceImpl.findByClassCode(course.getClassCode()).getTeachers());
+
+                }
+
+
+            } catch (NullPointerException NPE)
+            {
+
+
+                course.setMinimumOfStudents(15);
+                course.setExpectedOfStudents(35);
+                course.setMaximumOfStudents(50);
+                course.setPrerequisites("English, must have a computer capable of running Intellij IDEA");
+                course.setContent("Java, Intellij IDEA");
+                course.setLearningActivities("Live Coding, Group Projects, Individual Projects");
+                course.setExamForm("Oral Exam");
+                course.setStudents(new ArrayList<>());
+                course.setTeachers(new ArrayList<>());
             }
-
-
-        }catch (NullPointerException NPE){
-
-
-            course.setMinimumOfStudents(15);
-            course.setExpectedOfStudents(35);
-            course.setMaximumOfStudents(50);
-            course.setPrerequisites("English, must have a computer capable of running Intellij IDEA");
-            course.setContent("Java, Intellij IDEA");
-            course.setLearningActivities("Live Coding, Group Projects, Individual Projects");
-            course.setExamForm("Oral Exam");
-            course.setStudents(new ArrayList<>());
-            course.setTeachers(new ArrayList<>());
         }
-    }
-    return courses;
+        return courses;
 
-}
+    }
 
     public ResponseEntity<CourseModel> reflectCreatedCourse(ResponseEntity<CourseModel> postCourse)
     {
         return postCourse;
     }
 
-    public ResponseEntity<CourseModel> reflectUpdatedCourse(ResponseEntity<CourseModel> response)
-    {
-        return response;
-    }
 }

@@ -27,56 +27,67 @@ public class TeacherModel implements Serializable
     private ArrayList<CourseModel> courses;
 
     @Column(name = "course_map")
-    @OneToMany(mappedBy = "course_id",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "course_id", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public ArrayList<CourseModel> getCourses()
     {
         return courses;
     }
 
-    public TeacherModel(String name, @Email String email) {
+    public TeacherModel(String name, @Email String email)
+    {
         this.name = name;
         this.email = email;
         this.username = email;
     }
 
-    public TeacherModel(){
+    public TeacherModel()
+    {
 
     }
 
-    public long getId() {
+    public long getId()
+    {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(long id)
+    {
         this.id = id;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public String getEmail() {
+    public String getEmail()
+    {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email)
+    {
         this.email = email;
     }
 
-    public String getUsername() {
+    public String getUsername()
+    {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(String username)
+    {
         this.username = username;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "TeacherModel{" +
                 "name='" + name + '\'' +
                 ", email='" + email + '\'' +

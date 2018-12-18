@@ -69,7 +69,7 @@ public class CourseModel implements Serializable
     private ArrayList<StudentModel> students;
 
     @Column(name = "students_map")
-    @OneToMany(mappedBy = "student_id",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "student_id", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public ArrayList<StudentModel> getStudents()
     {
         return students;
@@ -78,7 +78,7 @@ public class CourseModel implements Serializable
     private ArrayList<TeacherModel> teachers;
 
     @Column(name = "teachers_map")
-    @OneToMany(mappedBy = "teacher_id",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "teacher_id", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public ArrayList<TeacherModel> getTeachers()
     {
         return teachers;
@@ -89,7 +89,8 @@ public class CourseModel implements Serializable
 
     }
 
-    public CourseModel(String namedanish, String name, int semester, String classCode, String studyprogramme, boolean type, String ects, String languange, int minimumOfStudents, int expectedOfStudents, int maximumOfStudents, String prerequisites, String description, String content, String learningActivities, String examForm, ArrayList<StudentModel> students, int numberOfTeachers) {
+    public CourseModel(String namedanish, String name, int semester, String classCode, String studyprogramme, boolean type, String ects, String languange, int minimumOfStudents, int expectedOfStudents, int maximumOfStudents, String prerequisites, String description, String content, String learningActivities, String examForm, ArrayList<StudentModel> students, int numberOfTeachers)
+    {
         this.namedanish = namedanish;
         this.name = name;
         this.semester = semester;
@@ -109,139 +110,174 @@ public class CourseModel implements Serializable
         this.students = students;
         this.numberOfTeachers = numberOfTeachers;
     }
-    public Long getId() {
+
+    public Long getId()
+    {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Long id)
+    {
         this.id = id;
     }
 
-    public String getNamedanish() {
+    public String getNamedanish()
+    {
         return namedanish;
     }
 
-    public void setNamedanish(String namedanish) {
+    public void setNamedanish(String namedanish)
+    {
         this.namedanish = namedanish;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public int getSemester() {
+    public int getSemester()
+    {
         return semester;
     }
 
-    public void setSemester(int semester) {
+    public void setSemester(int semester)
+    {
         this.semester = semester;
     }
 
-    public String getClassCode() {
+    public String getClassCode()
+    {
         return classCode;
     }
 
-    public void setClassCode(String classCode) {
+    public void setClassCode(String classCode)
+    {
         this.classCode = classCode;
     }
 
-    public String getStudyprogramme() {
+    public String getStudyprogramme()
+    {
         return studyprogramme;
     }
 
-    public void setStudyprogramme(String studyprogramme) {
+    public void setStudyprogramme(String studyprogramme)
+    {
         this.studyprogramme = studyprogramme;
     }
 
-    public boolean isType() {
+    public boolean isType()
+    {
         return type;
     }
 
-    public void setType(boolean type) {
+    public void setType(boolean type)
+    {
         this.type = type;
     }
 
-    public String getEcts() {
+    public String getEcts()
+    {
         return ects;
     }
 
-    public void setEcts(String ects) {
+    public void setEcts(String ects)
+    {
         this.ects = ects;
     }
 
-    public String getLanguange() {
+    public String getLanguange()
+    {
         return languange;
     }
 
-    public void setLanguange(String languange) {
+    public void setLanguange(String languange)
+    {
         this.languange = languange;
     }
 
-    public int getMinimumOfStudents() {
+    public int getMinimumOfStudents()
+    {
         return minimumOfStudents;
     }
 
-    public void setMinimumOfStudents(int minimumOfStudents) {
+    public void setMinimumOfStudents(int minimumOfStudents)
+    {
         this.minimumOfStudents = minimumOfStudents;
     }
 
-    public int getExpectedOfStudents() {
+    public int getExpectedOfStudents()
+    {
         return expectedOfStudents;
     }
 
-    public void setExpectedOfStudents(int expectedOfStudents) {
+    public void setExpectedOfStudents(int expectedOfStudents)
+    {
         this.expectedOfStudents = expectedOfStudents;
     }
 
-    public int getMaximumOfStudents() {
+    public int getMaximumOfStudents()
+    {
         return maximumOfStudents;
     }
 
-    public void setMaximumOfStudents(int maximumOfStudents) {
+    public void setMaximumOfStudents(int maximumOfStudents)
+    {
         this.maximumOfStudents = maximumOfStudents;
     }
 
-    public String getPrerequisites() {
+    public String getPrerequisites()
+    {
         return prerequisites;
     }
 
-    public void setPrerequisites(String prerequisites) {
+    public void setPrerequisites(String prerequisites)
+    {
         this.prerequisites = prerequisites;
     }
 
-    public String getDescription() {
+    public String getDescription()
+    {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description)
+    {
         this.description = description;
     }
 
-    public String getContent() {
+    public String getContent()
+    {
         return content;
     }
 
-    public void setContent(String content) {
+    public void setContent(String content)
+    {
         this.content = content;
     }
 
-    public String getLearningActivities() {
+    public String getLearningActivities()
+    {
         return learningActivities;
     }
 
-    public void setLearningActivities(String learningActivities) {
+    public void setLearningActivities(String learningActivities)
+    {
         this.learningActivities = learningActivities;
     }
 
-    public String getExamForm() {
+    public String getExamForm()
+    {
         return examForm;
     }
 
-    public void setExamForm(String examForm) {
+    public void setExamForm(String examForm)
+    {
         this.examForm = examForm;
     }
 
@@ -255,40 +291,31 @@ public class CourseModel implements Serializable
         return teachers;
     }
 
-    public int getNumberOfTeachers() {
+    public int getNumberOfTeachers()
+    {
         return numberOfTeachers;
     }
 
-    public void setNumberOfTeachers(int numberOfTeachers) {
+    public void setNumberOfTeachers(int numberOfTeachers)
+    {
         this.numberOfTeachers = numberOfTeachers;
     }
-/*
-    public void setStudents(HashMap<Long, StudentModel> students) {
+
+
+
+    public void setStudents(ArrayList<StudentModel> students)
+    {
         this.students = students;
     }
 
-    public void setTeachers(HashMap<Long, TeacherModel> teachers) {
-        this.teachers = teachers;
-    }*/
-
-
-
-    public void setStudents(ArrayList<StudentModel> students) {
-        this.students = students;
-    }
-
-   /* @Override
-    public String toString() {
-        return "Name danish: " + namedanish + " Name english: " + name + "ECTS: " + ects + " Language: " + languange;
-
-    }*/
-
-    public void setTeachers(ArrayList<TeacherModel> teachers) {
+    public void setTeachers(ArrayList<TeacherModel> teachers)
+    {
         this.teachers = teachers;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "CourseModel{" +
                 "id=" + id +
                 ", namedanish='" + namedanish + '\'' +

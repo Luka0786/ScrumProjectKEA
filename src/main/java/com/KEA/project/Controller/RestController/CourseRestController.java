@@ -17,7 +17,8 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/course")
-public class CourseRestController {
+public class CourseRestController
+{
 
     final String courseUrl = "http://18.185.40.91/course";
 
@@ -32,19 +33,17 @@ public class CourseRestController {
     {
         courseServiceImpl.createAllCourses(courseRestService.fetchAllCourses());
 
-        try {
+        try
+        {
             response.sendRedirect("/course");
-        } catch (IOException e) {
+        } catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
 
-    public ResponseEntity<CourseModel> reflectCourse (@RequestBody CourseModel courseModel)
+    public ResponseEntity<CourseModel> reflectCourse(@RequestBody CourseModel courseModel)
     {
-
-        /*HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        */
 
         HttpEntity<CourseModel> entity = new HttpEntity<>(courseModel);
 

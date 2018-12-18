@@ -35,9 +35,11 @@ public class TeacherServiceImpl implements TeacherService
         String username;
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof UserDetails) {
-            username = ((UserDetails)principal).getUsername();
-        } else {
+        if (principal instanceof UserDetails)
+        {
+            username = ((UserDetails) principal).getUsername();
+        } else
+        {
             username = principal.toString();
         }
 
@@ -49,7 +51,7 @@ public class TeacherServiceImpl implements TeacherService
     }
 
 
-    public List<CourseModel> getAllConnectedByCourseId ()
+    public List<CourseModel> getAllConnectedByCourseId()
     {
         List<CourseModel> courses = courseServiceImpl.getAllCourses();
 
@@ -58,24 +60,29 @@ public class TeacherServiceImpl implements TeacherService
         String username;
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof UserDetails) {
-            username = ((UserDetails)principal).getUsername();
-        } else {
+        if (principal instanceof UserDetails)
+        {
+            username = ((UserDetails) principal).getUsername();
+        } else
+        {
             username = principal.toString();
         }
 
-        for (int i = 0; i < courses.size(); i++) {
+        for (int i = 0; i < courses.size(); i++)
+        {
 
             List<TeacherModel> teachers = courses.get(i).getTeacherss();
 
-            try{
-                for (int j = 0; j < teachers.size(); j++) {
+            try
+            {
+                for (int j = 0; j < teachers.size(); j++)
+                {
                     if (teachers.get(j).getUsername().equals(username))
                     {
                         connected.add(courses.get(i));
                     }
                 }
-            }catch (NullPointerException NPE)
+            } catch (NullPointerException NPE)
             {
 
             }
