@@ -4,7 +4,4 @@ import com.KEA.project.Model.AdministratorModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AdministratorRepository extends JpaRepository<AdministratorModel, Long>
-{
-
-
-}
+{}
