@@ -110,4 +110,9 @@ public class CourseController
         courseServiceImpl.deleteCourse(courseModel);
         return "redirect:/course";
     }
+
+    @GetMapping("/ajax")
+    public String getAjax(){
+        return "AjaxCourses";
+    }
 }

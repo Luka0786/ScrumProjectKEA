@@ -44,7 +44,6 @@ public class CourseRestController
 
     public ResponseEntity<CourseModel> reflectCourse(@RequestBody CourseModel courseModel)
     {
-
         HttpEntity<CourseModel> entity = new HttpEntity<>(courseModel);
 
         RestTemplate restTemplate = new RestTemplate();

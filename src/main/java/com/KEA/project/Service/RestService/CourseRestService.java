@@ -49,8 +49,6 @@ public class CourseRestService
             {
                 if (!courseServiceImpl.findByClassCode(course.getClassCode()).getClassCode().isEmpty())
                 {
-
-
                     course.setMinimumOfStudents(courseServiceImpl.findByClassCode(course.getClassCode()).getMinimumOfStudents());
                     course.setExpectedOfStudents(courseServiceImpl.findByClassCode(course.getClassCode()).getExpectedOfStudents());
                     course.setMaximumOfStudents(courseServiceImpl.findByClassCode(course.getClassCode()).getMaximumOfStudents());
@@ -60,14 +58,11 @@ public class CourseRestService
                     course.setExamForm(courseServiceImpl.findByClassCode(course.getClassCode()).getExamForm());
                     course.setStudents(courseServiceImpl.findByClassCode(course.getClassCode()).getStudents());
                     course.setTeachers(courseServiceImpl.findByClassCode(course.getClassCode()).getTeachers());
-
                 }
 
 
             } catch (NullPointerException NPE)
             {
-
-
                 course.setMinimumOfStudents(15);
                 course.setExpectedOfStudents(35);
                 course.setMaximumOfStudents(50);
@@ -83,7 +78,7 @@ public class CourseRestService
 
     }
 
-    public ResponseEntity<CourseModel> reflectCreatedCourse(ResponseEntity<CourseModel> postCourse)
+        public ResponseEntity<CourseModel> reflectCreatedCourse(ResponseEntity<CourseModel> postCourse)
     {
         return postCourse;
     }

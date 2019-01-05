@@ -1,5 +1,6 @@
 package com.KEA.project.Model;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
@@ -48,6 +49,7 @@ public class CourseModel implements Serializable
     @Column(name = "expected_of_students")
     private int expectedOfStudents;
 
+    @Value("77")
     @Column(name = "maximum_of_students")
     private int maximumOfStudents;
 

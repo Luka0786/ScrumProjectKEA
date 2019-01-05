@@ -73,11 +73,11 @@
     <thead>
     <tr class="text-center ">
 
-        <th ><p>Navn dansk</p></th>
+        <th><p>Navn dansk</p></th>
         <th><p>Navn engelsk</p></th>
         <th><p>Semester</p></th>
-        <th ><p>ECTS</p></th>
-        <th ><p>Fagets sprog</p></th>
+        <th><p>ECTS</p></th>
+        <th><p>Fagets sprog</p></th>
 
         <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
             <th ><p>Indstillinger</p></th>
@@ -93,18 +93,18 @@
     <div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
     <a href="/course/create" type="button" class="btn btn-success ">Opret</a>
     </div>
+
     <br/>
 
     <tr class="text-center" th:each="Course : ${Courses}">
         <td  th:text="${Course.namedanish}"></td>
         <td  th:text="${Course.name}"></td>
-        <td th:text="${Course.semester}"></td>
+        <td  th:text="${Course.semester}"></td>
         <td  th:text="${Course.ects}"></td>
         <td  th:text="${Course.languange}"></td>
 
-
         <div sec:authorize="hasAnyRole('ROLE_ADMIN')">
-        <td  >
+        <td>
             <a th:href="${'/course/details?id='+Course.getId()}" class="btn-sm btn-info" style="margin-bottom: 2px" type="button">Detaljer</a>
 
             <a th:href="${'/course/update?id='+Course.getId()}" class="btn-sm btn-warning" style="margin-bottom: 2px" type="button">Opdater</a>
@@ -151,3 +151,4 @@
     });
 </script>
 </html>
+
