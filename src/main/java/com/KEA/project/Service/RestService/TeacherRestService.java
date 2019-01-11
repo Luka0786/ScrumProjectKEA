@@ -25,7 +25,7 @@ public class TeacherRestService
     @Autowired
     LoginRolesServiceImpl loginRolesServiceImpl;
 
-    final String courseUrl = "http://18.185.40.91/teacher";
+    final String courseUrl = "http://18.194.253.14/teacher";
 
     public LinkedList<TeacherModel> fetchAllTeachers()
     {

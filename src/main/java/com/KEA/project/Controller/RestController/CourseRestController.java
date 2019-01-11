@@ -20,7 +20,7 @@ import java.io.IOException;
 public class CourseRestController
 {
 
-    final String courseUrl = "http://18.185.40.91/course";
+    final String courseUrl = "http://18.194.253.14/course";
 
     @Autowired
     CourseRestService courseRestService;
